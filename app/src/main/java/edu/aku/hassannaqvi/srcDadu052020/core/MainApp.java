@@ -47,13 +47,14 @@ public class MainApp extends Application {
     public static final String TAG = "AppMain";
     public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
     // public static final String _IP = "http://f38158";// .TEST server
-    public static final String _HOST_URL = MainApp._IP + "/tpvics/api/";// .TEST server;
+    public static final String _HOST_URL = MainApp._IP + "/srcDadu2020/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
-    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/tpvics/api/uploads.php";
+    public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/srcDadu2020/api/uploads.php";
 
-    public static final String _UPDATE_URL = MainApp._IP + "/tpvics/app/";
+    public static final String _UPDATE_URL = MainApp._IP + "/srcDadu2020/app/";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
+
     //public static final long MILLISECONDS_IN_5YEAR = (MILLISECONDS_IN_YEAR + MILLISECONDS_IN_YEAR + MILLISECONDS_IN_YEAR + MILLISECONDS_IN_YEAR + MILLISECONDS_IN_YEAR);
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000; // in Milliseconds
