@@ -179,12 +179,13 @@
 
                             </LinearLayout>
 
+
                             <!--Province-->
                             <LinearLayout
                                 android:id="@+id/spinners"
                                 style="@style/linearlayout_view">
 
-                                <LinearLayout
+                                <!--<LinearLayout
                                     style="@style/linearlayout_view"
                                     android:layout_marginTop="10dp"
                                     android:layoutDirection="ltr"
@@ -209,10 +210,10 @@
                                         android:layout_margin="10dp"
                                         android:layout_weight="2" />
 
-                                </LinearLayout>
+                                </LinearLayout>!-->
 
                                 <!--Districts-->
-                                <LinearLayout
+                                <!--<LinearLayout
                                     style="@style/linearlayout_view"
                                     android:layout_marginTop="10dp"
                                     android:layoutDirection="ltr"
@@ -235,7 +236,7 @@
                                         android:layout_margin="10dp"
                                         android:layout_weight="2" />
 
-                                </LinearLayout>
+                                </LinearLayout>!-->
 
                             </LinearLayout>
 

@@ -5,14 +5,17 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract.SingleChild;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.VersionAppContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract;
 
 public final class CreateTable {
 
-    public static final String DATABASE_NAME = "tpvics_hh.db";
-    public static final String DB_NAME = "tpvics_hh_copy.db";
-    public static final String PROJECT_NAME = "TPVICS_HH";
+    public static final String DATABASE_NAME = "srcDadu052020.db";
+    public static final String DB_NAME = "srcDadu052020_copy.db";
+    public static final String PROJECT_NAME = "srcDadu052020";
     public static final int DATABASE_VERSION = 1;
 
     public static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -53,6 +56,30 @@ public final class CreateTable {
             + UsersContract.singleUser.ROW_PASSWORD + " TEXT,"
             + UsersContract.singleUser.DIST_ID + " TEXT"
             + " );";
+
+
+    public static final String SQL_CREATE_TALUKA = "CREATE TABLE " + TalukasContract.singleTalukas.TABLE_NAME + "("
+            + TalukasContract.singleTalukas.COLUMN_TALUKA_CODE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TalukasContract.singleTalukas.COLUMN_TALUKA + " TEXT"
+            + " );";
+
+
+    public static final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
+            + UCsContract.singleUCs.COLUMN_UCCODE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UCsContract.singleUCs.COLUMN_UCS + " TEXT,"
+            + UCsContract.singleUCs.COLUMN_TALUKA_CODE + " TEXT"
+            + " );";
+
+
+    public static final String SQL_CREATE_VILLAGE = "CREATE TABLE " + VillagesContract.SingleVillage.TABLE_NAME + "("
+            + VillagesContract.SingleVillage._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + VillagesContract.SingleVillage.COLUMN_TALUKA_CODE + " TEXT,"
+            + VillagesContract.SingleVillage.COLUMN_UC_CODE + " TEXT,"
+            + VillagesContract.SingleVillage.COLUMN_VILLAGE_CODE + " TEXT,"
+            + VillagesContract.SingleVillage.COLUMN_VILLAGE_NAME + " TEXT"
+            + " );";
+
+
 
     public static final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppContract.VersionAppTable.TABLE_NAME + " (" +
             VersionAppContract.VersionAppTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +

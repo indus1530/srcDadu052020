@@ -33,14 +33,12 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,10 +60,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -73,12 +69,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.srcDadu052020.CONSTANTS;
 import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.AppInfo;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
-import kotlin.Pair;
 import kotlin.Unit;
 import kotlin.coroutines.CoroutineContext;
 
@@ -114,12 +108,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     AppCompatButton mEmailSignInButton;
     @BindView(R.id.syncData)
     Button syncData;
-    @BindView(R.id.spinnerProvince)
-    Spinner spinnerProvince;
+    //@BindView(R.id.spinnerProvince)
+    //Spinner spinnerProvince;
     @BindView(R.id.spinners)
     LinearLayout spinners;
-    @BindView(R.id.spinnerDistrict)
-    Spinner spinnerDistrict;
+    //@BindView(R.id.spinnerDistrict)
+    //Spinner spinnerDistrict;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     String DirectoryName;
@@ -177,7 +171,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     }
 
     private void setListeners() {
-        provinceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.provinces);
+        /*provinceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.provinces);
         spinnerProvince.setAdapter(provinceAdapter);
         spinnerProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -196,8 +190,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
-        spinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        });*/
+        /*spinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) return;
@@ -208,7 +202,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
     }
 
     private void gettingDeviceIMEI() {

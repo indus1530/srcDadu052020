@@ -13,7 +13,8 @@ import org.json.JSONObject;
 public class VillagesContract {
 
 
-    private String areaCode;
+    private String talukacode;
+    private String uccode;
     private String villagecode;
     private String villagename;
 
@@ -22,8 +23,8 @@ public class VillagesContract {
     }
 
 
-    public String getAreaCode() {
-        return areaCode;
+    public String getTalukacode() {
+        return talukacode;
     }
 
     public String getVillagecode() {
@@ -35,7 +36,8 @@ public class VillagesContract {
     }
 
     public VillagesContract sync(JSONObject jsonObject) throws JSONException {
-        this.areaCode = jsonObject.getString(SingleVillage.COLUMN_AREA_CODE);
+        this.talukacode = jsonObject.getString(SingleVillage.COLUMN_TALUKA_CODE);
+        this.uccode = jsonObject.getString(SingleVillage.COLUMN_UC_CODE);
         this.villagecode = jsonObject.getString(SingleVillage.COLUMN_VILLAGE_CODE);
         this.villagename = jsonObject.getString(SingleVillage.COLUMN_VILLAGE_NAME);
 
@@ -43,7 +45,8 @@ public class VillagesContract {
     }
 
     public VillagesContract hydrate(Cursor cursor) {
-        this.areaCode = cursor.getString(cursor.getColumnIndex(SingleVillage.COLUMN_AREA_CODE));
+        this.talukacode = cursor.getString(cursor.getColumnIndex(SingleVillage.COLUMN_TALUKA_CODE));
+        this.uccode = cursor.getString(cursor.getColumnIndex(SingleVillage.COLUMN_UC_CODE));
         this.villagecode = cursor.getString(cursor.getColumnIndex(SingleVillage.COLUMN_VILLAGE_CODE));
         this.villagename = cursor.getString(cursor.getColumnIndex(SingleVillage.COLUMN_VILLAGE_NAME));
 
@@ -55,7 +58,8 @@ public class VillagesContract {
 
         public static final String TABLE_NAME = "villages";
         public static final String _ID = "_id";
-        public static final String COLUMN_AREA_CODE = "area_code";
+        public static final String COLUMN_TALUKA_CODE = "taluka_code";
+        public static final String COLUMN_UC_CODE = "uc_code";
         public static final String COLUMN_VILLAGE_CODE = "village_code";
         public static final String COLUMN_VILLAGE_NAME = "village_name";
 

@@ -2,26 +2,53 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
+import edu.aku.hassannaqvi.srcDadu052020.ui.other.SplashscreenActivity;
+import kotlin.Pair;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
+
 public class SectionAActivity extends AppCompatActivity {
+
+    @BindView(R.id.a1)
+    Spinner a1;
+
+    @BindView(R.id.a2)
+    Spinner a2;
+
+    @BindView(R.id.a3)
+    Spinner a3;
+
+    ArrayAdapter<String> a1Adapter;
 
     ActivitySectionABinding bi;
 
@@ -37,15 +64,38 @@ public class SectionAActivity extends AppCompatActivity {
 
     private void setupListeners() {
 
-        /*bi.ec19.setOnCheckedChangeListener(((radioGroup, i) -> {
-            if (i == bi.ec19a.getId()) {
-                Clear.clearAllFields(bi.fldGrpCVec21, false);
-            } else {
-                Clear.clearAllFields(bi.fldGrpCVec21, true);
+        a1Adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.provinces);
+        a1.setAdapter(a1Adapter);
+        a1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) return;
+                List<String> districts = new ArrayList<>(Collections.singletonList("...."));
+                for (Map.Entry<String, Pair<String, EnumBlockContract>> entry : SplashscreenActivity.districtsMap.entrySet()) {
+                    if (entry.getValue().getFirst().equals(a1.getSelectedItem().toString()))
+                        districts.add(entry.getKey());
+                }
+                a2.setAdapter(new ArrayAdapter<>(SectionAActivity.this, android.R.layout.simple_list_item_1
+                        , districts));
             }
-        }));
 
-        bi.ec13.setText(String.valueOf(getIntent().getIntExtra(CHILD_SERIAL, 0)));*/
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        bi.a1102.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (bi.a1102.isChecked() == true) {
+                    Clear.clearAllFields(bi.fldGrpCVa12, true);
+                } else {
+                    Clear.clearAllFields(bi.fldGrpCVa12, false);
+                }
+            }
+        });
     }
 
 
@@ -67,11 +117,11 @@ public class SectionAActivity extends AppCompatActivity {
 
         JSONObject sA = new JSONObject();
 
-        sA.put("a1", bi.a1.getText().toString());
+        sA.put("a1", bi.a1.getSelectedItem().toString());
 
-        sA.put("a2", bi.a2.getText().toString());
+        sA.put("a2", bi.a2.getSelectedItem().toString());
 
-        sA.put("a3", bi.a3.getText().toString());
+        sA.put("a3", bi.a3.getSelectedItem().toString());
 
         sA.put("a4", bi.a4.getText().toString());
 
@@ -82,6 +132,8 @@ public class SectionAActivity extends AppCompatActivity {
         sA.put("a7", bi.a7.getText().toString());
 
         sA.put("a8", bi.a8.getText().toString());
+
+        MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
 
         sA.put("a9", bi.a9.getText().toString());
 

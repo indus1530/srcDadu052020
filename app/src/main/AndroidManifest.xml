@@ -25,7 +25,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".ui.sections.activity_section_a"></activity>
+        <activity android:name=".ui.sections.SectionParticipantsSRC"></activity>
+        <activity android:name=".ui.sections.SectionAActivity$SectionParticipantsSRC" />
+        <activity android:name=".ui.sections.activity_section_a" />
         <activity
             android:name=".ui.sections.SectionSubInfoActivity"
             android:supportsRtl="false"

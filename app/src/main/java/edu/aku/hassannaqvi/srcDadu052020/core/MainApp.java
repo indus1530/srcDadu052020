@@ -92,6 +92,7 @@ public class MainApp extends Application {
     public static String DIST_ID;
     public static Pair<List<Integer>, List<String>> selectedChildren;
     protected static LocationManager locationManager;
+    public static int No_participants = 0;
 
     public static void setItemClick(OnItemClick itemClick) {
         MainApp.itemClick = itemClick;
