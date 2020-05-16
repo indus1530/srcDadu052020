@@ -14,9 +14,9 @@ import org.json.JSONObject;
 
 public class FormsContract extends LiveData<FormsContract> {
 
-    public static final String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.tpvics_hh";
+    public static final String CONTENT_AUTHORITY = "edu.aku.hassannaqvi.srcDadu052020";
     public static final String PATH_FORMS = "forms";
-    private final String projectName = "TPVICS_HH";
+    private final String projectName = "SRCDADU052020";
     private String _ID = "";
     private String _UID = "";
     private String formType = "";
@@ -40,6 +40,8 @@ public class FormsContract extends LiveData<FormsContract> {
     private String sInfo = "";
     private String fStatus = "";
     private String fstatus88x = ""; // Interview Status
+
+    private String sA = "";
     private String sE = "";
     private String sM = "";
     private String sN = "";
@@ -63,6 +65,16 @@ public class FormsContract extends LiveData<FormsContract> {
     public void setfStatus(String fStatus) {
         this.fStatus = fStatus;
     }
+
+
+    public String getsA() {
+        return sA;
+    }
+
+    public void setsA(String sA) {
+        this.sA = sA;
+    }
+
 
     public String getsE() {
         return sE;
@@ -137,6 +149,8 @@ public class FormsContract extends LiveData<FormsContract> {
         this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
         this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
         this.fStatus = jsonObject.getString(FormsTable.COLUMN_FSTATUS);
+        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
+
         this.sE = jsonObject.getString(FormsTable.COLUMN_SE);
         this.sM = jsonObject.getString(FormsTable.COLUMN_SM);
         this.sN = jsonObject.getString(FormsTable.COLUMN_SN);
@@ -168,6 +182,8 @@ public class FormsContract extends LiveData<FormsContract> {
         this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
         this.sInfo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SINFO));
         this.fStatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS));
+        this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
+
         this.sE = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SE));
         this.sM = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SM));
         this.sN = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SN));
@@ -195,6 +211,12 @@ public class FormsContract extends LiveData<FormsContract> {
         if (!this.sInfo.equals("")) {
             json.put(FormsTable.COLUMN_SINFO, new JSONObject(this.sInfo));
         }
+
+
+        if (!this.sA.equals("")) {
+            json.put(FormsTable.COLUMN_SA, new JSONObject(this.sA));
+        }
+
 
         if (!this.sE.equals("")) {
             json.put(FormsTable.COLUMN_SE, new JSONObject(this.sE));
@@ -412,6 +434,7 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_CLUSTERCODE = "cluster_code";
         public static final String COLUMN_HHNO = "hhno";
         public static final String COLUMN_SINFO = "sInfo";
+        public static final String COLUMN_SA = "sA";
         public static final String COLUMN_SE = "sE";
         public static final String COLUMN_SM = "sM";
         public static final String COLUMN_SN = "sN";

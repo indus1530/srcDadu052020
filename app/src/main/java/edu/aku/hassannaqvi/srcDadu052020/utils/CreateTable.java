@@ -37,6 +37,7 @@ public final class CreateTable {
             + FormsContract.FormsTable.COLUMN_HHNO + " TEXT,"
             + FormsContract.FormsTable.COLUMN_FORMTYPE + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SINFO + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_SA + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SE + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SM + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SN + " TEXT,"

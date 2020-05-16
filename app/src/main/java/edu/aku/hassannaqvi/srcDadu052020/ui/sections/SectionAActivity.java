@@ -33,7 +33,7 @@ import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.SplashscreenActivity;
 import kotlin.Pair;
 
-import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
+import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.fc;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
 
@@ -101,11 +101,11 @@ public class SectionAActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addChild(child);
-        child.set_ID(String.valueOf(updcount));
+        long updcount = db.addForm(fc);
+        fc.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
-            child.setUID(MainApp.deviceId + child.get_ID());
-            db.updatesChildColumn(ChildContract.SingleChild.COLUMN_UID, child.getUID());
+            fc.set_UID(MainApp.deviceId + fc.get_ID());
+            db.updatesChildColumn(ChildContract.SingleChild.COLUMN_UID, fc.get_UID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -173,11 +173,20 @@ public class SectionAActivity extends AppCompatActivity {
 
         sA.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
 
-        child.setsCA(String.valueOf(sA));
+        fc.setsA(String.valueOf(sA));
     }
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
+
+        if (bi.a9.getText().toString() != "" && bi.a10.getText().toString() != "") {
+            int result = Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString());
+
+            if (Integer.valueOf(bi.a9.getText().toString()) > result) {
+                Toast.makeText(this, "No of married participants and No of unmarried participants must be equal to total no of participants", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
     }
 
 
