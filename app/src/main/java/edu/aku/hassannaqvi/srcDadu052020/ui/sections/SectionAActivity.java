@@ -177,8 +177,15 @@ public class SectionAActivity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (Validation()) {
+            return Validator.emptyCheckingContainer(this, bi.GrpName);
+        } else {
+            return true;
+        }
+    }
 
+
+    private boolean Validation() {
         if (bi.a9.getText().toString() != "" && bi.a10.getText().toString() != "") {
             int result = Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString());
 
@@ -187,8 +194,9 @@ public class SectionAActivity extends AppCompatActivity {
                 return false;
             }
         }
-    }
 
+        return true;
+    }
 
     public void BtnContinue() {
 
