@@ -1,13 +1,12 @@
 package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.validatorcrawler.aliazaz.Clear;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -18,9 +17,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
-import edu.aku.hassannaqvi.srcDadu052020.utils.EndSectionActivity;
 
-import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.CHILD_SERIAL;
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
