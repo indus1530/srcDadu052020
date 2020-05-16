@@ -15,6 +15,7 @@ android {
     if (versionPropsFile.canRead()) {
         Properties versionProps = new Properties()
 
+
         versionProps.load(new FileInputStream(versionPropsFile))
 
         def code = versionProps['VERSION_CODE'].toInteger() + 1
@@ -23,7 +24,7 @@ android {
         versionProps.store(versionPropsFile.newWriter(), null)
 
         defaultConfig {
-            applicationId "edu.aku.hassannaqvi.tpvics_hh"
+            applicationId "edu.aku.hassannaqvi.srcDadu052020"
             minSdkVersion 21
             targetSdkVersion 29
             versionCode code

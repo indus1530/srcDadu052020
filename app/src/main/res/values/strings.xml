@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
     <!--new Strings-->
-    <string name="app_name"> TPVICS - HOUSEHOLD SURVEY \n In Urdu Language </string>
+    <string name="app_name"> SRC Dadu 2020 </string>
 
     <!-- Strings related to login -->
     <string name="btnSync">Download Data</string>
@@ -15,6 +15,10 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
+
+    <string name="taheading"> SECTION A: SOCIO - DEMOGRAPHIC INFORMATION </string>
+    <string name="tbheading"> SECTION B: PARTICIPANT INFORMATION </string>
 
 
     <string name="tdheading"> SECTION D: HOUSEHOLD MEMBER’S INFORMATION </string>
@@ -1116,6 +1120,75 @@
     <string name="hhformInfo"> ۔HOUSEHOLD بٹن پر کلک کر کے گھر کی معلومات کا اندراج کریں</string>
     <string name="childforminfo">گھر کی معلومات کا فارم کامیابی سے مکمل ہو گیا ہے اب CHILD کے بٹن پر کلک کر کے 23-\12 مہینے کے بچوں کی معلومات کے فارم کا اندراج کریں</string>
     <string name="childlistinfo">اندراج شدہ بچوں کی فہرست</string>
+
+
+    <string name="a1">Name of Taluka</string>
+    <string name="a2">Name of Union Council</string>
+    <string name="a3">Name of Village</string>
+    <string name="a4">Address</string>
+    <string name="a5">Session’s Date</string>
+    <string name="a6">Name of Data Collector</string>
+    <string name="a7">Name of Team Leader</string>
+    <string name="a8">Total number of participants in session</string>
+    <string name="a9">Number of married participants</string>
+    <string name="a10">Number of unmarried participants</string>
+    <string name="a11">Type of Session</string>
+    <string name="a1101">Menstrual Hygiene Management (MHM)</string>
+    <string name="a1102">Maternal, Neonatal, Child and Adolescent Health</string>
+    <string name="a1103">MHM Pad Production</string>
+    <string name="a1104">Safe Drinking Water</string>
+    <string name="a12">Which topics are covered in the Session?</string>
+    <string name="a1201">Preconception care</string>
+    <string name="a1202">Facility-based delivery</string>
+    <string name="a1203">Family planning</string>
+    <string name="a1204">Kangaroo mother care</string>
+    <string name="a1205">Complementary feeding</string>
+    <string name="a1206">Antenatal Care</string>
+    <string name="a1207">Postnatal care</string>
+    <string name="a1208">Birth Preparedness</string>
+    <string name="a1209">Essential new born care</string>
+    <string name="a1210">Early initiation of breast feeding</string>
+    <string name="a1211">New born child health care, Diarrhea, typhoid, malnutrition</string>
+    <string name="a1212">Maternal Nutrition</string>
+    <string name="a1213">Referral</string>
+
+
+    <!--  Section B  !-->
+
+    <string name="sno">Serial No.</string>
+    <string name="a">Complete Name</string>
+    <string name="b">Age in years</string>
+    <string name="c">Sex</string>
+    <string name="c1">Male</string>
+    <string name="c2">Female</string>
+    <string name="d">Contact #</string>
+    <string name="e">Education</string>
+    <string name="f">Marital Status</string>
+    <string name="f1">Un Married</string>
+    <string name="f2">Married</string>
+    <string name="f3">Divorced</string>
+    <string name="f4">Separate</string>
+    <string name="f5">Widowed</string>
+    <string name="g">Current status (Ask if Married)</string>
+    <string name="g1">Pregnant</string>
+    <string name="g2">Not pregnant</string>
+    <string name="h">Number of weeks  ( Ask if Pregnant in F)</string>
+    <string name="i">Profession</string>
+    <string name="i1">Professional/Technical/Managerial</string>
+    <string name="i2">Clerical</string>
+    <string name="i3">Sales and services</string>
+    <string name="i4">Skilled manual</string>
+    <string name="i5">Unskilled manual</string>
+    <string name="i6">Domestic service</string>
+    <string name="i7">Agriculture</string>
+    <string name="i8">Business</string>
+    <string name="i9">Small business/shop</string>
+    <string name="i10">Unemployed</string>
+    <string name="i11">Retired</string>
+    <string name="i12">House wife</string>
+    <string name="i13">Student</string>
+    <string name="i14">None</string>
+    <string name="i96">Others(Specify)</string>
 
 
 </resources>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
     <!--new Strings-->
-    <string name="app_name"> TPVICS - HOUSEHOLD SURVEY \n In Urdu Language </string>
+    <string name="app_name"> SRC Dadu 2020 </string>
 
     <!-- Strings related to login -->
-    <string name="btnSync">Sync</string>
-    <string name="btnUpload">Upload</string>
+    <string name="btnSync">Download Data</string>
+    <string name="btnUpload">Upload Data</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
@@ -15,6 +15,10 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
+
+    <string name="taheading"> SECTION A: SOCIO - DEMOGRAPHIC INFORMATION </string>
+    <string name="tbheading"> SECTION B: PARTICIPANT INFORMATION </string>
 
 
     <string name="tdheading"> SECTION D: HOUSEHOLD MEMBER’S INFORMATION </string>
@@ -85,7 +89,7 @@
     <string name="hh074a"> سُپروائزر کا  کوڈ </string>
     <string name="hh01"> انٹرویو کی تاریخ </string>
     <string name="hh02"> انٹرویو کا وقت </string>
-    <string name="hh13"> جواب دہندہ کانام </string>
+    <string name="hh13"> جواب دہندہ کا نام </string>
     <string name="hh13a"> جواب دہندہ کا رابطہ نمبر </string>
     <string name="hh14"> جواب دہندہ کی عمر مکمل سالوں میں </string>
 
@@ -95,8 +99,8 @@
 
     <string name="hh16"> گھر کے سربراہ کا نام اور فون نمبر </string>
 
-    <string name="hh16a"> سربراہ کا نام </string>
-    <string name="hh16b"> سربراہ کا فون نمبر </string>
+    <string name="hh16a"> گھر کے سربراہ کا نام </string>
+    <string name="hh16b"> گھر کے سربراہ کا فون نمبر </string>
 
     <string name="hh17"> گھرانے کے سربراہ کے سوال نامے میں جواب دہندہ کا نام اور فون نمبر (اگر سربراہ جواب دہندہ نہیں ہے) </string>
     <string name="hh17a"> سربراہ کا نام </string>
@@ -129,7 +133,6 @@
     <string name="hh22f"> گھر نہیں ملا </string>
     <string name="hh2296"> دیگر </string>
     <string name="hh2296x"> وضاحت کریں </string>
-
 
     <string name="chsec"> Child Information </string>
     <string name="chBsec"> Child Background </string>
@@ -550,8 +553,8 @@
     <string name="ec151"> لڑکا </string>
     <string name="ec152"> لڑکی </string>
 
-    <string name="ec16"> والدہ / دیکھ بھال کرنے والے  کا نام </string>
-    <string name="ec17"> والدہ / دیکھ بھال کرنے والے کی عمر مکمل سالوں میں </string>
+    <string name="ec16"> جواب دہندہ  کا نام </string>
+    <string name="ec17"> جواب دہندہ کی عمر مکمل سالوں میں </string>
     <string name="ec18"> بچے کے ساتھ جواب دہندہ کا رشتہ  </string>
     <string name="ec181"> والدہ </string>
     <string name="ec182"> والد </string>
@@ -803,7 +806,7 @@
     <string name="im232"> پرائیوٹ مرکز صحت </string>
     <string name="im233"> سرکاری آؤٹ ریچ سروس </string>
     <string name="im234"> حفاظتی ٹیکے نہیں لگوائے </string>
-    <string name="im236"> دیگر </string>
+    <string name="im236x"> دیگر </string>
 
     <string name="im23a"> کیا آپ براۓ مہربانی بتا سکتی ہیں کہ یہ مرکز صحت کہاں واقع ہے ؟ </string>
     <string name="im23a1"> اسی احاطے کے دس کلومیڑ کے </string>
@@ -834,10 +837,10 @@
 
     <string name="im25"> اس بچے کے حفاظتی ٹیکوں کے ریکارڈ کے لئے مرکز صحت پر ایک سوالنامہ کا فارم جاری کریں۔ اس سوالنامہ کا انفارمیشن پینل مکمل کریں۔ </string>
 
-    <string name="im26a"> حفاظتی ٹیکوں کے بارے میں جواب دہندہ کی معلومات  </string>
-    <string name="im26b"> سوالوں کے جواب میں جواب دہندہ کا تعاون اور رویہ۔   </string>
-    <string name="im26c"> کارڈ کی دستیابی ، تکمیل (خاص طور پر کارڈ دکھایا گیا لیکن آپ اسے واضح طور پر پڑھ نہیں سکے)  </string>
-    <string name="im26d"> دیگر تبصرے اگر کوئی  </string>
+    <string name="im26a"> RESPONDENT KNOWLEDGE ABOUT IMMUNIZATION </string>
+    <string name="im26b"> RESPONDENT COOPERATION AND BEHAVIOUR IN RESPONDING TO QUESTION </string>
+    <string name="im26c"> CARD AVAILABILITY, COMPLETENESS (SPECIFICALLY ABOUT CARD SHOWS A DATE BUT YOU CANNOT  READ IT CLEARLY) </string>
+    <string name="im26d"> OTHER COMMENTS IF ANY </string>
 
 
     <string name="end_interview"> انٹرویو ختم کریں </string>
@@ -1116,6 +1119,76 @@
     <string name="Q_ch03b">CH03b</string>
     <string name="hhformInfo"> ۔HOUSEHOLD بٹن پر کلک کر کے گھر کی معلومات کا اندراج کریں</string>
     <string name="childforminfo">گھر کی معلومات کا فارم کامیابی سے مکمل ہو گیا ہے اب CHILD کے بٹن پر کلک کر کے 23-\12 مہینے کے بچوں کی معلومات کے فارم کا اندراج کریں</string>
+    <string name="childlistinfo">اندراج شدہ بچوں کی فہرست</string>
+
+
+    <string name="a1">Name of Taluka</string>
+    <string name="a2">Name of Union Council</string>
+    <string name="a3">Name of Village</string>
+    <string name="a4">Address</string>
+    <string name="a5">Session’s Date</string>
+    <string name="a6">Name of Data Collector</string>
+    <string name="a7">Name of Team Leader</string>
+    <string name="a8">Total number of participants in session</string>
+    <string name="a9">Number of married participants</string>
+    <string name="a10">Number of unmarried participants</string>
+    <string name="a11">Type of Session</string>
+    <string name="a1101">Menstrual Hygiene Management (MHM)</string>
+    <string name="a1102">Maternal, Neonatal, Child and Adolescent Health</string>
+    <string name="a1103">MHM Pad Production</string>
+    <string name="a1104">Safe Drinking Water</string>
+    <string name="a12">Which topics are covered in the Session?</string>
+    <string name="a1201">Preconception care</string>
+    <string name="a1202">Facility-based delivery</string>
+    <string name="a1203">Family planning</string>
+    <string name="a1204">Kangaroo mother care</string>
+    <string name="a1205">Complementary feeding</string>
+    <string name="a1206">Antenatal Care</string>
+    <string name="a1207">Postnatal care</string>
+    <string name="a1208">Birth Preparedness</string>
+    <string name="a1209">Essential new born care</string>
+    <string name="a1210">Early initiation of breast feeding</string>
+    <string name="a1211">New born child health care, Diarrhea, typhoid, malnutrition</string>
+    <string name="a1212">Maternal Nutrition</string>
+    <string name="a1213">Referral</string>
+
+
+    <!-- Section B  !-->
+
+    <string name="sno">سيريل نمبر</string>
+    <string name="a">مڪمل نالو</string>
+    <string name="b">عمر سالن ۾</string>
+    <string name="c">جنس</string>
+    <string name="c1">مرد</string>
+    <string name="c2">عورت</string>
+    <string name="d">رابطي جو نمبر</string>
+    <string name="e">تعليم</string>
+    <string name="f">ازواد جي حيثيت</string>
+    <string name="f1">غير شادي شده</string>
+    <string name="f2">شادي شده</string>
+    <string name="f3">طلاق يافته</string>
+    <string name="f4">الڳ، جدا</string>
+    <string name="f5">بيوا هه</string>
+    <string name="g">موجو ده حيثيت  ( جيڪڏهن شادي شده آهي ته پڇو)</string>
+    <string name="g1">حمل سان آهي</string>
+    <string name="g2">حمل سان نه آهي</string>
+    <string name="h">موجوده حمل جا هفته  ( جڪڏهن حمل سان آهي ته پڇو)</string>
+    <string name="i">ڪاروبار</string>
+    <string name="i1"> پروفيشنل / ٽيڪنيڪل/انتظاميا</string>
+    <string name="i2">ڪلارڪ</string>
+    <string name="i3">خريد ۽ فروخت</string>
+    <string name="i4">تربيت يافته مزدور</string>
+    <string name="i5">مزدور غير تربيت يافته</string>
+    <string name="i6">گھريلو خدمتون</string>
+    <string name="i7"> زراعت</string>
+    <string name="i8">ڪاروبار</string>
+    <string name="i9">ننڍو ڪاروبار/ دوڪاندار</string>
+    <string name="i10">بيروزگار</string>
+    <string name="i11">رٽائرڊ</string>
+    <string name="i12"> گھريلو عورت</string>
+    <string name="i13">شاگرد</string>
+    <string name="i14">ڪجھ به نه</string>
+    <string name="i96"> ٻيو ڪجھ</string>
 
 
 </resources>
