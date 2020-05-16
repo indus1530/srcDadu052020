@@ -50,7 +50,7 @@ import edu.aku.hassannaqvi.srcDadu052020.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.srcDadu052020.ui.sections.SectionInfoActivity;
+import edu.aku.hassannaqvi.srcDadu052020.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
 import edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable;
 
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         Intent oF = null;
         switch (id) {
             case R.id.formA:
-                oF = new Intent(this, SectionInfoActivity.class);
+                oF = new Intent(this, SectionAActivity.class);
                 break;
 /*            case R.id.formB:
                 oF = new Intent(this, SectionBActivity.class);

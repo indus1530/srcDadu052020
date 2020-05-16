@@ -25,9 +25,14 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".ui.sections.SectionParticipantsSRC"></activity>
-        <activity android:name=".ui.sections.SectionAActivity$SectionParticipantsSRC" />
-        <activity android:name=".ui.sections.activity_section_a" />
+        <activity
+            android:name=".ui.sections.SectionParticipantsSRC"
+            android:label="@string/tbheading"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sections.SectionAActivity"
+            android:label="@string/taheading"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.sections.SectionSubInfoActivity"
             android:supportsRtl="false"

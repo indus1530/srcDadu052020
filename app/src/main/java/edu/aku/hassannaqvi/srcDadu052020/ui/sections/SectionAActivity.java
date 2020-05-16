@@ -2,8 +2,6 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -18,20 +16,12 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
 import butterknife.BindView;
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
-import edu.aku.hassannaqvi.srcDadu052020.ui.other.SplashscreenActivity;
-import kotlin.Pair;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.fc;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
@@ -64,7 +54,31 @@ public class SectionAActivity extends AppCompatActivity {
 
     private void setupListeners() {
 
-        a1Adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.provinces);
+        String[] users = {"Select Taluka", "Johi"};
+
+        Spinner spin = findViewById(R.id.a1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+
+
+        String[] ucs = {"Select UC", "Johi Town UC-1", "Johi Town UC-2", "Kamal Khan", "Peer Mashaikh", "Johi"};
+
+        Spinner spin_uc = findViewById(R.id.a2);
+        ArrayAdapter<String> adapter_uc = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ucs);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_uc.setAdapter(adapter_uc);
+
+
+        String[] village = {"Select Village", "Johi|Johi Town UC-1|Ward No.01", "Johi|Johi Town UC-1|Ward No.03", "Johi|Johi Town UC-1|Ward No.04", "Johi|Johi Town UC-1|Ward No.05", "Johi|Johi Town UC-1|Ward No.06", "Johi|Johi Town UC-1|Ward No.07", "Johi|Johi Town UC-1|Ward No.08", "Johi|Kamal Khan|Aadho Rodenani", "Johi|Kamal Khan|Abdul Aziz Solangi", "Johi|Kamal Khan|Abdul Rehman Jamali"};
+
+        Spinner spin_village = findViewById(R.id.a3);
+        ArrayAdapter<String> adapter_village = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, village);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin_village.setAdapter(adapter_village);
+
+
+        /*a1Adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, SplashscreenActivity.provinces);
         a1.setAdapter(a1Adapter);
         a1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -83,7 +97,7 @@ public class SectionAActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
 
         bi.a1102.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -1191,4 +1191,28 @@
     <string name="i96"> ٻيو ڪجھ</string>
 
 
+    <string name='Q_a'>a</string>
+    <string name='Q_a1'>a1</string>
+    <string name='Q_a10'>a10</string>
+    <string name='Q_a11'>a11</string>
+    <string name='Q_a12'>a12</string>
+    <string name='Q_a2'>a2</string>
+    <string name='Q_a3'>a3</string>
+    <string name='Q_a4'>a4</string>
+    <string name='Q_a5'>a5</string>
+    <string name='Q_a6'>a6</string>
+    <string name='Q_a7'>a7</string>
+    <string name='Q_a8'>a8</string>
+    <string name='Q_a9'>a9</string>
+    <string name='Q_b'>b</string>
+    <string name='Q_c'>c</string>
+    <string name='Q_d'>d</string>
+    <string name='Q_e'>e</string>
+    <string name='Q_f'>f</string>
+    <string name='Q_g'>g</string>
+    <string name='Q_h'>h</string>
+    <string name='Q_i'>i</string>
+    <string name='Q_sno'>sno</string>
+
+
 </resources>

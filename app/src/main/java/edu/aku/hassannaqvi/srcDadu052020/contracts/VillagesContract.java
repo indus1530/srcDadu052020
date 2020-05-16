@@ -23,6 +23,10 @@ public class VillagesContract {
     }
 
 
+    public String getUccode() {
+        return uccode;
+    }
+
     public String getTalukacode() {
         return talukacode;
     }
