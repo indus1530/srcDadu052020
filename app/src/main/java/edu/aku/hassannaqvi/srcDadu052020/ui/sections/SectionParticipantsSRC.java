@@ -2,11 +2,14 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -33,8 +36,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.setCallback(this);
 
         if (MainApp.No_participants == 0) {
-            bi.nopart.setText("Participants # - " + MainApp.No_participants);
             MainApp.No_participants = 1;
+            bi.sno.setText("Participants # - " + MainApp.No_participants);
         }
 
         setupListeners();
@@ -42,16 +45,18 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
 
     private void setupListeners() {
-        /*bi.a1102.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        bi.g1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (bi.a1102.isChecked() == true) {
-                    Clear.clearAllFields(bi.fldGrpCVa12, true);
+                if (bi.g1.isChecked() == true) {
+                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(bi.fldGrpCVh, true);
                 } else {
-                    Clear.clearAllFields(bi.fldGrpCVa12, false);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.fldGrpCVh, false);
                 }
             }
-        });*/
+        });
     }
 
 
