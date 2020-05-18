@@ -16,15 +16,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
+import edu.aku.hassannaqvi.srcDadu052020.ui.other.MainActivity;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
 public class SectionParticipantsSRC extends AppCompatActivity {
+
+    public static ParticipantContract pc;
+    public static int counter = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
 
@@ -62,11 +66,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addChild(child);
-        child.set_ID(String.valueOf(updcount));
+        long updcount = db.addParticipant(pc);
+        pc.setId(String.valueOf(updcount));
         if (updcount > 0) {
-            child.setUID(MainApp.deviceId + child.get_ID());
-            db.updatesChildColumn(ChildContract.SingleChild.COLUMN_UID, child.getUID());
+            pc.setUid(MainApp.deviceId + pc.getId());
+            db.updatesChildColumn(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUid());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -140,7 +144,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionCHBActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }

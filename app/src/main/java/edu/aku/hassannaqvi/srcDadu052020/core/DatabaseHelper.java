@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract.SingleMember;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract.FormsTable;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
@@ -384,6 +385,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
+
+    public Long addParticipant(ParticipantContract partContract) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+
+        values.put(ParticipantContract.singleParticipant.COLUMN_UUID, partContract.getUuid());
+        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICEID, partContract.getDeviceid());
+        values.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, partContract.getFormdate());
+        values.put(ParticipantContract.singleParticipant.COLUMN_UID, partContract.getUid());
+        values.put(ParticipantContract.singleParticipant.COLUMN_PROJECTNAME, partContract.getUid());
+
+        values.put(ParticipantContract.singleParticipant.COLUMN_A, partContract.getA());
+        values.put(ParticipantContract.singleParticipant.COLUMN_B, partContract.getB());
+        values.put(ParticipantContract.singleParticipant.COLUMN_C, partContract.getC());
+        values.put(ParticipantContract.singleParticipant.COLUMN_D, partContract.getD());
+        values.put(ParticipantContract.singleParticipant.COLUMN_E, partContract.getE());
+        values.put(ParticipantContract.singleParticipant.COLUMN_F, partContract.getF());
+        values.put(ParticipantContract.singleParticipant.COLUMN_G, partContract.getG());
+        values.put(ParticipantContract.singleParticipant.COLUMN_H, partContract.getH());
+        values.put(ParticipantContract.singleParticipant.COLUMN_I, partContract.getI());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                SingleChild.TABLE_NAME,
+                null,
+                values);
+        return newRowId;
+    }
+
 
     public FormsContract isDataExists(String studyId) {
         SQLiteDatabase db = getReadableDatabase();
