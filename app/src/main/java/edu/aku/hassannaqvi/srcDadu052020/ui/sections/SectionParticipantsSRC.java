@@ -33,6 +33,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.setCallback(this);
 
         if (MainApp.No_participants == 0) {
+            bi.nopart.setText("Participants # - " + MainApp.No_participants);
             MainApp.No_participants = 1;
         }
 

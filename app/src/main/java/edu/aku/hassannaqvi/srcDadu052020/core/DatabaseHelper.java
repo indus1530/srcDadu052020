@@ -628,6 +628,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_LUID,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_SINFO,
+                FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_SE,
                 FormsTable.COLUMN_SM,
                 FormsTable.COLUMN_SN,
