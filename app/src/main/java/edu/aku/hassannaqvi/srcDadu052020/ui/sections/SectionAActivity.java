@@ -19,17 +19,16 @@ import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
 
-import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.fc;
-
 
 public class SectionAActivity extends AppCompatActivity {
 
+    public static FormsContract fc;
     ArrayAdapter<String> a1Adapter;
-
     ActivitySectionABinding bi;
 
     @Override
