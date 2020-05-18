@@ -30,6 +30,7 @@ public class SectionAActivity extends AppCompatActivity {
     public static FormsContract fc;
     ArrayAdapter<String> a1Adapter;
     ActivitySectionABinding bi;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
         bi.setCallback(this);
+        db = MainApp.appInfo.getDbHelper();
         setupListeners();
     }
 
@@ -119,66 +121,74 @@ public class SectionAActivity extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
+        //if (MainApp.fc != null) return;
+        MainApp.fc = new FormsContract();
+        MainApp.fc.set_UID(MainApp.fc.get_UID());
+        MainApp.fc.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
+        MainApp.fc.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.setGPS(this);
 
-        JSONObject sA = new JSONObject();
+        JSONObject json = new JSONObject();
 
-        sA.put("a1", bi.a1.getSelectedItem().toString());
+        //sA.put("a1", bi.a1.getSelectedItem().toString());
 
-        sA.put("a2", bi.a2.getSelectedItem().toString());
+        //sA.put("a2", bi.a2.getSelectedItem().toString());
 
-        sA.put("a3", bi.a3.getSelectedItem().toString());
+        //sA.put("a3", bi.a3.getSelectedItem().toString());
 
-        sA.put("a4", bi.a4.getText().toString());
+        json.put("a4", bi.a4.getText().toString());
 
-        sA.put("a5", bi.a5.getText().toString());
+        json.put("a5", bi.a5.getText().toString());
 
-        sA.put("a6", bi.a6.getText().toString());
+        json.put("a6", bi.a6.getText().toString());
 
-        sA.put("a7", bi.a7.getText().toString());
+        json.put("a7", bi.a7.getText().toString());
 
-        sA.put("a8", bi.a8.getText().toString());
+        json.put("a8", bi.a8.getText().toString());
 
-        MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
+        //MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
 
-        sA.put("a9", bi.a9.getText().toString());
+        json.put("a9", bi.a9.getText().toString());
 
-        sA.put("a10", bi.a10.getText().toString());
+        json.put("a10", bi.a10.getText().toString());
 
-        sA.put("a1101", bi.a1101.isChecked() ? "1" : "-1");
+        json.put("a1101", bi.a1101.isChecked() ? "1" : "-1");
 
-        sA.put("a1102", bi.a1102.isChecked() ? "2" : "-1");
+        json.put("a1102", bi.a1102.isChecked() ? "2" : "-1");
 
-        sA.put("a1103", bi.a1103.isChecked() ? "3" : "-1");
+        json.put("a1103", bi.a1103.isChecked() ? "3" : "-1");
 
-        sA.put("a1104", bi.a1104.isChecked() ? "4" : "-1");
+        json.put("a1104", bi.a1104.isChecked() ? "4" : "-1");
 
-        sA.put("a1201", bi.a1201.isChecked() ? "1" : "-1");
+        json.put("a1201", bi.a1201.isChecked() ? "1" : "-1");
 
-        sA.put("a1202", bi.a1202.isChecked() ? "2" : "-1");
+        json.put("a1202", bi.a1202.isChecked() ? "2" : "-1");
 
-        sA.put("a1203", bi.a1203.isChecked() ? "3" : "-1");
+        json.put("a1203", bi.a1203.isChecked() ? "3" : "-1");
 
-        sA.put("a1204", bi.a1204.isChecked() ? "4" : "-1");
+        json.put("a1204", bi.a1204.isChecked() ? "4" : "-1");
 
-        sA.put("a1205", bi.a1205.isChecked() ? "5" : "-1");
+        json.put("a1205", bi.a1205.isChecked() ? "5" : "-1");
 
-        sA.put("a1206", bi.a1206.isChecked() ? "6" : "-1");
+        json.put("a1206", bi.a1206.isChecked() ? "6" : "-1");
 
-        sA.put("a1207", bi.a1207.isChecked() ? "7" : "-1");
+        json.put("a1207", bi.a1207.isChecked() ? "7" : "-1");
 
-        sA.put("a1208", bi.a1208.isChecked() ? "8" : "-1");
+        json.put("a1208", bi.a1208.isChecked() ? "8" : "-1");
 
-        sA.put("a1209", bi.a1209.isChecked() ? "9" : "-1");
+        json.put("a1209", bi.a1209.isChecked() ? "9" : "-1");
 
-        sA.put("a1210", bi.a1210.isChecked() ? "10" : "-1");
+        json.put("a1210", bi.a1210.isChecked() ? "10" : "-1");
 
-        sA.put("a1211", bi.a1211.isChecked() ? "11" : "-1");
+        json.put("a1211", bi.a1211.isChecked() ? "11" : "-1");
 
-        sA.put("a1212", bi.a1212.isChecked() ? "12" : "-1");
+        json.put("a1212", bi.a1212.isChecked() ? "12" : "-1");
 
-        sA.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
+        json.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
 
-        MainApp.fc.setsA(String.valueOf(sA));
+        MainApp.fc.setsA(String.valueOf(json));
     }
 
     private boolean formValidation() {
