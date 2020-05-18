@@ -24,7 +24,6 @@ import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.fc;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
 
 public class SectionAActivity extends AppCompatActivity {
@@ -190,12 +189,9 @@ public class SectionAActivity extends AppCompatActivity {
         fc.setsA(String.valueOf(sA));
     }
 
+
     private boolean formValidation() {
-        if (Validation()) {
-            return Validator.emptyCheckingContainer(this, bi.GrpName);
-        } else {
-            return true;
-        }
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
 
@@ -228,11 +224,6 @@ public class SectionAActivity extends AppCompatActivity {
             }
         }
 
-    }
-
-    public void BtnEnd() {
-        if (!formValidation()) return;
-        contextEndActivity(this);
     }
 
 }
