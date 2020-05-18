@@ -31,6 +31,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_participants_s_r_c);
         bi.setCallback(this);
+
+        if (MainApp.No_participants == 0) {
+            MainApp.No_participants = 1;
+        }
+
         setupListeners();
     }
 

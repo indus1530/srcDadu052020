@@ -40,6 +40,7 @@ public class SectionBActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_b);
         bi.setCallback(this);
 
+
         setUIComponent();
         setListeners();
     }

@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -16,7 +17,6 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import butterknife.BindView;
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
@@ -24,19 +24,9 @@ import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.fc;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
 
 public class SectionAActivity extends AppCompatActivity {
-
-    @BindView(R.id.a1)
-    Spinner a1;
-
-    @BindView(R.id.a2)
-    Spinner a2;
-
-    @BindView(R.id.a3)
-    Spinner a3;
 
     ArrayAdapter<String> a1Adapter;
 
@@ -56,7 +46,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         String[] users = {"Select Taluka", "Johi"};
 
-        Spinner spin = findViewById(R.id.a1);
+        Spinner spin = bi.a1;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, users);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
@@ -64,7 +54,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         String[] ucs = {"Select UC", "Johi Town UC-1", "Johi Town UC-2", "Kamal Khan", "Peer Mashaikh", "Johi"};
 
-        Spinner spin_uc = findViewById(R.id.a2);
+        Spinner spin_uc = bi.a2;
         ArrayAdapter<String> adapter_uc = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ucs);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin_uc.setAdapter(adapter_uc);
@@ -72,7 +62,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         String[] village = {"Select Village", "Johi|Johi Town UC-1|Ward No.01", "Johi|Johi Town UC-1|Ward No.03", "Johi|Johi Town UC-1|Ward No.04", "Johi|Johi Town UC-1|Ward No.05", "Johi|Johi Town UC-1|Ward No.06", "Johi|Johi Town UC-1|Ward No.07", "Johi|Johi Town UC-1|Ward No.08", "Johi|Kamal Khan|Aadho Rodenani", "Johi|Kamal Khan|Abdul Aziz Solangi", "Johi|Kamal Khan|Abdul Rehman Jamali"};
 
-        Spinner spin_village = findViewById(R.id.a3);
+        Spinner spin_village = bi.a3;
         ArrayAdapter<String> adapter_village = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, village);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin_village.setAdapter(adapter_village);
@@ -104,8 +94,10 @@ public class SectionAActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (bi.a1102.isChecked() == true) {
+                    bi.fldGrpCVa12.setVisibility(View.VISIBLE);
                     Clear.clearAllFields(bi.fldGrpCVa12, true);
                 } else {
+                    bi.fldGrpCVa12.setVisibility(View.GONE);
                     Clear.clearAllFields(bi.fldGrpCVa12, false);
                 }
             }
@@ -187,29 +179,11 @@ public class SectionAActivity extends AppCompatActivity {
 
         sA.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
 
-        fc.setsA(String.valueOf(sA));
+        MainApp.fc.setsA(String.valueOf(sA));
     }
 
     private boolean formValidation() {
-        if (Validation()) {
-            return Validator.emptyCheckingContainer(this, bi.GrpName);
-        } else {
-            return true;
-        }
-    }
-
-
-    private boolean Validation() {
-        if (bi.a9.getText().toString() != "" && bi.a10.getText().toString() != "") {
-            int result = Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString());
-
-            if (Integer.valueOf(bi.a9.getText().toString()) > result) {
-                Toast.makeText(this, "No of married participants and No of unmarried participants must be equal to total no of participants", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        }
-
-        return true;
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
     public void BtnContinue() {
@@ -222,17 +196,10 @@ public class SectionAActivity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 finish();
-                startActivity(new Intent(this, SectionCHBActivity.class));
+                startActivity(new Intent(this, SectionParticipantsSRC.class));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
-
-    public void BtnEnd() {
-        if (!formValidation()) return;
-        contextEndActivity(this);
-    }
-
 }
