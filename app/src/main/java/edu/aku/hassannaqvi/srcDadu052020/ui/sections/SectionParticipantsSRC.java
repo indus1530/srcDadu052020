@@ -145,6 +145,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 try {
                     SaveDraft();
                 } catch (JSONException e) {
+
                     e.printStackTrace();
                 }
                 if (UpdateDB()) {
