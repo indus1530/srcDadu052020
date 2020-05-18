@@ -582,7 +582,7 @@
                     android:text="Cancel" /> !-->
 
                 <Button
-                    android:id="@+id/btn_Continue"
+                    android:id="@+id/btnContinue"
                     style="@style/buttons_bottom"
                     android:background="@color/green"
                     android:onClick="@{() -> callback.BtnContinue()}"

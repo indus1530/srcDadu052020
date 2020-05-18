@@ -65,6 +65,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
+
+
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addParticipant(pc);
         pc.setId(String.valueOf(updcount));
@@ -137,17 +139,26 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     public void BtnContinue() {
         if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, MainActivity.class));
+
+            if (counter < MainApp.No_participants) {
+
+                try {
+                    SaveDraft();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (UpdateDB()) {
+                    finish();
+                    startActivity(new Intent(this, MainActivity.class));
+                } else {
+                    Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                }
+
+                counter++;
             } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                bi.btnContinue.setVisibility(View.GONE);
             }
+
         }
 
     }
