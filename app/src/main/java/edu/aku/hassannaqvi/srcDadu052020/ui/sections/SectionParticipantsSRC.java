@@ -22,7 +22,6 @@ import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.MainActivity;
 
-import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
 
 public class SectionParticipantsSRC extends AppCompatActivity {
@@ -67,8 +66,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
 
     private boolean UpdateDB() {
-
-
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addParticipant(pc);
         pc.setId(String.valueOf(updcount));
@@ -85,7 +82,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         JSONObject json = new JSONObject();
-        json.put("sno", bi.sno.getText().toString());
+        /*json.put("sno", bi.sno.getText().toString());
 
         json.put("a", bi.a.getText().toString());
 
@@ -131,7 +128,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         json.put("i96x", bi.i96x.getText().toString());
 
-        child.setsCA(String.valueOf(json));
+        pc.setsCA(String.valueOf(json));*/
     }
 
     private boolean formValidation() {
@@ -184,6 +181,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
 
             counter++;
+            bi.sno.setText("Participants # - " + counter++);
         }
 
     }
@@ -193,6 +191,5 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         if (!formValidation()) return;
         contextEndActivity(this);
     }
-
 
 }

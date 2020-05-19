@@ -121,10 +121,16 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/b"
                         style="@style/EditTextNum"
-                        android:hint="@string/b" />
+                        android:layout_width="match_parent"
+                        android:hint="@string/b"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:maxValue="99"
+                        app:minValue="15"
+                        app:type="range" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -211,10 +217,16 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/d"
                         style="@style/EditTextNum"
-                        android:hint="@string/d" />
+                        android:layout_width="match_parent"
+                        android:hint="@string/d"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        app:maxValue="16"
+                        app:minValue="5"
+                        app:type="range" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

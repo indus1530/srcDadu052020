@@ -130,11 +130,11 @@ public class SectionAActivity extends AppCompatActivity {
 
         JSONObject json = new JSONObject();
 
-        //sA.put("a1", bi.a1.getSelectedItem().toString());
+        json.put("a1", bi.a1.getSelectedItem().toString());
 
-        //sA.put("a2", bi.a2.getSelectedItem().toString());
+        json.put("a2", bi.a2.getSelectedItem().toString());
 
-        //sA.put("a3", bi.a3.getSelectedItem().toString());
+        json.put("a3", bi.a3.getSelectedItem().toString());
 
         json.put("a4", bi.a4.getText().toString());
 
@@ -146,7 +146,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         json.put("a8", bi.a8.getText().toString());
 
-        //MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
+        MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
 
         json.put("a9", bi.a9.getText().toString());
 
