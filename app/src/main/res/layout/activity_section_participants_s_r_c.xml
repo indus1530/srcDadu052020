@@ -570,7 +570,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                style="@style/vlinearlayout"
+                style="@style/hlinearlayout"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp">
 
@@ -583,10 +583,27 @@
 
                 <Button
                     android:id="@+id/btnContinue"
-                    style="@style/buttons_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/green"
                     android:onClick="@{() -> callback.BtnContinue()}"
                     android:text="Save" />
+
+                <Button
+                    android:id="@+id/btnEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/red"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/btnAddMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/green"
+                    android:onClick="@{() -> callback.BtnAddMore()}"
+                    android:text="Save"
+                    android:visibility="gone" />
 
                 <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->
             </LinearLayout>

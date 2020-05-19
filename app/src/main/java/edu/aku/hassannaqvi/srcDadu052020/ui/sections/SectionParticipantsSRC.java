@@ -42,6 +42,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         if (MainApp.No_participants == 0) {
             MainApp.No_participants = 1;
             bi.sno.setText("Participants # - " + MainApp.No_participants);
+        } else {
+            bi.sno.setText("Participants # - " + MainApp.No_participants);
         }
 
         setupListeners();
@@ -158,11 +160,34 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 counter++;
             } else {
                 bi.btnContinue.setVisibility(View.GONE);
+                bi.btnAddMore.setVisibility(View.VISIBLE);
             }
 
         }
 
     }
+
+    public void BtnAddMore() {
+        if (formValidation()) {
+
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (UpdateDB()) {
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
+
+            counter++;
+        }
+
+    }
+
 
     public void BtnEnd() {
         if (!formValidation()) return;
