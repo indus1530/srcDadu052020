@@ -217,16 +217,14 @@
 
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/d"
                         style="@style/EditTextNum"
                         android:layout_width="match_parent"
                         android:hint="@string/d"
                         android:inputType="number"
-                        android:maxLength="2"
-                        app:maxValue="16"
-                        app:minValue="5"
-                        app:type="range" />
+                        android:maxLength="15" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -606,7 +604,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/red"
-                    android:text="Save" />
+                    android:text="End" />
 
                 <Button
                     android:id="@+id/btnAddMore"
@@ -614,7 +612,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/green"
                     android:onClick="@{() -> callback.BtnAddMore()}"
-                    android:text="Save"
+                    android:text="Add More"
                     android:visibility="gone" />
 
                 <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->

@@ -82,7 +82,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
 
         JSONObject json = new JSONObject();
-        /*json.put("sno", bi.sno.getText().toString());
+
+        json.put("sno", bi.sno.getText().toString());
 
         json.put("a", bi.a.getText().toString());
 
@@ -128,7 +129,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         json.put("i96x", bi.i96x.getText().toString());
 
-        pc.setsCA(String.valueOf(json));*/
+        pc.setsA(String.valueOf(json));
     }
 
     private boolean formValidation() {

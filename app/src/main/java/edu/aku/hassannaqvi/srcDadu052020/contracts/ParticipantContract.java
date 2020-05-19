@@ -10,27 +10,37 @@ public class ParticipantContract {
 
     private static final String TAG = "Participant Contract";
 
-    String id;
-    String uid;
-    String uuid;
-    String projectname;
-    String formdate;
-    String deviceid;
+    private String id;
+    private String uid;
+    private String uuid;
+    private String projectname;
+    private String formdate;
+    private String deviceid;
 
-    String sno;
-    String a;
-    String b;
-    String c;
-    String d;
+    private String sA = "";
+    private String sno;
+    private String a;
+    private String b;
+    private String c;
+    private String d;
 
-    String e;
-    String f;
-    String g;
-    String h;
-    String i;
+    private String e;
+    private String f;
+    private String g;
+    private String h;
+    private String i;
 
     public ParticipantContract() {
         // Default Constructor
+    }
+
+
+    public String getsA() {
+        return sA;
+    }
+
+    public void setsA(String sA) {
+        this.sA = sA;
     }
 
     public String getId() {
@@ -170,6 +180,8 @@ public class ParticipantContract {
         this.formdate = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_FORMDATE);
         this.projectname = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_PROJECTNAME);
 
+        this.sA = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SA);
+
         this.id = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_ID);
         this.sno = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SNO);
         this.a = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_A);
@@ -192,6 +204,8 @@ public class ParticipantContract {
         this.uuid = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_UUID));
         this.uid = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_UID));
         this.formdate = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_FORMDATE));
+
+        this.sA = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SA));
 
         this.id = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_ID));
         this.sno = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SNO));
@@ -218,6 +232,8 @@ public class ParticipantContract {
         json.put(ParticipantContract.singleParticipant.COLUMN_UID, this.uid == null ? JSONObject.NULL : this.uid);
         json.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, this.formdate == null ? JSONObject.NULL : this.formdate);
         json.put(ParticipantContract.singleParticipant.COLUMN_PROJECTNAME, this.projectname == null ? JSONObject.NULL : this.projectname);
+
+        json.put(ParticipantContract.singleParticipant.COLUMN_SA, this.projectname == null ? JSONObject.NULL : this.sA);
 
         json.put(ParticipantContract.singleParticipant.COLUMN_ID, this.id == null ? JSONObject.NULL : this.id);
         json.put(ParticipantContract.singleParticipant.COLUMN_SNO, this.sno == null ? JSONObject.NULL : this.sno);
@@ -247,6 +263,7 @@ public class ParticipantContract {
 
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_SNO = "sno";
+        public static final String COLUMN_SA = "sa";
         public static final String COLUMN_A = "a";
         public static final String COLUMN_B = "b";
         public static final String COLUMN_C = "c";

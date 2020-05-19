@@ -401,6 +401,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ParticipantContract.singleParticipant.COLUMN_UID, partContract.getUid());
         values.put(ParticipantContract.singleParticipant.COLUMN_PROJECTNAME, partContract.getUid());
 
+        values.put(ParticipantContract.singleParticipant.COLUMN_SA, partContract.getsA());
+
         values.put(ParticipantContract.singleParticipant.COLUMN_A, partContract.getA());
         values.put(ParticipantContract.singleParticipant.COLUMN_B, partContract.getB());
         values.put(ParticipantContract.singleParticipant.COLUMN_C, partContract.getC());
