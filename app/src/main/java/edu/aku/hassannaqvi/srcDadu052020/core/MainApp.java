@@ -33,6 +33,7 @@ import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.CountAlertDialogLayoutBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
 import kotlin.Pair;
@@ -79,6 +80,7 @@ public class MainApp extends Application {
     public static AppInfo appInfo;
     public static Boolean admin = false;
     public static FormsContract fc;
+    public static ParticipantContract pc;
     public static LiveData<FormsContract> liveFC = new MutableLiveData<>();
     public static ChildContract child;
     public static FamilyMembersContract selectedKishMWRA;

@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
@@ -69,10 +68,10 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addParticipant(pc);
-        pc.setId(String.valueOf(updcount));
+        pc.set_ID(String.valueOf(updcount));
         if (updcount > 0) {
-            pc.setUid(MainApp.deviceId + pc.getId());
-            db.updatesChildColumn(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUid());
+            pc.setUID(MainApp.deviceId + pc.get_ID());
+            db.updatesChildColumn(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -82,12 +81,13 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        MainApp.fc = new FormsContract();
-        MainApp.fc.set_UID(MainApp.fc.get_UID());
-        MainApp.fc.setDeviceID(MainApp.appInfo.getDeviceID());
-        MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
-        MainApp.fc.setFormDate(MainApp.fc.getFormDate());
-        MainApp.fc.setUser(MainApp.userName);
+        pc = new ParticipantContract();
+        pc.set_UUID(MainApp.fc.get_UID());
+        pc.setUID(MainApp.pc.getUID());
+        pc.setDeviceId(MainApp.appInfo.getDeviceID());
+        pc.setDevicetagID(MainApp.appInfo.getTagName());
+        pc.setFormDate(MainApp.fc.getFormDate());
+        pc.setUser(MainApp.userName);
         MainApp.setGPS(this);
 
 

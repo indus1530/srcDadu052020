@@ -43,6 +43,7 @@ import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_BL_
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_CHILD_TABLE;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FAMILY_MEMBERS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PARTICIPANT_TABLE;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PSU_TABLE;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_TALUKA;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_UCS;
@@ -76,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_UCS);
         db.execSQL(SQL_CREATE_VILLAGE);
         db.execSQL(SQL_CREATE_FORMS);
+        db.execSQL(SQL_CREATE_PARTICIPANT_TABLE);
         db.execSQL(SQL_CREATE_PSU_TABLE);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_VERSIONAPP);

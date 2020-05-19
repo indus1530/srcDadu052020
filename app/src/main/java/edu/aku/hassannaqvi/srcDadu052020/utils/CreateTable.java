@@ -5,6 +5,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract.SingleChild;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
@@ -50,6 +51,31 @@ public final class CreateTable {
             + FormsContract.FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
+
+    public static final String SQL_CREATE_PARTICIPANT_TABLE = "CREATE TABLE " + ParticipantContract.singleParticipant.TABLE_NAME + "("
+            + ParticipantContract.singleParticipant._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ParticipantContract.singleParticipant.COLUMN_DEVICEID + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_DEVICETAGID + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_USER + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_UID + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_UUID + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_FORMDATE + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_SA + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_SYNCED + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE + " TEXT,"
+
+            + ParticipantContract.singleParticipant.COLUMN_A + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_B + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_C + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_D + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_E + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_F + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_G + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_CSTATUS + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_CSTATUS88x + " TEXT );";
+
+
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.singleUser.TABLE_NAME + "("
             + UsersContract.singleUser._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
