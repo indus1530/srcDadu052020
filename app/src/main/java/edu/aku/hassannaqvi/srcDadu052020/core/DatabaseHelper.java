@@ -395,11 +395,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
 
-        values.put(ParticipantContract.singleParticipant.COLUMN_UUID, partContract.getUuid());
-        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICEID, partContract.getDeviceid());
-        values.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, partContract.getFormdate());
-        values.put(ParticipantContract.singleParticipant.COLUMN_UID, partContract.getUid());
-        values.put(ParticipantContract.singleParticipant.COLUMN_PROJECTNAME, partContract.getUid());
+        values.put(ParticipantContract.singleParticipant.COLUMN_UUID, partContract.get_UUID());
+        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICEID, partContract.getDeviceId());
+        values.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, partContract.getFormDate());
+        values.put(ParticipantContract.singleParticipant.COLUMN_UID, partContract.getUID());
+        values.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS, partContract.getCstatus());
+        values.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x, partContract.getCstatus88x());
+        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICETAGID, partContract.getDevicetagID());
+        values.put(ParticipantContract.singleParticipant.COLUMN_USER, partContract.getUser());
+        values.put(ParticipantContract.singleParticipant.COLUMN_SYNCED, partContract.getSynced());
+        values.put(ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE, partContract.getSynced_date());
 
         values.put(ParticipantContract.singleParticipant.COLUMN_SA, partContract.getsA());
 
