@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
@@ -80,6 +81,15 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     }
 
     private void SaveDraft() throws JSONException {
+
+        MainApp.fc = new FormsContract();
+        MainApp.fc.set_UID(MainApp.fc.get_UID());
+        MainApp.fc.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
+        MainApp.fc.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.setGPS(this);
+
 
         JSONObject json = new JSONObject();
 
