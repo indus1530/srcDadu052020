@@ -16,12 +16,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -29,12 +26,8 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import java.util.List;
 
-import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
-import edu.aku.hassannaqvi.srcDadu052020.databinding.CountAlertDialogLayoutBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
 import kotlin.Pair;
 
@@ -82,9 +75,6 @@ public class MainApp extends Application {
     public static FormsContract fc;
     public static ParticipantContract pc;
     public static LiveData<FormsContract> liveFC = new MutableLiveData<>();
-    public static ChildContract child;
-    public static FamilyMembersContract selectedKishMWRA;
-    public static FamilyMembersContract indexKishMWRAChild;
     public static String userName = "0000";
     public static int deathCount = 0;
     public static String DeviceURL = "devices.php";
@@ -161,24 +151,6 @@ public class MainApp extends Application {
         alert.show();
     }
 
-    public static void openDialog(Context context, FamilyMembersContract item) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setCancelable(false);
-        View view = LayoutInflater.from(context).inflate(R.layout.count_alert_dialog_layout, null);
-        CountAlertDialogLayoutBinding bi = DataBindingUtil.bind(view.getRootView());
-        builder.setView(view);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        assert bi != null;
-        bi.continueBtn.setOnClickListener(v -> {
-            itemClick.itemClick();
-            dialog.dismiss();
-        });
-
-        bi.noBtn.setOnClickListener(v -> dialog.dismiss());
-    }
 
     @Override
     public void onCreate() {

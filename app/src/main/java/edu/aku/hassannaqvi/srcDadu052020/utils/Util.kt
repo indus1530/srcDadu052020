@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import edu.aku.hassannaqvi.srcDadu052020.R
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ItemDialogBinding
-import edu.aku.hassannaqvi.srcDadu052020.ui.other.ChildEndingActivity
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity
 import java.util.*
 
@@ -73,10 +72,6 @@ fun openChildEndActivity(activity: Activity) {
     params.height = WindowManager.LayoutParams.WRAP_CONTENT
     dialog.show()
     dialog.window!!.attributes = params
-    dialog.findViewById<View>(R.id.btnOk).setOnClickListener {
-        activity.finish()
-        activity.startActivity(Intent(activity, ChildEndingActivity::class.java).putExtra("complete", false))
-    }
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { dialog.dismiss() }
 }
 

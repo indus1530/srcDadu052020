@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import edu.aku.hassannaqvi.srcDadu052020.CONSTANTS
 import edu.aku.hassannaqvi.srcDadu052020.R
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract
 import kotlinx.coroutines.*
 
 /**
@@ -17,7 +16,6 @@ class SplashscreenActivity : Activity() {
 
     init {
         provinces = mutableListOf("....")
-        districtsMap = mutableMapOf()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +34,6 @@ class SplashscreenActivity : Activity() {
     companion object {
         private const val SPLASH_TIME_OUT = 500
         lateinit var provinces: MutableList<String>
-        lateinit var districtsMap: MutableMap<String, Pair<String, EnumBlockContract>>
     }
 
     override fun onPause() {

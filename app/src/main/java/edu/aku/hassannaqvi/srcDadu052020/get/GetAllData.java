@@ -21,7 +21,6 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.srcDadu052020.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.BLRandomContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
@@ -149,10 +148,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     url = new URL(MainApp._UPDATE_URL + VersionAppContract.VersionAppTable._URI);
                     position = 1;
                     break;
-                case "EnumBlock":
-                    url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
-                    position = 2;
-                    break;
+
                 case "BLRandom":
                     url = new URL(MainApp._HOST_URL + BLRandomContract.SingleRandomHH._URI);
                     position = 0;
@@ -340,12 +336,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             db.syncVersionApp(jsonArray);
                             position = 1;
                             break;
-                        case "EnumBlock":
-                            db.syncEnumBlocks(jsonArray);
-                            insertCount = db.syncEnumBlocks(jsonArray);
 
-                            position = 2;
-                            break;
                         case "BLRandom":
                             Log.d(TAG, "onPostExecute: " + syncClass);
                             insertCount = db.syncBLRandom(jsonArray);
