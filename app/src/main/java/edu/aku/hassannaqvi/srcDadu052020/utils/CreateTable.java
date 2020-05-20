@@ -72,6 +72,8 @@ public final class CreateTable {
             + ParticipantContract.singleParticipant.COLUMN_E + " TEXT,"
             + ParticipantContract.singleParticipant.COLUMN_F + " TEXT,"
             + ParticipantContract.singleParticipant.COLUMN_G + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_H + " TEXT,"
+            + ParticipantContract.singleParticipant.COLUMN_I + " TEXT,"
             + ParticipantContract.singleParticipant.COLUMN_CSTATUS + " TEXT,"
             + ParticipantContract.singleParticipant.COLUMN_CSTATUS88x + " TEXT );";
 

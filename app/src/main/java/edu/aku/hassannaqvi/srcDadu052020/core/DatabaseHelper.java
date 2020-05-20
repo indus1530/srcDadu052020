@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract.SingleM
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract.singleParticipant;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
@@ -423,7 +424,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                SingleChild.TABLE_NAME,
+                ParticipantContract.singleParticipant.TABLE_NAME,
                 null,
                 values);
         return newRowId;
@@ -1193,6 +1194,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
     }
+
+
+    //Generic update ChildColumn
+    public int updatesParticipant(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = singleParticipant._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.pc.get_ID())};
+
+        return db.update(singleParticipant.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
 
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {

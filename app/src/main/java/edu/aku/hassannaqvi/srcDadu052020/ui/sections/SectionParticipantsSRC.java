@@ -28,6 +28,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     public static ParticipantContract pc;
     public static int counter = 1;
+    public static int counter_addmore = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
 
@@ -69,9 +70,10 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addParticipant(pc);
         pc.set_ID(String.valueOf(updcount));
+
         if (updcount > 0) {
             pc.setUID(MainApp.deviceId + pc.get_ID());
-            db.updatesChildColumn(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
+            db.updatesParticipant(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -83,17 +85,15 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         pc = new ParticipantContract();
         pc.set_UUID(MainApp.fc.get_UID());
-        pc.setUID(MainApp.pc.getUID());
         pc.setDeviceId(MainApp.appInfo.getDeviceID());
         pc.setDevicetagID(MainApp.appInfo.getTagName());
         pc.setFormDate(MainApp.fc.getFormDate());
         pc.setUser(MainApp.userName);
+        pc.setSno(String.valueOf(counter));
         MainApp.setGPS(this);
 
 
         JSONObject json = new JSONObject();
-
-        json.put("sno", bi.sno.getText().toString());
 
         json.put("a", bi.a.getText().toString());
 
@@ -143,6 +143,12 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     }
 
     private boolean formValidation() {
+
+        if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
+            Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
@@ -192,7 +198,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
 
             counter++;
-            bi.sno.setText("Participants # - " + counter++);
+            bi.sno.setText("Participants # - " + counter++ + "(" + counter_addmore++ + ")");
         }
 
     }
