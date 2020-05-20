@@ -20,15 +20,16 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
-import edu.aku.hassannaqvi.srcDadu052020.ui.other.MainActivity;
+import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
 
-import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
+import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.pc;
 
 public class SectionParticipantsSRC extends AppCompatActivity {
 
-    public static ParticipantContract pc;
-    public static int counter = 1;
-    public static int counter_addmore = 1;
+    private static final String TAG = "Part";
+    //public static ParticipantContract pc;
+    static int counter = 1;
+    static int counter_addmore = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
 
@@ -41,9 +42,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (MainApp.No_participants == 0) {
             MainApp.No_participants = 1;
-            bi.sno.setText("Participants # - " + MainApp.No_participants);
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
         } else {
-            bi.sno.setText("Participants # - " + MainApp.No_participants);
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
         }
 
         setupListeners();
@@ -70,8 +71,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long updcount = db.addParticipant(pc);
         pc.set_ID(String.valueOf(updcount));
-
-        //Toast.makeText(this, "id = " + pc.get_ID(), Toast.LENGTH_SHORT).show();
 
         if (updcount > 0) {
             pc.setUID(MainApp.deviceId + pc.get_ID());
@@ -146,9 +145,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
-            Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
-            return false;
+        if (bi.e.getText().toString() != "" && bi.b.getText().toString() != "") {
+            if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
+                Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
         return Validator.emptyCheckingContainer(this, bi.GrpName);
@@ -158,9 +159,14 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     public void BtnContinue() {
         if (formValidation()) {
 
-            if (counter > MainApp.No_participants) {
+            if (counter >= MainApp.No_participants) {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+
+                //Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
+
             } else {
 
                 try {
@@ -170,13 +176,37 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 }
 
                 if (UpdateDB()) {
-                    finish();
-                    startActivity(new Intent(this, MainActivity.class));
+                    //finish();
+                    ///startActivity(new Intent(this, MainActivity.class));
                 } else {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
                 }
 
                 counter++;
+
+                if (counter >= MainApp.No_participants) {
+                    bi.btnContinue.setVisibility(View.GONE);
+                    bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                    bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                }
+
+
+                bi.a.setText("");
+                bi.b.setText("");
+                bi.c.clearCheck();
+                bi.d.setText("");
+                bi.e.setText("");
+                bi.f.clearCheck();
+                bi.g.clearCheck();
+                bi.h.setText("");
+                bi.i.clearCheck();
+
+                bi.a.requestFocus();
+
+                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+
+                //Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
             }
 
         }
@@ -193,22 +223,38 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
 
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, MainActivity.class));
+                //finish();
+                //startActivity(new Intent(this, MainActivity.class));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
 
-            counter++;
-            bi.sno.setText("Participants # - " + counter++ + "(" + counter_addmore++ + ")");
+            //counter++;
+            counter_addmore++;
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter + "(" + counter_addmore + ")");
+
+            bi.a.setText("");
+            bi.b.setText("");
+            bi.c.clearCheck();
+            bi.d.setText("");
+            bi.e.setText("");
+            bi.f.clearCheck();
+            bi.g.clearCheck();
+            bi.h.setText("");
+            bi.i.clearCheck();
+
+            bi.a.requestFocus();
+
         }
 
     }
 
 
     public void BtnEnd() {
-        if (!formValidation()) return;
-        contextEndActivity(this);
+        //if (!formValidation()) return;
+        //contextEndActivity(this);
+        finish();
+        startActivity(new Intent(this, EndingActivity.class));
     }
 
 }

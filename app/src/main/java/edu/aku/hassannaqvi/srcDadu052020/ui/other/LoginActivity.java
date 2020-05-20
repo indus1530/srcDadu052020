@@ -51,8 +51,6 @@ import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.validatorcrawler.aliazaz.Validator;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -73,16 +71,12 @@ import edu.aku.hassannaqvi.srcDadu052020.core.AppInfo;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
-import kotlin.Unit;
-import kotlin.coroutines.CoroutineContext;
 
-import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.LOGIN_SPLASH_FLAG;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_PHONE_STATE;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.TWO_MINUTES;
-import static edu.aku.hassannaqvi.srcDadu052020.repository.SplashRepositoryKt.populatingSpinners;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
@@ -615,8 +609,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     @Override
     protected void onResume() {
         super.onResume();
-        if (getIntent().getBooleanExtra(LOGIN_SPLASH_FLAG, false))
-            callingCoroutine();
+
+
     }
 
     @Override
@@ -624,31 +618,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CONSTANTS.LOGIN_RESULT_CODE) {
             if (resultCode == RESULT_OK) {
-                callingCoroutine();
+
             }
         }
     }
 
-    private void callingCoroutine() {
-        //To call coroutine here
-        populatingSpinners(getApplicationContext(), provinceAdapter, new SplashscreenActivity.Continuation<Unit>() {
-            @Override
-            public void resume(Unit value) {
 
-            }
-
-            @Override
-            public void resumeWithException(@NotNull Throwable exception) {
-
-            }
-
-            @NotNull
-            @Override
-            public CoroutineContext getContext() {
-                return null;
-            }
-        });
-    }
 
     private interface ProfileQuery {
         String[] PROJECTION = {
