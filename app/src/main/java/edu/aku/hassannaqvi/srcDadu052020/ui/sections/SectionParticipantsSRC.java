@@ -71,6 +71,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         long updcount = db.addParticipant(pc);
         pc.set_ID(String.valueOf(updcount));
 
+        //Toast.makeText(this, "id = " + pc.get_ID(), Toast.LENGTH_SHORT).show();
+
         if (updcount > 0) {
             pc.setUID(MainApp.deviceId + pc.get_ID());
             db.updatesParticipant(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
@@ -156,14 +158,17 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     public void BtnContinue() {
         if (formValidation()) {
 
-            if (counter < MainApp.No_participants) {
+            if (counter > MainApp.No_participants) {
+                bi.btnContinue.setVisibility(View.GONE);
+                bi.btnAddMore.setVisibility(View.VISIBLE);
+            } else {
 
                 try {
                     SaveDraft();
                 } catch (JSONException e) {
-
                     e.printStackTrace();
                 }
+
                 if (UpdateDB()) {
                     finish();
                     startActivity(new Intent(this, MainActivity.class));
@@ -172,9 +177,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 }
 
                 counter++;
-            } else {
-                bi.btnContinue.setVisibility(View.GONE);
-                bi.btnAddMore.setVisibility(View.VISIBLE);
             }
 
         }
