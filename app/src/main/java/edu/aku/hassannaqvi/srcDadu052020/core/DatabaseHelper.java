@@ -1204,7 +1204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = singleParticipant._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+        String[] selectionArgs = {String.valueOf(MainApp.pc.get_ID())};
 
         return db.update(singleParticipant.TABLE_NAME,
                 values,
