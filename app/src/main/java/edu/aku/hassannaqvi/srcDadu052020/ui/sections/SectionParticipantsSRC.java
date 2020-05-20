@@ -182,6 +182,18 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
                 counter++;
 
+                bi.a.setText("");
+                bi.b.setText("");
+                bi.c.clearCheck();
+                bi.d.setText("");
+                bi.e.setText("");
+                bi.f.clearCheck();
+                bi.g.clearCheck();
+                bi.h.setText("");
+                bi.i.clearCheck();
+
+                bi.a.requestFocus();
+
                 Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
             }
 
@@ -220,6 +232,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             bi.i.clearCheck();
 
             bi.a.requestFocus();
+
         }
 
     }
