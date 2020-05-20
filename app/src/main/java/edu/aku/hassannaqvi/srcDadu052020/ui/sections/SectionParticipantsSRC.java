@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -43,9 +42,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (MainApp.No_participants == 0) {
             MainApp.No_participants = 1;
-            bi.sno.setText("Participants # - " + MainApp.No_participants);
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
         } else {
-            bi.sno.setText("Participants # - " + MainApp.No_participants);
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
         }
 
         setupListeners();
@@ -146,9 +145,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
-            Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
-            return false;
+        if (bi.e.getText().toString() != "" && bi.b.getText().toString() != "") {
+            if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
+                Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
         return Validator.emptyCheckingContainer(this, bi.GrpName);
@@ -162,7 +163,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
 
-                Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
+                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+
+                //Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
 
             } else {
 
@@ -173,7 +176,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 }
 
                 if (UpdateDB()) {
-
                     //finish();
                     ///startActivity(new Intent(this, MainActivity.class));
                 } else {
@@ -181,6 +183,14 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 }
 
                 counter++;
+
+                if (counter >= MainApp.No_participants) {
+                    bi.btnContinue.setVisibility(View.GONE);
+                    bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                    bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                }
+
 
                 bi.a.setText("");
                 bi.b.setText("");
@@ -194,7 +204,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
                 bi.a.requestFocus();
 
-                Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
+                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+
+                //Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
             }
 
         }
@@ -219,7 +231,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
             //counter++;
             counter_addmore++;
-            bi.sno.setText("Participants # - " + counter + "(" + counter_addmore + ")");
+            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter + "(" + counter_addmore + ")");
 
             bi.a.setText("");
             bi.b.setText("");
