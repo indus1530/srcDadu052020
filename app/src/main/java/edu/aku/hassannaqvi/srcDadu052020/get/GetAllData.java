@@ -66,19 +66,19 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 position = 1;
                 break;
             case "EnumBlock":
-                position = 2;
+                position = 5;
                 break;
             case "BLRandom":
                 position = 0;
                 break;
             case "talukas":
-                position = 0;
+                position = 2;
                 break;
             case "ucs":
-                position = 0;
+                position = 3;
                 break;
             case "villages":
-                position = 0;
+                position = 4;
                 break;
         }
         list.get(position).settableName(syncClass);
@@ -109,19 +109,19 @@ public class GetAllData extends AsyncTask<String, String, String> {
                 position = 1;
                 break;
             case "EnumBlock":
-                position = 2;
+                position = 5;
                 break;
             case "BLRandom":
                 position = 0;
                 break;
             case "talukas":
-                position = 0;
+                position = 2;
                 break;
             case "ucs":
-                position = 0;
+                position = 3;
                 break;
             case "villages":
-                position = 0;
+                position = 4;
                 break;
         }
         list.get(position).setstatus("Syncing");
@@ -149,21 +149,25 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     position = 1;
                     break;
 
+                /*case "EnumBlock":
+                    url = new URL(MainApp._HOST_URL + EnumBlockContract.EnumBlockTable._URI);
+                    position = 5;
+                    break;*/
                 case "BLRandom":
                     url = new URL(MainApp._HOST_URL + BLRandomContract.SingleRandomHH._URI);
                     position = 0;
                     break;
                 case "talukas":
                     url = new URL(MainApp._HOST_URL + TalukasContract.singleTalukas._URI);
-                    position = 0;
+                    position = 2;
                     break;
                 case "ucs":
                     url = new URL(MainApp._HOST_URL + UCsContract.singleUCs._URI);
-                    position = 0;
+                    position = 3;
                     break;
                 case "villages":
                     url = new URL(MainApp._HOST_URL + VillagesContract.SingleVillage._URI);
-                    position = 0;
+                    position = 4;
                     break;
             }
 
@@ -203,6 +207,9 @@ public class GetAllData extends AsyncTask<String, String, String> {
 
                 case "EnumBlock":
                 case "User":
+                case "talukas":
+                case "ucs":
+                case "villages":
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setDoOutput(true);
                     urlConnection.setDoInput(true);
@@ -223,73 +230,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     wr.writeBytes(json.toString());
                     wr.flush();
                     wr.close();
-
-                case "talukas":
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setDoOutput(true);
-                    urlConnection.setDoInput(true);
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("charset", "utf-8");
-                    urlConnection.setUseCaches(false);
-
-                    // Starts the query
-                    urlConnection.connect();
-                    DataOutputStream wr1 = new DataOutputStream(urlConnection.getOutputStream());
-                    JSONObject json1 = new JSONObject();
-                    try {
-                        json1.put("user", "test1234");
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-                    Log.d(TAG, "downloadUrl: " + json1.toString());
-                    wr1.writeBytes(json1.toString());
-                    wr1.flush();
-                    wr1.close();
-
-                case "ucs":
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setDoOutput(true);
-                    urlConnection.setDoInput(true);
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("charset", "utf-8");
-                    urlConnection.setUseCaches(false);
-
-                    // Starts the query
-                    urlConnection.connect();
-                    DataOutputStream wr_uc = new DataOutputStream(urlConnection.getOutputStream());
-                    JSONObject json_uc = new JSONObject();
-                    try {
-                        json_uc.put("user", "test1234");
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-                    Log.d(TAG, "downloadUrl: " + json_uc.toString());
-                    wr_uc.writeBytes(json_uc.toString());
-                    wr_uc.flush();
-                    wr_uc.close();
-
-                case "villages":
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setDoOutput(true);
-                    urlConnection.setDoInput(true);
-                    urlConnection.setRequestProperty("Content-Type", "application/json");
-                    urlConnection.setRequestProperty("charset", "utf-8");
-                    urlConnection.setUseCaches(false);
-
-                    // Starts the query
-                    urlConnection.connect();
-                    DataOutputStream wr_village = new DataOutputStream(urlConnection.getOutputStream());
-                    JSONObject json_village = new JSONObject();
-                    try {
-                        json_village.put("user", "test1234");
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-                    Log.d(TAG, "downloadUrl: " + json_village.toString());
-                    wr_village.writeBytes(json_village.toString());
-                    wr_village.flush();
-                    wr_village.close();
-                    break;
             }
 
 

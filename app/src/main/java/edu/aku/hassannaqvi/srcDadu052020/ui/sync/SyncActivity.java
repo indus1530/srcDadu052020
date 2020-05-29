@@ -408,24 +408,42 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     }
                     new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
 
-//                    Getting Enumblocks
+//                    Getting talukas
                     if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
+                    new GetAllData(mContext, "talukas", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);
+
+//                    Getting ucs
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "ucs", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);
+
+//                    Getting villages
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "villages", syncListAdapter, list).execute();
                     bi.noItem.setVisibility(View.GONE);
 
                 } else {
 
 //                   getting BL Random
-                    if (listActivityCreated) {
+                    /*if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);
+                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);*/
 
                 }
 
