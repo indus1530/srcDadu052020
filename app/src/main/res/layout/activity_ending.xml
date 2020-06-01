@@ -21,9 +21,9 @@
             style="@style/linearlayout_view">
 
 
-            <!-- hh22  Radio   -->
+            <!-- istatus  Radio   -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVhh22"
+                android:id="@+id/fldGrpCVistatus"
                 style="@style/cardView">
 
                 <LinearLayout style="@style/vlinearlayout">
@@ -34,27 +34,28 @@
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/qtxt_hh22"
+                            android:id="@+id/qtxt_istatus"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_hh22"
-                            android:text="@string/hh22" />
+                            android:layout_toEndOf="@id/q_istatus"
+                            android:text="@string/istatus" />
 
                         <TextView
-                            android:id="@+id/q_hh22"
+                            android:id="@+id/q_istatus"
                             style="@style/quesNum"
+                            android:layout_alignTop="@id/qtxt_istatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_hh22"
-                            android:layout_alignBottom="@id/qtxt_hh22"
-                            android:text="@string/Q_hh22" />
+                            android:layout_alignBottom="@id/qtxt_istatus"
+                            android:text="null"
+                            android:visibility="gone" />
 
                     </RelativeLayout>
 
                     <!--Status-->
                     <TextView
                         style="@style/info"
-                        android:text="@string/hh22h" />
+                        android:text="@string/istatush" />
 
                     <RadioGroup
                         android:id="@+id/istatus"
@@ -65,37 +66,37 @@
                             android:id="@+id/istatusa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22a" />
+                            android:text="@string/istatusa" />
 
                         <RadioButton
                             android:id="@+id/istatusb"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22b" />
+                            android:text="@string/istatusb" />
 
                         <RadioButton
                             android:id="@+id/istatusc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22c" />
+                            android:text="@string/istatusc" />
 
                         <RadioButton
                             android:id="@+id/istatusd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22d" />
+                            android:text="@string/istatusd" />
 
                         <RadioButton
                             android:id="@+id/istatuse"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22e" />
+                            android:text="@string/istatuse" />
 
                         <RadioButton
                             android:id="@+id/istatusf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/hh22f" />
+                            android:text="@string/istatusf" />
 
                         <RadioButton
                             android:id="@+id/istatus96"
