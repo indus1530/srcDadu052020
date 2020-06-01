@@ -22,12 +22,6 @@ import java.util.List;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.AreasContract.singleAreas;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.BLRandomContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.BLRandomContract.SingleRandomHH;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract.SingleChild;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract.EnumBlockTable;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract.SingleMember;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
@@ -42,16 +36,23 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract.SingleVillag
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_BL_RANDOM;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_CHILD_TABLE;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FAMILY_MEMBERS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PARTICIPANT_TABLE;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PSU_TABLE;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_TALUKA;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_UCS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_VILLAGE;
+
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract.SingleChild;
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract;
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.EnumBlockContract.EnumBlockTable;
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract;
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.FamilyMembersContract.SingleMember;
+//import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_CHILD_TABLE;
+//import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FAMILY_MEMBERS;
+//import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PSU_TABLE;
 
 
 /**
@@ -80,18 +81,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VILLAGE);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_PARTICIPANT_TABLE);
-        db.execSQL(SQL_CREATE_PSU_TABLE);
+        //db.execSQL(SQL_CREATE_PSU_TABLE);
         db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_VERSIONAPP);
-        db.execSQL(SQL_CREATE_FAMILY_MEMBERS);
-        db.execSQL(SQL_CREATE_CHILD_TABLE);
+        //db.execSQL(SQL_CREATE_FAMILY_MEMBERS);
+        //db.execSQL(SQL_CREATE_CHILD_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
     }
 
-    public int syncEnumBlocks(JSONArray enumList) {
+    /*public int syncEnumBlocks(JSONArray enumList) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(EnumBlockContract.EnumBlockTable.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -124,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (rowID != -1) insertCount++;
         }
         return insertCount;
-    }
+    }*/
 
 
     public int syncTalukas(JSONArray enumList) {
@@ -429,7 +430,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Long addFamilyMember(FamilyMembersContract fmc) {
+    /*public Long addFamilyMember(FamilyMembersContract fmc) {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
@@ -495,7 +496,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,
                 values);
         return newRowId;
-    }
+    }*/
 
 
     public Long addParticipant(ParticipantContract partContract) {
@@ -657,7 +658,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<FamilyMembersContract> getAllFamilyMembersForms() {
+    /*public Collection<FamilyMembersContract> getAllFamilyMembersForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -708,7 +709,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }
+    }*/
 
     public Collection<FormsContract> checkFormExist() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -836,7 +837,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<ChildContract> getUnsyncedChildForms() {
+    /*public Collection<ChildContract> getUnsyncedChildForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -898,7 +899,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }
+    }*/
 
     public Collection<FormsContract> getTodayForms() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -975,7 +976,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateChildEnding() {
+    /*public int updateChildEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // New value for one column
@@ -1045,10 +1046,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allBL;
-    }
+    }*/
 
     //Get EnumBlock
-    public EnumBlockContract getEnumBlock(String cluster) {
+    /*public EnumBlockContract getEnumBlock(String cluster) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1090,10 +1091,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allEB;
-    }
+    }*/
 
     //Get All EnumBlock
-    public List<EnumBlockContract> getEnumBlock() {
+    /*public List<EnumBlockContract> getEnumBlock() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1134,7 +1135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allEB;
-    }
+    }*/
 
 
     //Get All Talukas
@@ -1269,7 +1270,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Get All Child of HH
-    public List<ChildContract> getFilledChildForms(String clusterCode, String hhNo, String uuid) {
+    /*public List<ChildContract> getFilledChildForms(String clusterCode, String hhNo, String uuid) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -1322,7 +1323,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }
+    }*/
 
     //Get Form already exist
     public FormsContract getFilledForm(String clusterCode, String hhNo) {
@@ -1404,7 +1405,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Generic update FamilyMemberColumn
-    public int updatesFamilyMemberColumn(String column, String value, String valueID) {
+    /*public int updatesFamilyMemberColumn(String column, String value, String valueID) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues values = new ContentValues();
@@ -1433,7 +1434,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 selection,
                 selectionArgs);
-    }
+    }*/
 
 
     //Generic update ChildColumn
@@ -1500,7 +1501,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Generic Un-Synced Children
-    public void updateSyncedChildForms(String id) {
+    /*public void updateSyncedChildForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -1517,7 +1518,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 where,
                 whereArgs);
-    }
+    }*/
 
     //Generic Un-Synced Forms
     public void updateSyncedForms(String id) {
@@ -1539,7 +1540,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateSyncedFamilyMemForms(String id) {
+    /*public void updateSyncedFamilyMemForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -1556,5 +1557,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 where,
                 whereArgs);
-    }
+    }*/
 }

@@ -296,8 +296,7 @@ public class SectionAActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-
-        if (bi.a8.getText().toString() != null && bi.a9.getText().toString() != null) {
+        if (!bi.a8.getText().toString().isEmpty() && !bi.a9.getText().toString().isEmpty()) {
 
             if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
                 Toast.makeText(this, "Total no of participants cannot be greater than sum of no of married and non married participants ", Toast.LENGTH_SHORT).show();
