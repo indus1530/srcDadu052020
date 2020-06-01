@@ -296,6 +296,7 @@ public class SectionAActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
+
         if (bi.a8.getText().toString() != null && bi.a9.getText().toString() != null) {
 
             if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
