@@ -244,7 +244,8 @@
                         style="@style/EditTextNum"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:hint="@string/a5" />
+                        android:hint="@string/a5"
+                        app:dateFormat="dd-MM-yyyy" />
 
                 </LinearLayout>
 

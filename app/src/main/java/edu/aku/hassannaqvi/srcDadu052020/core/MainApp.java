@@ -67,6 +67,10 @@ public class MainApp extends Application {
     public static final long MILLISECONDS_IN_MONTH = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_MONTH;
     private static final long DAYS_IN_2_YEAR = 365 * 2;
     public static final long MILLISECONDS_IN_2Years = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_2_YEAR;
+
+    private static long DAYS_IN_7_MONTHS = DAYS_IN_MONTH * 7;
+    public static final long MILLISECONDS_IN_7MONTHS = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_7_MONTHS;
+
     public static String deviceId;
     public static OnItemClick itemClick;
     public static OnItemClick countItemClick;

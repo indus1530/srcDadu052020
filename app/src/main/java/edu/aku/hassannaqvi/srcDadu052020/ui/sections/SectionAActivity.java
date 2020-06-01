@@ -20,8 +20,11 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
@@ -38,12 +41,15 @@ public class SectionAActivity extends AppCompatActivity {
 
     private static final String TAG = "";
     public static FormsContract fc;
-    ArrayAdapter<String> a1Adapter;
     ActivitySectionABinding bi;
     private DatabaseHelper db;
 
     public List<String> talukaName, ucName, villageName;
     public List<String> talukaCode, ucCode, villageCode;
+
+    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,10 @@ public class SectionAActivity extends AppCompatActivity {
         bi.setCallback(this);
         db = MainApp.appInfo.getDbHelper();
         //setupListeners();
+
+        bi.a5.setMinDate(date7Months);
+        bi.a5.setMaxDate(dateToday);
+        bi.a5.setDate(Calendar.getInstance());
 
         populateSpinner(this);
     }

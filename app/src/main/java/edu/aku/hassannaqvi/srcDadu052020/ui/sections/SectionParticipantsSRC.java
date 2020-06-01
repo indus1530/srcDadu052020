@@ -204,7 +204,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
                 bi.a.requestFocus();
 
-                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
 
                 //Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
             }
@@ -231,7 +231,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
             //counter++;
             counter_addmore++;
-            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter + "(" + counter_addmore + ")");
+            bi.sno.setText("Participants # - " + counter_addmore + " of " + counter + "(" + MainApp.No_participants + ")");
 
             bi.a.setText("");
             bi.b.setText("");
