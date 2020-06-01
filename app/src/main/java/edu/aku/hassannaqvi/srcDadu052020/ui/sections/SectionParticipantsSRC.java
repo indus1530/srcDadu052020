@@ -28,7 +28,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private static final String TAG = "Part";
     //public static ParticipantContract pc;
-    static int counter = 0;
+    static int counter = 1;
     static int counter_addmore = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
@@ -159,7 +159,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     public void BtnContinue() {
         if (formValidation()) {
 
-            if (counter >= MainApp.No_participants) {
+            if (counter > MainApp.No_participants) {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
 
@@ -182,7 +182,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
                 }
 
-                counter++;
 
                 if (counter >= MainApp.No_participants) {
                     bi.btnContinue.setVisibility(View.GONE);
@@ -190,6 +189,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
                     bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
                 }
+
+
+                counter++;
 
 
                 bi.a.setText("");
