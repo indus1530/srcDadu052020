@@ -418,13 +418,44 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
 
 //                    Getting Enumblocks
-                    if (listActivityCreated) {
+                    /*if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
                     new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);*/
+
+
+//                    Getting Talukas
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "Talukas", syncListAdapter, list).execute();
                     bi.noItem.setVisibility(View.GONE);
+
+
+//                    Getting UCS
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "UCS", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);
+
+
+//                    Getting Villages
+                    if (listActivityCreated) {
+                        model = new SyncModel();
+                        model.setstatusID(0);
+                        list.add(model);
+                    }
+                    new GetAllData(mContext, "Villages", syncListAdapter, list).execute();
+                    bi.noItem.setVisibility(View.GONE);
+
 
                 } else {
 

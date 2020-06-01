@@ -28,7 +28,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private static final String TAG = "Part";
     //public static ParticipantContract pc;
-    static int counter = 1;
+    static int counter = 0;
     static int counter_addmore = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
@@ -145,7 +145,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (bi.e.getText().toString() != "" && bi.b.getText().toString() != "") {
+        if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
             if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
                 Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
                 return false;
@@ -253,6 +253,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     public void BtnEnd() {
         //if (!formValidation()) return;
         //contextEndActivity(this);
+        counter = 0;
+        counter_addmore = 0;
         finish();
         startActivity(new Intent(this, EndingActivity.class));
     }

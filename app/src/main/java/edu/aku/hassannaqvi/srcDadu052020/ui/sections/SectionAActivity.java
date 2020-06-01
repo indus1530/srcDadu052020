@@ -1,8 +1,11 @@
 package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -17,8 +20,15 @@ import com.validatorcrawler.aliazaz.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
@@ -26,10 +36,14 @@ import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
 
 public class SectionAActivity extends AppCompatActivity {
 
+    private static final String TAG = "";
     public static FormsContract fc;
     ArrayAdapter<String> a1Adapter;
     ActivitySectionABinding bi;
     private DatabaseHelper db;
+
+    public List<String> talukaName, ucName, villageName;
+    public List<String> talukaCode, ucCode, villageCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +52,98 @@ public class SectionAActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
         bi.setCallback(this);
         db = MainApp.appInfo.getDbHelper();
-        setupListeners();
+        //setupListeners();
+
+        populateSpinner(this);
+    }
+
+
+    public void populateSpinner(final Context context) {
+        // Spinner Drop down elements
+        talukaName = new ArrayList<>();
+        talukaCode = new ArrayList<>();
+
+        talukaName.add("....");
+        talukaCode.add("....");
+
+        Collection<TalukasContract> dc = db.getTalukas();
+        Log.d(TAG, "onCreate: " + dc.size());
+        for (TalukasContract d : dc) {
+            talukaName.add(d.getTaluka());
+            talukaCode.add(d.getTalukacode());
+        }
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, talukaName);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        // attaching data adapter to spinner
+        bi.a1.setAdapter(dataAdapter);
+
+
+        bi.a1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //MainApp.talukaCode = talukaCode.get(position);
+
+                ucCode = new ArrayList<>();
+                ucName = new ArrayList<>();
+
+
+                ucCode.add("....");
+                ucName.add("....");
+
+                Collection<UCsContract> pc = db.getUCs(talukaCode.get(position));
+                for (UCsContract p : pc) {
+                    ucCode.add(p.getUccode());
+                    ucName.add(p.getUcs());
+                }
+                ArrayAdapter<String> psuAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, ucName);
+
+                psuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                bi.a2.setAdapter(psuAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        bi.a2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //MainApp.talukaCode = talukaCode.get(position);
+
+                villageCode = new ArrayList<>();
+                villageName = new ArrayList<>();
+
+
+                villageCode.add("....");
+                villageName.add("....");
+
+                Collection<VillagesContract> pc = db.getVillage(ucCode.get(position));
+                for (VillagesContract p : pc) {
+                    villageCode.add(p.getVillagecode());
+                    villageName.add(p.getVillagename());
+                }
+                ArrayAdapter<String> psuAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, villageName);
+
+                psuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                bi.a3.setAdapter(psuAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
 
@@ -191,9 +296,12 @@ public class SectionAActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
-            Toast.makeText(this, "Total no of participants cannot be greater than sum of no of married and non married participants ", Toast.LENGTH_SHORT).show();
-            return false;
+        if (bi.a8.getText().toString() != null && bi.a9.getText().toString() != null) {
+
+            if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
+                Toast.makeText(this, "Total no of participants cannot be greater than sum of no of married and non married participants ", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
         return Validator.emptyCheckingContainer(this, bi.GrpName);

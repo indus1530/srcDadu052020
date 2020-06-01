@@ -78,7 +78,6 @@ public final class CreateTable {
             + ParticipantContract.singleParticipant.COLUMN_CSTATUS88x + " TEXT );";
 
 
-
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.singleUser.TABLE_NAME + "("
             + UsersContract.singleUser._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersContract.singleUser.ROW_USERNAME + " TEXT,"
@@ -88,13 +87,15 @@ public final class CreateTable {
 
 
     public static final String SQL_CREATE_TALUKA = "CREATE TABLE " + TalukasContract.singleTalukas.TABLE_NAME + "("
-            + TalukasContract.singleTalukas.COLUMN_TALUKA_CODE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TalukasContract.singleTalukas._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TalukasContract.singleTalukas.COLUMN_TALUKA_CODE + " INTEGER,"
             + TalukasContract.singleTalukas.COLUMN_TALUKA + " TEXT"
             + " );";
 
 
     public static final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
-            + UCsContract.singleUCs.COLUMN_UCCODE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UCsContract.singleUCs._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UCsContract.singleUCs.COLUMN_UCCODE + " INTEGER,"
             + UCsContract.singleUCs.COLUMN_UCS + " TEXT,"
             + UCsContract.singleUCs.COLUMN_TALUKA_CODE + " TEXT"
             + " );";
@@ -107,7 +108,6 @@ public final class CreateTable {
             + VillagesContract.SingleVillage.COLUMN_VILLAGE_CODE + " TEXT,"
             + VillagesContract.SingleVillage.COLUMN_VILLAGE_NAME + " TEXT"
             + " );";
-
 
 
     public static final String SQL_CREATE_VERSIONAPP = "CREATE TABLE " + VersionAppContract.VersionAppTable.TABLE_NAME + " (" +
