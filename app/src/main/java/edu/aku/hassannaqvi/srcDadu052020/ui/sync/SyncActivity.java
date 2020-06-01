@@ -33,7 +33,6 @@ import edu.aku.hassannaqvi.srcDadu052020.CONSTANTS;
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.srcDadu052020.adapter.UploadListAdapter;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
@@ -47,6 +46,8 @@ import edu.aku.hassannaqvi.srcDadu052020.sync.SyncDevice;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
+
+//import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
 
 public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDevicInterface {
     SharedPreferences.Editor editor;
@@ -159,7 +160,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             ).execute();
 
 
-            if (uploadlistActivityCreated) {
+            /*if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
                 uploadmodel.setstatusID(0);
                 uploadlist.add(uploadmodel);
@@ -172,7 +173,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     MainApp._HOST_URL + MainApp._SERVER_URL,
                     ChildContract.SingleChild.TABLE_NAME,
                     db.getUnsyncedChildForms(), 1, uploadListAdapter, uploadlist
-            ).execute();
+            ).execute();*/
 /*
             if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
