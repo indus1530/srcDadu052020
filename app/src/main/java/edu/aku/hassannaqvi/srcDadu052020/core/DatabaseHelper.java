@@ -154,7 +154,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TalukasContract.singleTalukas.COLUMN_TALUKA_CODE, Vc.getTalukacode());
             values.put(TalukasContract.singleTalukas.COLUMN_TALUKA, Vc.getTaluka());
 
-            db.insert(TalukasContract.singleTalukas.TABLE_NAME, null, values);
+            //db.insert(TalukasContract.singleTalukas.TABLE_NAME, null, values);
             long rowID = db.insert(TalukasContract.singleTalukas.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
@@ -189,7 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(UCsContract.singleUCs.COLUMN_UCS, Vc.getUcs());
             values.put(UCsContract.singleUCs.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
 
-            db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
+            //db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
             long rowID = db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
@@ -226,7 +226,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(VillagesContract.SingleVillage.COLUMN_VILLAGE_NAME, Vc.getVillagename());
 
 
-            db.insert(VillagesContract.SingleVillage.TABLE_NAME, null, values);
+            //db.insert(VillagesContract.SingleVillage.TABLE_NAME, null, values);
             long rowID = db.insert(VillagesContract.SingleVillage.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
