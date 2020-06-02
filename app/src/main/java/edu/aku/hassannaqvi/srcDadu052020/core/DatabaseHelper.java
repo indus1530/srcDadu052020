@@ -358,7 +358,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UsersContract.singleUser.ROW_USERNAME, user.getUserName());
                 values.put(UsersContract.singleUser.ROW_PASSWORD, user.getPassword());
-                values.put(UsersContract.singleUser.DIST_ID, user.getDIST_ID());
 //                values.put(singleUser.REGION_DSS, user.getREGION_DSS());
                 long rowID = db.insert(UsersContract.singleUser.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
@@ -1136,6 +1135,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allEB;
     }*/
+
+
+    //Get All Talukas
+    public List<UsersContract> getUsers() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                UsersContract.singleUser._ID,
+                UsersContract.singleUser.ROW_USERNAME,
+                UsersContract.singleUser.ROW_PASSWORD
+        };
+
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = UsersContract.singleUser._ID + " ASC";
+        List<UsersContract> allEB = new ArrayList<>();
+        try {
+            c = db.query(
+                    UsersContract.singleUser.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                allEB.add(new UsersContract().Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allEB;
+    }
 
 
     //Get All Talukas

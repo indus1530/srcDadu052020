@@ -281,10 +281,21 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <!--<EditText
                         android:id="@+id/a6"
                         style="@style/EditTextAlpha"
-                        android:hint="@string/a6" />
+                        android:hint="@string/a6" />!-->
+
+                    <LinearLayout style="@style/hlinearlayout">
+
+                        <Spinner
+                            android:id="@+id/a6"
+                            style="@style/spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -320,10 +331,22 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <!--<EditText
                         android:id="@+id/a7"
                         style="@style/EditTextAlpha"
-                        android:hint="@string/a7" />
+                        android:hint="@string/a7" />!-->
+
+                    <LinearLayout style="@style/hlinearlayout">
+
+                        <Spinner
+                            android:id="@+id/a7"
+                            style="@style/spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

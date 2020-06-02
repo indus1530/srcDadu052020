@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
@@ -43,8 +44,9 @@ public class SectionAActivity extends AppCompatActivity {
     ActivitySectionABinding bi;
     private DatabaseHelper db;
 
-    public List<String> talukaName, ucName, villageName;
-    public List<String> talukaCode, ucCode, villageCode;
+    public List<String> talukaName, ucName, villageName, usersName, teamLeadName;
+    public List<String> talukaCode, ucCode, villageCode, usersCode, teamLeadCode;
+
 
     String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));
@@ -153,6 +155,41 @@ public class SectionAActivity extends AppCompatActivity {
         });
 
 
+        // Spinner Drop down elements
+        usersName = new ArrayList<>();
+        usersCode = new ArrayList<>();
+
+        usersName.add("....");
+        usersCode.add("....");
+
+        Collection<UsersContract> dc_users = db.getUsers();
+        Log.d(TAG, "onCreate: " + dc_users.size());
+        for (UsersContract d : dc_users) {
+            usersName.add(d.getUserName());
+            usersCode.add(String.valueOf(d.getUserID()));
+        }
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> userAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
+
+        // Drop down layout style - list view with radio button
+        userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        // attaching data adapter to spinner
+        bi.a6.setAdapter(userAdapter);
+
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> userTeamLead = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
+
+        // Drop down layout style - list view with radio button
+        userTeamLead.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        // attaching data adapter to spinner
+        bi.a7.setAdapter(userTeamLead);
+
     }
 
 
@@ -208,9 +245,9 @@ public class SectionAActivity extends AppCompatActivity {
 
         json.put("a5", bi.a5.getText().toString());
 
-        json.put("a6", bi.a6.getText().toString());
+        json.put("a6", usersCode.get(bi.a6.getSelectedItemPosition()));
 
-        json.put("a7", bi.a7.getText().toString());
+        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
 
         json.put("a8", bi.a8.getText().toString());
 
