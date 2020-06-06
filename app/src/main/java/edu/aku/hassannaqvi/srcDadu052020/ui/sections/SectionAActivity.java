@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
@@ -54,6 +56,7 @@ public class SectionAActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
@@ -66,6 +69,24 @@ public class SectionAActivity extends AppCompatActivity {
         bi.a5.setDate(Calendar.getInstance());
 
         populateSpinner(this);
+
+
+        MainApp.Lang_Choose = 2;
+
+        if (MainApp.Lang_Choose == 1) {
+            changeLanguage(Locale.getDefault().getLanguage());
+        } else {
+            changeLanguage("sd-rPK");
+        }
+
+    }
+
+    private void changeLanguage(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
 

@@ -90,9 +90,12 @@ public class MainApp extends Application {
     protected static LocationManager locationManager;
     public static int No_participants = 0;
 
+    public static int Lang_Choose = 1;
+
     public static void setItemClick(OnItemClick itemClick) {
         MainApp.itemClick = itemClick;
     }
+
 
     public static void setGPS(Activity activity) {
         SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
@@ -199,6 +202,7 @@ public class MainApp extends Application {
         //Initiate DateTime
         AndroidThreeTen.init(this);
     }
+
 
     protected void showCurrentLocation() {
 

@@ -126,6 +126,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         JSONObject json = new JSONObject();
 
+        json.put("sno", counter);
         json.put("a", bi.a.getText().toString());
 
         json.put("b", bi.b.getText().toString());
