@@ -52,6 +52,35 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
 
     private void setupListeners() {
+
+        bi.c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (bi.c1.isChecked() == true) {
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+
+                    bi.g.clearCheck();
+
+                    bi.i12.setChecked(false);
+                    bi.i12.setEnabled(false);
+
+                    bi.f5.setChecked(false);
+                    bi.f5.setEnabled(false);
+                } else {
+                    bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+
+                    bi.i12.setChecked(true);
+                    bi.i12.setEnabled(true);
+
+                    bi.f5.setChecked(true);
+                    bi.f5.setEnabled(true);
+                }
+            }
+        });
+
+
         bi.g1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
