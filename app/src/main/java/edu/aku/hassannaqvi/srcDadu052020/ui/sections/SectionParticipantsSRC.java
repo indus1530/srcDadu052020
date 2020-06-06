@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,9 +43,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (MainApp.No_participants == 0) {
             MainApp.No_participants = 1;
-            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+            bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
         } else {
-            bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+            bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
         }
 
         setupListeners();
@@ -80,10 +81,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
         });
 
-
-        bi.g1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        bi.g.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (bi.g1.isChecked() == true) {
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
                     Clear.clearAllFields(bi.fldGrpCVh, true);
@@ -93,6 +93,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
