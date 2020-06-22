@@ -65,6 +65,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             int HttpResult = connection.getResponseCode();
+
             if (HttpResult == HttpURLConnection.HTTP_OK) {
 
                 connection = (HttpURLConnection) url.openConnection();
