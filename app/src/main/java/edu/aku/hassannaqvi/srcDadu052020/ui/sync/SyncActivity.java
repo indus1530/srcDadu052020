@@ -401,22 +401,23 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         protected String doInBackground(Boolean... booleans) {
             runOnUiThread(() -> {
 
-                if (booleans[0]) {
+                //if (booleans[0]) {
+
 //                  getting Users!!
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute();
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "User", syncListAdapter, list).execute();
 
 //                    Getting App Version
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
 
 //                    Getting Enumblocks
                     /*if (listActivityCreated) {
@@ -429,46 +430,46 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
 
 //                    Getting Talukas
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "Talukas", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "Talukas", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
 
 //                    Getting UCS
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "UCS", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "UCS", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
 
 //                    Getting Villages
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "Villages", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "Villages", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
 
-                } else {
+                /*} else {
 
 //                   getting BL Random
-                    /*if (listActivityCreated) {
+                    *//*if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);*/
+                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);*//*
 
-                }
+                }*/
 
                 listActivityCreated = false;
             });
