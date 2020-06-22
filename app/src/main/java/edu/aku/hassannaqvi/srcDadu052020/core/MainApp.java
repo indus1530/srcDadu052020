@@ -24,12 +24,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
-import java.util.List;
-
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
-import kotlin.Pair;
 
 
 /**
@@ -86,7 +83,6 @@ public class MainApp extends Application {
     public static String G102;
     public static SharedPreferences sharedPref;
     public static String DIST_ID;
-    public static Pair<List<Integer>, List<String>> selectedChildren;
     protected static LocationManager locationManager;
     public static int No_participants = 0;
 

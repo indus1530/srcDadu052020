@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -949,6 +950,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
+
+
+    public List<String> getField(Context context, String tblname, String jsonField, String fldname, String cluster_code, String clusterno) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> lst = new ArrayList<>();
+
+        try {
+
+            Cursor cursor = db.rawQuery("select " + jsonField + " from " + tblname + " where " + cluster_code + "='" + clusterno + "'", null);
+
+            if (cursor != null) {
+                if (cursor.moveToFirst()) {
+                    do {
+
+                        JSONObject json = new JSONObject(cursor.getString(0));
+                        lst.add(json.getString(fldname));
+
+                    } while (cursor.moveToNext());
+                }
+            }
+
+        } catch (Exception ex) {
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            lst.add("-1");
+        }
+
+        return lst;
+    }
+
 
     public int updateEnding(boolean flag) {
         SQLiteDatabase db = this.getReadableDatabase();

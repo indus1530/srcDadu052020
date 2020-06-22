@@ -303,37 +303,36 @@
 
     <style name="SpinnerItem">
         <item name="android:textAppearance">@style/SpinnerItemText</item>
+        <item name="android:textColor">#ff0000</item>
+        <item name="android:background">#efefef</item>
     </style>
 
     <style name="SpinnerItemText">
         <item name="android:textSize">20sp</item>
         <item name="android:typeface">sans</item>
+        <item name="android:textColor">#ff0000</item>
+        <item name="android:background">#efefef</item>
     </style>
 
     <style name="spinner" parent="Widget.AppCompat.Spinner">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:typeface">sans</item>
-        <item name="android:textColor">#ff0000</item>
-        <item name="android:background">#efefef</item>
         <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
         <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemStyle</item>
-
     </style>
 
     <style name="spinnerItemStyle">
         <item name="android:padding">8dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:typeface">sans</item>
-        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="spinnerDropDownItemStyle">
         <item name="android:padding">8dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:typeface">sans</item>
-        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="radiogroup">

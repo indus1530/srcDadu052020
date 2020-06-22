@@ -461,12 +461,12 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                 } else {
 
 //                   getting BL Random
-                    if (listActivityCreated) {
+                    /*if (listActivityCreated) {
                         model = new SyncModel();
                         model.setstatusID(0);
                         list.add(model);
                     }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);
+                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);*/
 
                 }
 
