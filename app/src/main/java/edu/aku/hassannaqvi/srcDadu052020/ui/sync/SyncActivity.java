@@ -47,8 +47,6 @@ import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
 
-//import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
-
 public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDevicInterface {
     SharedPreferences.Editor editor;
     SharedPreferences sharedPref;
@@ -345,14 +343,11 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
     public void uploadPhotos(View view) {
 
-        String fileName = "";
-        String appFolder = PROJECT_NAME;
-
         File sdDir = Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
         Log.d("Files", "Path: " + sdDir);
-        File directory = new File(String.valueOf(sdDir), appFolder);
+        File directory = new File(String.valueOf(sdDir), PROJECT_NAME);
         Log.d("Directory", "uploadPhotos: " + directory);
         if (directory.exists()) {
             File[] files = directory.listFiles(new FileFilter() {
@@ -365,9 +360,9 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
 
             Log.d("Files", "Count: " + files.length);
             if (files.length > 0) {
-                for (int i = 0; i < files.length; i++) {
-                    Log.d("Files", "FileName:" + files[i].getName());
-                    SyncAllPhotos syncAllPhotos = new SyncAllPhotos(files[i].getName(), this);
+                for (File file : files) {
+                    Log.d("Files", "FileName:" + file.getName());
+                    SyncAllPhotos syncAllPhotos = new SyncAllPhotos(file.getName(), this);
                     syncAllPhotos.execute();
 
                     try {
@@ -401,74 +396,48 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         protected String doInBackground(Boolean... booleans) {
             runOnUiThread(() -> {
 
-                if (booleans[0]) {
-//                  getting Users!!
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "User", syncListAdapter, list).execute();
-
-//                    Getting App Version
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
-
-//                    Getting Enumblocks
-                    /*if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "EnumBlock", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);*/
-
-
-//                    Getting Talukas
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "Talukas", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
-
-
-//                    Getting UCS
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "UCS", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
-
-
-//                    Getting Villages
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "Villages", syncListAdapter, list).execute();
-                    bi.noItem.setVisibility(View.GONE);
-
-
-                } else {
-
-//                   getting BL Random
-                    if (listActivityCreated) {
-                        model = new SyncModel();
-                        model.setstatusID(0);
-                        list.add(model);
-                    }
-                    new GetAllData(mContext, "BLRandom", syncListAdapter, list).execute(distID);
-
+//              Getting Users!!
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
                 }
+                new GetAllData(mContext, "User", syncListAdapter, list).execute();
+
+//              Getting App Version
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+
+//              Getting Talukas
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "Talukas", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
+
+//              Getting UCS
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "UCS", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
+
+//              Getting Villages
+                if (listActivityCreated) {
+                    model = new SyncModel();
+                    model.setstatusID(0);
+                    list.add(model);
+                }
+                new GetAllData(mContext, "Villages", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
                 listActivityCreated = false;
             });
