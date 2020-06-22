@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 public class VillagesContract {
 
-
     private String talukacode;
     private String uccode;
     private String villagecode;
@@ -22,6 +21,22 @@ public class VillagesContract {
     public VillagesContract() {
     }
 
+
+    public void setTalukacode(String talukacode) {
+        this.talukacode = talukacode;
+    }
+
+    public void setUccode(String uccode) {
+        this.uccode = uccode;
+    }
+
+    public void setVillagecode(String villagecode) {
+        this.villagecode = villagecode;
+    }
+
+    public void setVillagename(String villagename) {
+        this.villagename = villagename;
+    }
 
     public String getUccode() {
         return uccode;
@@ -40,6 +55,7 @@ public class VillagesContract {
     }
 
     public VillagesContract sync(JSONObject jsonObject) throws JSONException {
+
         this.talukacode = jsonObject.getString(SingleVillage.COLUMN_TALUKA_CODE);
         this.uccode = jsonObject.getString(SingleVillage.COLUMN_UC_CODE);
         this.villagecode = jsonObject.getString(SingleVillage.COLUMN_VILLAGE_CODE);

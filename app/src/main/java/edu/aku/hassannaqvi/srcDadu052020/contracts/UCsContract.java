@@ -32,6 +32,7 @@ public class UCsContract {
         return this;
     }
 
+
     public String getUccode() {
         return uccode;
     }

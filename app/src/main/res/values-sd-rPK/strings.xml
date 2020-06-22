@@ -1122,35 +1122,35 @@
     <string name="childlistinfo">اندراج شدہ بچوں کی فہرست</string>
 
 
-    <string name="a1">Name of Taluka</string>
-    <string name="a2">Name of Union Council</string>
-    <string name="a3">Name of Village</string>
-    <string name="a4">Address</string>
-    <string name="a5">Session’s Date</string>
-    <string name="a6">Name of Data Collector</string>
-    <string name="a7">Name of Team Leader</string>
-    <string name="a8">Total number of participants in session</string>
-    <string name="a9">Number of married participants</string>
-    <string name="a10">Number of unmarried participants</string>
-    <string name="a11">Type of Session</string>
-    <string name="a1101">Menstrual Hygiene Management (MHM)</string>
-    <string name="a1102">Maternal, Neonatal, Child and Adolescent Health</string>
-    <string name="a1103">MHM Pad Production</string>
-    <string name="a1104">Safe Drinking Water</string>
-    <string name="a12">Which topics are covered in the Session?</string>
-    <string name="a1201">Preconception care</string>
-    <string name="a1202">Facility-based delivery</string>
-    <string name="a1203">Family planning</string>
-    <string name="a1204">Kangaroo mother care</string>
-    <string name="a1205">Complementary feeding</string>
-    <string name="a1206">Antenatal Care</string>
-    <string name="a1207">Postnatal care</string>
-    <string name="a1208">Birth Preparedness</string>
-    <string name="a1209">Essential new born care</string>
-    <string name="a1210">Early initiation of breast feeding</string>
-    <string name="a1211">New born child health care, Diarrhea, typhoid, malnutrition</string>
-    <string name="a1212">Maternal Nutrition</string>
-    <string name="a1213">Referral</string>
+    <string name="a1">تعلقي جو نالو</string>
+    <string name="a2">يونين ڪائونسل جو نالو</string>
+    <string name="a3">ڳوٺ جو نالو</string>
+    <string name="a4">ايڊريس </string>
+    <string name="a5">سيشن جي تاريخ</string>
+    <string name="a6">معلومات حاصل ڪندڙ جو نالو </string>
+    <string name="a7"> ٽيم ليڊر جو نالو</string>
+    <string name="a8"> سيشن ۾ شرڪت ڪندڙن جومڪمل  تعداد</string>
+    <string name="a9"> شادي شده شرڪت ڪندڙن جو تعداد</string>
+    <string name="a10">غير شادي شده شرڪت ڪندڙن جو تعداد</string>
+    <string name="a11">سيشن جو قسم</string>
+    <string name="a1101">ماهواريءَ دوران صحت جي صفائي</string>
+    <string name="a1102">ماءَ،نئون ڄاول ٻار، ٻار  ۽ نوجوان ڇوڪرين جي صحت</string>
+    <string name="a1103">پيڊز جي پروڊڪشن/ٺاهڻ  متعلق</string>
+    <string name="a1104">پيئڻ واري پاڻيءَ کي محفوظ ڪرڻ متعلق</string>
+    <string name="a12">سيشن ۾ ڪهڙن موضوعن تي ڳالهه ٻولهه ڪئي وئي</string>
+    <string name="a1201">حمل کان پهريان سارسنڀال</string>
+    <string name="a1202">اسپتال ۾ ويم</string>
+    <string name="a1203">خانداني منصوبه بندي</string>
+    <string name="a1204">ڪينگرو مڌر ڪيئر</string>
+    <string name="a1205">اضافي خوراڪ</string>
+    <string name="a1206">ماءَ جي صحت ANC  سان گڏ</string>
+    <string name="a1207">پيدائش کانپوءِ جي سارسنڀال</string>
+    <string name="a1208">ويم جي تيا ري</string>
+    <string name="a1209">نئين ڄاول ٻار جي لازمي سارسنڀال</string>
+    <string name="a1210">وقتائتو ماءُ جو کير پيارڻ</string>
+    <string name="a1211">نئين ڄاول ٻار جي سارسنڀال ڪرڻ ، دست ، وڏو بخار ۽ خوراڪ جي گهٽتائي</string>
+    <string name="a1212">ماءُ جي غذا</string>
+    <string name="a1213">منتقل ڪيو/ موڪليو ويو</string>
 
 
     <!-- Section B  !-->

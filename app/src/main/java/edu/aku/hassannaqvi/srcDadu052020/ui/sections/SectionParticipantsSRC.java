@@ -2,26 +2,35 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ChildContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
+import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
 
-import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.child;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.contextEndActivity;
+import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.pc;
 
 public class SectionParticipantsSRC extends AppCompatActivity {
+
+    private static final String TAG = "Part";
+    //public static ParticipantContract pc;
+    static int counter = 1;
+    static int counter_addmore = 1;
 
     ActivitySectionParticipantsSRCBinding bi;
 
@@ -31,31 +40,71 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_participants_s_r_c);
         bi.setCallback(this);
+
+        if (MainApp.No_participants == 0) {
+            MainApp.No_participants = 1;
+            bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
+        } else {
+            bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
+        }
+
         setupListeners();
     }
 
 
     private void setupListeners() {
-        /*bi.a1102.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        bi.c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (bi.a1102.isChecked() == true) {
-                    Clear.clearAllFields(bi.fldGrpCVa12, true);
+                if (bi.c1.isChecked() == true) {
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+
+                    bi.g.clearCheck();
+
+                    bi.i12.setChecked(false);
+                    bi.i12.setEnabled(false);
+
+                    bi.f5.setChecked(false);
+                    bi.f5.setEnabled(false);
                 } else {
-                    Clear.clearAllFields(bi.fldGrpCVa12, false);
+                    bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+
+                    bi.i12.setChecked(true);
+                    bi.i12.setEnabled(true);
+
+                    bi.f5.setChecked(true);
+                    bi.f5.setEnabled(true);
                 }
             }
-        });*/
+        });
+
+        bi.g.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.g1.isChecked() == true) {
+                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+                    Clear.clearAllFields(bi.fldGrpCVh, true);
+                } else {
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.fldGrpCVh, false);
+                }
+            }
+        });
+
     }
 
 
     private boolean UpdateDB() {
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        long updcount = db.addChild(child);
-        child.set_ID(String.valueOf(updcount));
+        long updcount = db.addParticipant(pc);
+        pc.set_ID(String.valueOf(updcount));
+
         if (updcount > 0) {
-            child.setUID(MainApp.deviceId + child.get_ID());
-            db.updatesChildColumn(ChildContract.SingleChild.COLUMN_UID, child.getUID());
+            pc.setUID(MainApp.deviceId + pc.get_ID());
+            db.updatesParticipant(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
@@ -65,9 +114,19 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
 
-        JSONObject json = new JSONObject();
-        json.put("sno", bi.sno.getText().toString());
+        pc = new ParticipantContract();
+        pc.set_UUID(MainApp.fc.get_UID());
+        pc.setDeviceId(MainApp.appInfo.getDeviceID());
+        pc.setDevicetagID(MainApp.appInfo.getTagName());
+        pc.setFormDate(MainApp.fc.getFormDate());
+        pc.setUser(MainApp.userName);
+        pc.setSno(String.valueOf(counter));
+        MainApp.setGPS(this);
 
+
+        JSONObject json = new JSONObject();
+
+        json.put("sno", counter);
         json.put("a", bi.a.getText().toString());
 
         json.put("b", bi.b.getText().toString());
@@ -112,35 +171,125 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         json.put("i96x", bi.i96x.getText().toString());
 
-        child.setsCA(String.valueOf(json));
+        pc.setsA(String.valueOf(json));
     }
 
     private boolean formValidation() {
+
+        if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
+            if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
+                Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
 
     public void BtnContinue() {
         if (formValidation()) {
+
+            if (counter > MainApp.No_participants) {
+                bi.btnContinue.setVisibility(View.GONE);
+                bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+
+                //Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
+
+            } else {
+
+                try {
+                    SaveDraft();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                if (UpdateDB()) {
+                    //finish();
+                    ///startActivity(new Intent(this, MainActivity.class));
+                } else {
+                    Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+                }
+
+
+                if (counter >= MainApp.No_participants) {
+                    bi.btnContinue.setVisibility(View.GONE);
+                    bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                    bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                }
+
+
+                counter++;
+
+
+                bi.a.setText("");
+                bi.b.setText("");
+                bi.c.clearCheck();
+                bi.d.setText("");
+                bi.e.setText("");
+                bi.f.clearCheck();
+                bi.g.clearCheck();
+                bi.h.setText("");
+                bi.i.clearCheck();
+
+                bi.a.requestFocus();
+
+                bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
+
+                //Log.d(TAG, "BtnContinue: Mainapp1 - " + MainApp.No_participants + " counter - " + counter);
+            }
+
+        }
+
+    }
+
+    public void BtnAddMore() {
+        if (formValidation()) {
+
             try {
                 SaveDraft();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
             if (UpdateDB()) {
-                finish();
-                startActivity(new Intent(this, SectionCHBActivity.class));
+                //finish();
+                //startActivity(new Intent(this, MainActivity.class));
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
+
+            //counter++;
+            counter_addmore++;
+            bi.sno.setText("Participants # - " + counter_addmore + " of " + counter + "(" + MainApp.No_participants + ")");
+
+            bi.a.setText("");
+            bi.b.setText("");
+            bi.c.clearCheck();
+            bi.d.setText("");
+            bi.e.setText("");
+            bi.f.clearCheck();
+            bi.g.clearCheck();
+            bi.h.setText("");
+            bi.i.clearCheck();
+
+            bi.a.requestFocus();
+
         }
 
     }
 
-    public void BtnEnd() {
-        if (!formValidation()) return;
-        contextEndActivity(this);
-    }
 
+    public void BtnEnd() {
+        //if (!formValidation()) return;
+        //contextEndActivity(this);
+        counter = 0;
+        counter_addmore = 0;
+        finish();
+        startActivity(new Intent(this, EndingActivity.class));
+    }
 
 }

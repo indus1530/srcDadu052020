@@ -29,6 +29,7 @@ public class TalukasContract {
         return this;
     }
 
+
     public String getTalukacode() {
         return talukacode;
     }
@@ -46,7 +47,6 @@ public class TalukasContract {
     }
 
     public JSONObject toJSONObject() throws JSONException {
-
         JSONObject json = new JSONObject();
         json.put(singleTalukas.COLUMN_TALUKA_CODE, this.talukacode == null ? JSONObject.NULL : this.talukacode);
         json.put(singleTalukas.COLUMN_TALUKA, this.taluka == null ? JSONObject.NULL : this.taluka);
