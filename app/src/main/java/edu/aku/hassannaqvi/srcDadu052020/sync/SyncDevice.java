@@ -65,6 +65,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
             int HttpResult = connection.getResponseCode();
+
             if (HttpResult == HttpURLConnection.HTTP_OK) {
 
                 connection = (HttpURLConnection) url.openConnection();
@@ -81,7 +82,7 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
                 try {
-                    jsonObject.addProperty("dist_id", MainApp.DIST_ID);
+                    //jsonObject.addProperty("dist_id", MainApp.DIST_ID);
                     jsonObject.addProperty("imei", MainApp.IMEI);
                     jsonObject.addProperty("appversion", MainApp.appInfo.getAppVersion());
                     jsonObject.addProperty("appname", context.getString(R.string.app_name));
