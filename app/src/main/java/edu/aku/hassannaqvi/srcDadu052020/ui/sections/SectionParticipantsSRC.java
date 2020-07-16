@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
-import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +21,7 @@ import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
+import edu.aku.hassannaqvi.srcDadu052020.validator.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.pc;
 
@@ -41,8 +41,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_participants_s_r_c);
         bi.setCallback(this);
 
+        counter = 1;
+
         if (MainApp.No_participants == 0) {
             MainApp.No_participants = 1;
+
             bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
         } else {
             bi.sno.setText("Participants # - " + counter + " of " + MainApp.No_participants);
@@ -57,11 +60,12 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (bi.c1.isChecked() == true) {
+                if (bi.c1.isChecked()) {
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
 
-                    bi.g.clearCheck();
+                    Clear.clearAllFields(bi.fldGrpCVg);
+                    Clear.clearAllFields(bi.fldGrpCVh);
 
                     bi.i12.setChecked(false);
                     bi.i12.setEnabled(false);
@@ -81,12 +85,33 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
         });
 
+        bi.f.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (bi.f1.isChecked() && bi.c1.isChecked()) {
+                    Clear.clearAllFields(bi.fldGrpCVg);
+                    Clear.clearAllFields(bi.fldGrpCVh);
+
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+                } else if (!bi.f1.isChecked() && bi.c2.isChecked()) {
+                    bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+                } else if (bi.f1.isChecked() && bi.c2.isChecked()) {
+                    Clear.clearAllFields(bi.fldGrpCVg);
+                    Clear.clearAllFields(bi.fldGrpCVh);
+
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+                }
+            }
+        });
+
         bi.g.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.g1.isChecked() == true) {
+                if (bi.g1.isChecked() && bi.c2.isChecked()) {
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
-                    Clear.clearAllFields(bi.fldGrpCVh, true);
                 } else {
                     bi.fldGrpCVh.setVisibility(View.GONE);
                     Clear.clearAllFields(bi.fldGrpCVh, false);
@@ -177,13 +202,26 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     private boolean formValidation() {
 
         if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
-            if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
-                Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
-                return false;
+            if (!bi.e.getText().toString().equals("97")) {
+                if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
+                    Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
         }
 
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (!bi.e.getText().toString().equals("")) {
+            if (!bi.e.getText().toString().equals("97")) {
+                if (Integer.valueOf(bi.e.getText().toString()) >= 0 || Integer.valueOf(bi.e.getText().toString()) <= 16) {
+
+                } else {
+                    Toast.makeText(this, "Education must be between 0 - 16 or 97", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+        }
+
+        return ValidatorClass.EmptyCheckingContainer(this, bi.GrpName);
     }
 
 
@@ -194,7 +232,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
 
-                bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                if (MainApp.No_participants == 0) {
+                    bi.sno.setText("Participants # - 1 of " + counter);
+                } else {
+                    bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
+                }
 
                 //Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
 
@@ -289,7 +331,10 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         counter = 0;
         counter_addmore = 0;
         finish();
-        startActivity(new Intent(this, EndingActivity.class));
+
+        Intent intent = new Intent(this, EndingActivity.class);
+        intent.putExtra("complete", true);
+        startActivity(intent);
     }
 
 }

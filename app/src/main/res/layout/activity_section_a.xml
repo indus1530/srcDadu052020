@@ -251,6 +251,95 @@
 
             </androidx.cardview.widget.CardView>
 
+
+            <!-- a5.1  Input   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVa51"
+                style="@style/cardView">
+
+                <LinearLayout style="@style/hlinearlayout">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_a51"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_a51"
+                            android:text="@string/a51" />
+
+                        <TextView
+                            android:id="@+id/q_a51"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_a51"
+                            android:layout_alignBottom="@id/qtxt_a51"
+                            android:text="@string/Q_a51" />
+
+                    </RelativeLayout>
+
+                    <io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText
+                        android:id="@+id/a51"
+                        style="@style/EditTextNum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:hint="@string/a51"
+                        app:timeFormat="HH:mm" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- a5.2  Input   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVa52"
+                style="@style/cardView">
+
+                <LinearLayout style="@style/hlinearlayout">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_a52"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_a52"
+                            android:text="@string/a52" />
+
+                        <TextView
+                            android:id="@+id/q_a52"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_a52"
+                            android:layout_alignBottom="@id/qtxt_a52"
+                            android:text="@string/Q_a52" />
+
+                    </RelativeLayout>
+
+                    <io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText
+                        android:id="@+id/a52"
+                        style="@style/EditTextNum"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:hint="@string/a52"
+                        app:timeFormat="HH:mm" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
             <!-- a6  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa6"
@@ -431,8 +520,8 @@
                         style="@style/EditTextNum"
                         android:hint="@string/num"
                         android:maxLength="2"
-                        app:maxValue="30"
-                        app:minValue="1"
+                        app:maxValue="20"
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>
@@ -475,8 +564,8 @@
                         style="@style/EditTextNum"
                         android:hint="@string/num"
                         android:maxLength="2"
-                        app:maxValue="30"
-                        app:minValue="1"
+                        app:maxValue="20"
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>
@@ -543,6 +632,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/a1104" />
+
+                        <CheckBox
+                            android:id="@+id/a1105"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/a1105" />
+
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -658,6 +754,60 @@
                             android:text="@string/a1213" />
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- a13  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVa13"
+                style="@style/cardView">
+
+                <LinearLayout style="@style/vlinearlayout">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_a13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_a13"
+                            android:text="@string/a13" />
+
+                        <TextView
+                            android:id="@+id/q_a13"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_a13"
+                            android:layout_alignBottom="@id/qtxt_a13"
+                            android:text="@string/Q_a13" />
+
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/a13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/a1301"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/a1302"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/no" />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
