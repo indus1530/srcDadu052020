@@ -31,6 +31,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     //public static ParticipantContract pc;
     static int counter = 1;
     static int counter_addmore = 1;
+    static boolean iscomplete = false;
 
     ActivitySectionParticipantsSRCBinding bi;
 
@@ -88,18 +89,29 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.f.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.f1.isChecked() && bi.c1.isChecked()) {
+                if (bi.c1.isChecked()) {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
+                    bi.i12.setChecked(false);
+                    bi.i12.setEnabled(false);
+
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
-                } else if (!bi.f1.isChecked() && bi.c2.isChecked()) {
+                } else if (bi.f2.isChecked() && bi.c2.isChecked() ||
+                        bi.f3.isChecked() && bi.c2.isChecked() ||
+                        bi.f4.isChecked() && bi.c2.isChecked() ||
+                        bi.f5.isChecked() && bi.c2.isChecked()) {
+
                     bi.fldGrpCVg.setVisibility(View.VISIBLE);
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
+
                 } else if (bi.f1.isChecked() && bi.c2.isChecked()) {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
+
+                    bi.i12.setChecked(false);
+                    bi.i12.setEnabled(false);
 
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
@@ -110,11 +122,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.g.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (bi.g1.isChecked() && bi.c2.isChecked()) {
+                if (!bi.f1.isChecked() && bi.g1.isChecked() && bi.c2.isChecked()) {
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
                 } else {
                     bi.fldGrpCVh.setVisibility(View.GONE);
-                    Clear.clearAllFields(bi.fldGrpCVh, false);
+                    Clear.clearAllFields(bi.fldGrpCVh);
                 }
             }
         });
@@ -232,6 +244,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
 
+                iscomplete = true;
+
                 if (MainApp.No_participants == 0) {
                     bi.sno.setText("Participants # - 1 of " + counter);
                 } else {
@@ -259,6 +273,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 if (counter >= MainApp.No_participants) {
                     bi.btnContinue.setVisibility(View.GONE);
                     bi.btnAddMore.setVisibility(View.VISIBLE);
+
+                    iscomplete = true;
 
                     bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
                 }
@@ -304,6 +320,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
 
+            iscomplete = true;
+
             //counter++;
             counter_addmore++;
             bi.sno.setText("Participants # - " + counter_addmore + " of " + counter + "(" + MainApp.No_participants + ")");
@@ -328,12 +346,16 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     public void BtnEnd() {
         //if (!formValidation()) return;
         //contextEndActivity(this);
-        counter = 0;
-        counter_addmore = 0;
-        finish();
 
         Intent intent = new Intent(this, EndingActivity.class);
-        intent.putExtra("complete", true);
+        intent.putExtra("complete", iscomplete);
+
+        counter = 0;
+        counter_addmore = 0;
+        iscomplete = false;
+
+        finish();
+
         startActivity(intent);
     }
 

@@ -20,7 +20,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -44,15 +43,13 @@ public class SectionAActivity extends AppCompatActivity {
     ActivitySectionABinding bi;
     private DatabaseHelper db;
 
-    String timeStart = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTimeInMillis());
-
     public List<String> talukaName, ucName, villageName, usersName, teamLeadName;
     public List<String> talukaCode, ucCode, villageCode, usersCode, teamLeadCode;
 
 
-    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
-    String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));
-    String timeEnd = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTimeInMillis());
+    /*String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));*/
+
     private String mLanguageCode = "sd";
 
     @Override
@@ -63,17 +60,27 @@ public class SectionAActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
         bi.setCallback(this);
         db = MainApp.appInfo.getDbHelper();
+
+        bi.txtusername.setText(MainApp.userName);
+
+
+        bi.fldGrpCVa12.setVisibility(View.GONE);
+        Clear.clearAllFields(bi.fldGrpCVa12);
+
+        bi.fldGrpCVa13.setVisibility(View.GONE);
+        Clear.clearAllFields(bi.fldGrpCVa13);
+
         setupListeners();
 
-        bi.a5.setMinDate(date7Months);
+        /*bi.a5.setMinDate(date7Months);
         bi.a5.setMaxDate(dateToday);
-        bi.a5.setDate(Calendar.getInstance());
+        bi.a5.setDate(Calendar.getInstance());*/
 
         populateSpinner(this);
     }
 
 
-    public void populateSpinner_javed(final Context context) {
+    public void populateSpinner(final Context context) {
         // Spinner Drop down elements
         talukaName = new ArrayList<>();
         talukaCode = new ArrayList<>();
@@ -174,17 +181,6 @@ public class SectionAActivity extends AppCompatActivity {
         }
 
         // Creating adapter for spinner
-        ArrayAdapter<String> userAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
-
-        // Drop down layout style - list view with radio button
-        userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        // attaching data adapter to spinner
-        bi.a6.setAdapter(userAdapter);
-
-
-        // Creating adapter for spinner
         ArrayAdapter<String> userTeamLead = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
 
         // Drop down layout style - list view with radio button
@@ -197,7 +193,7 @@ public class SectionAActivity extends AppCompatActivity {
     }
 
 
-    public void populateSpinner(final Context context) {
+    public void populateSpinner_javed(final Context context) {
         // Spinner Drop down elements
         talukaName = new ArrayList<>();
         talukaCode = new ArrayList<>();
@@ -291,17 +287,6 @@ public class SectionAActivity extends AppCompatActivity {
 
 
         // Creating adapter for spinner
-        ArrayAdapter<String> userAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
-
-        // Drop down layout style - list view with radio button
-        userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        // attaching data adapter to spinner
-        bi.a6.setAdapter(userAdapter);
-
-
-        // Creating adapter for spinner
         ArrayAdapter<String> userTeamLead = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
 
         // Drop down layout style - list view with radio button
@@ -321,10 +306,23 @@ public class SectionAActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (bi.a1102.isChecked() == true) {
                     bi.fldGrpCVa12.setVisibility(View.VISIBLE);
-                    Clear.clearAllFields(bi.fldGrpCVa12, true);
+
                 } else {
                     bi.fldGrpCVa12.setVisibility(View.GONE);
-                    Clear.clearAllFields(bi.fldGrpCVa12, false);
+                    Clear.clearAllFields(bi.fldGrpCVa12);
+                }
+            }
+        });
+
+        bi.a1103.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (bi.a1103.isChecked() == true) {
+                    bi.fldGrpCVa13.setVisibility(View.VISIBLE);
+
+                } else {
+                    bi.fldGrpCVa13.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.fldGrpCVa13);
                 }
             }
         });
@@ -349,8 +347,9 @@ public class SectionAActivity extends AppCompatActivity {
         MainApp.fc = new FormsContract();
         MainApp.fc.set_UID(MainApp.fc.get_UID());
         MainApp.fc.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.fc.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
-        MainApp.fc.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
         MainApp.fc.setUser(MainApp.userName);
         MainApp.setGPS(this);
 
@@ -368,17 +367,15 @@ public class SectionAActivity extends AppCompatActivity {
 
         json.put("a4", bi.a4.getText().toString());
 
-        json.put("a5", bi.a5.getText().toString());
+        /*json.put("a5", bi.a5.getText().toString());
         json.put("a51", bi.a51.getText().toString());
-        json.put("a52", bi.a52.getText().toString());
+        json.put("a52", bi.a52.getText().toString());*/
 
 //        json.put("a6", usersCode.get(bi.a6.getSelectedItemPosition()));
 //        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
 
 
-        json.put("a6", bi.a6.getSelectedItemPosition());
         json.put("a7", bi.a7.getSelectedItemPosition());
-
 
         json.put("a8", bi.a8.getText().toString());
 
@@ -421,6 +418,10 @@ public class SectionAActivity extends AppCompatActivity {
         json.put("a1212", bi.a1212.isChecked() ? "12" : "-1");
 
         json.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
+
+        json.put("a13", bi.a1301.isChecked() ? "1"
+                : bi.a1302.isChecked() ? "2"
+                : "-1");
 
         MainApp.fc.setsA(String.valueOf(json));
     }
