@@ -151,6 +151,8 @@ public class SyncAllData extends AsyncTask<Void, Integer, String> {
                             .put(jsonTable)
                             .put(jsonSync);
 
+                    Log.d(TAG, "downloadUrl: " + jsonParam);
+
                     wr.writeBytes(String.valueOf(jsonParam));
                     wr.flush();
 
