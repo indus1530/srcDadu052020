@@ -236,7 +236,6 @@ public class ParticipantContract {
         this.sA = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SA);
 
 
-        this.sno = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SNO);
         this.a = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_A);
         this.b = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_B);
         this.c = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_C);
@@ -267,7 +266,6 @@ public class ParticipantContract {
         this.sA = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SA));
 
 
-        this.sno = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SNO));
         this.a = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_A));
         this.b = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_B));
         this.c = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_C));
@@ -299,7 +297,6 @@ public class ParticipantContract {
         json.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
 
         json.put(ParticipantContract.singleParticipant.COLUMN_SA, this.sA == null ? JSONObject.NULL : this.sA);
-        json.put(ParticipantContract.singleParticipant.COLUMN_SNO, this.sno == null ? JSONObject.NULL : this.sno);
         json.put(ParticipantContract.singleParticipant.COLUMN_A, this.a == null ? JSONObject.NULL : this.a);
         json.put(ParticipantContract.singleParticipant.COLUMN_B, this.b == null ? JSONObject.NULL : this.b);
         json.put(ParticipantContract.singleParticipant.COLUMN_C, this.c == null ? JSONObject.NULL : this.c);
@@ -330,7 +327,6 @@ public class ParticipantContract {
         public static final String COLUMN_CSTATUS = "cstatus";
         public static final String COLUMN_CSTATUS88x = "cstatus88x";
 
-        public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_A = "a";
         public static final String COLUMN_B = "b";

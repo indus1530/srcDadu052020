@@ -657,37 +657,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    /*public Collection<FamilyMembersContract> getAllFamilyMembersForms() {
+    public Collection<ParticipantContract> getAllParticipants() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                SingleMember.COLUMN_ID,
-                SingleMember.COLUMN_UID,
-                SingleMember.COLUMN_UUID,
-                SingleMember.COLUMN_FORMDATE,
-                SingleMember.COLUMN_CLUSTERNO,
-                SingleMember.COLUMN_HHNO,
-                SingleMember.COLUMN_SERIAL_NO,
-                SingleMember.COLUMN_NAME,
-                SingleMember.COLUMN_FATHER_NAME,
-                SingleMember.COLUMN_AGE,
-                SingleMember.COLUMN_MONTH_FM,
-                SingleMember.COLUMN_MOTHER_NAME,
-                SingleMember.COLUMN_GENDER,
-                SingleMember.COLUMN_SD,
+                singleParticipant.COLUMN_ID,
+                singleParticipant.COLUMN_UID,
+                singleParticipant.COLUMN_UUID,
+                singleParticipant.COLUMN_FORMDATE,
+                singleParticipant.COLUMN_DEVICEID,
+                singleParticipant.COLUMN_USER,
+                singleParticipant.COLUMN_DEVICETAGID,
+                singleParticipant.COLUMN_SYNCED,
+                singleParticipant.COLUMN_SYNCED_DATE,
+                singleParticipant.COLUMN_CSTATUS,
+                singleParticipant.COLUMN_CSTATUS88x,
+                singleParticipant.COLUMN_SA,
+                singleParticipant.COLUMN_A,
+                singleParticipant.COLUMN_B,
+                singleParticipant.COLUMN_C,
+                singleParticipant.COLUMN_D,
+                singleParticipant.COLUMN_E,
+                singleParticipant.COLUMN_F,
+                singleParticipant.COLUMN_G,
+                singleParticipant.COLUMN_H,
+                singleParticipant.COLUMN_I
         };
-        String whereClause = SingleMember.COLUMN_SYNCED + " is null";
+
+        String whereClause = singleParticipant.COLUMN_SYNCED + " is null";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
-        String orderBy =
-                FormsTable.COLUMN_ID + " ASC";
+        String orderBy = singleParticipant.COLUMN_ID + " ASC";
 
-        Collection<FamilyMembersContract> allFC = new ArrayList<>();
+        Collection<ParticipantContract> allFC = new ArrayList<>();
         try {
             c = db.query(
-                    SingleMember.TABLE_NAME,  // The table to query
+                    singleParticipant.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -696,8 +703,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                FamilyMembersContract fc = new FamilyMembersContract();
-                allFC.add(fc.hydrate(c));
+                ParticipantContract fc = new ParticipantContract();
+                allFC.add(fc.HydrateParticipant(c));
             }
         } finally {
             if (c != null) {
@@ -708,9 +715,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }*/
+    }
 
-    public Collection<FormsContract> checkFormExist() {
+    /*public Collection<FormsContract> checkFormExist() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -765,7 +772,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }
+    }*/
 
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();

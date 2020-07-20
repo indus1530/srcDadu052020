@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.adapter.SyncListAdapter;
 import edu.aku.hassannaqvi.srcDadu052020.adapter.UploadListAdapter;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySyncBinding;
@@ -157,6 +158,22 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     db.getUnsyncedForms(), 0, uploadListAdapter, uploadlist
             ).execute();
 
+
+            Toast.makeText(getApplicationContext(), "Syncing Participansts", Toast.LENGTH_SHORT).show();
+            if (uploadlistActivityCreated) {
+                uploadmodel = new SyncModel();
+                uploadmodel.setstatusID(0);
+                uploadlist.add(uploadmodel);
+            }
+            new SyncAllData(
+                    this,
+                    "Participant",
+                    "updateSyncedForms",
+                    ParticipantContract.class,
+                    MainApp._HOST_URL + ParticipantContract.singleParticipant._URI,
+                    ParticipantContract.singleParticipant.TABLE_NAME,
+                    db.getAllParticipants(), 1, uploadListAdapter, uploadlist
+            ).execute();
 
             /*if (uploadlistActivityCreated) {
                 uploadmodel = new SyncModel();
