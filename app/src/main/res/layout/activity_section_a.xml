@@ -1,6 +1,5 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -18,6 +17,23 @@
         <LinearLayout
             android:id="@+id/GrpName"
             style="@style/vlinearlayout">
+
+            <!-- a1  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpUser"
+                style="@style/cardView">
+
+                <LinearLayout style="@style/hlinearlayout">
+
+                    <TextView
+                        android:id="@+id/txtusername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/GrpName" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
 
             <!-- a1  Input-Numeric   -->
             <androidx.cardview.widget.CardView
@@ -208,99 +224,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- a5  Input   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVa5"
-                style="@style/cardView">
-
-                <LinearLayout style="@style/hlinearlayout">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_a5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_a5"
-                            android:text="@string/a5" />
-
-                        <TextView
-                            android:id="@+id/q_a5"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a5"
-                            android:layout_alignBottom="@id/qtxt_a5"
-                            android:text="@string/Q_a5" />
-
-                    </RelativeLayout>
-
-                    <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                        android:id="@+id/a5"
-                        style="@style/EditTextNum"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:hint="@string/a5"
-                        app:dateFormat="dd-MM-yyyy" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- a6  Input   -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCVa6"
-                style="@style/cardView">
-
-                <LinearLayout style="@style/vlinearlayout">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_a6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_a6"
-                            android:text="@string/a6" />
-
-                        <TextView
-                            android:id="@+id/q_a6"
-                            style="@style/quesNum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a6"
-                            android:layout_alignBottom="@id/qtxt_a6"
-                            android:text="@string/Q_a6" />
-
-                    </RelativeLayout>
-
-                    <!--<EditText
-                        android:id="@+id/a6"
-                        style="@style/EditTextAlpha"
-                        android:hint="@string/a6" />!-->
-
-                    <LinearLayout style="@style/hlinearlayout">
-
-                        <Spinner
-                            android:id="@+id/a6"
-                            style="@style/spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
             <!-- a7  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa7"
@@ -431,8 +354,8 @@
                         style="@style/EditTextNum"
                         android:hint="@string/num"
                         android:maxLength="2"
-                        app:maxValue="30"
-                        app:minValue="1"
+                        app:maxValue="20"
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>
@@ -475,8 +398,8 @@
                         style="@style/EditTextNum"
                         android:hint="@string/num"
                         android:maxLength="2"
-                        app:maxValue="30"
-                        app:minValue="1"
+                        app:maxValue="20"
+                        app:minValue="0"
                         app:type="range" />
 
                 </LinearLayout>
@@ -543,6 +466,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/a1104" />
+
+                        <CheckBox
+                            android:id="@+id/a1105"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/a1105" />
+
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -550,9 +480,7 @@
             <!-- a12  CheckBox   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa12"
-                style="@style/cardView"
-                android:visibility="gone"
-                tools:visibility="visible">
+                style="@style/cardView">
 
                 <LinearLayout style="@style/vlinearlayout">
 
@@ -658,6 +586,60 @@
                             android:text="@string/a1213" />
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- a13  Input-Numeric   -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCVa13"
+                style="@style/cardView">
+
+                <LinearLayout style="@style/vlinearlayout">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom">
+
+                        <TextView
+                            android:id="@+id/qtxt_a13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/q_a13"
+                            android:text="@string/a13" />
+
+                        <TextView
+                            android:id="@+id/q_a13"
+                            style="@style/quesNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/qtxt_a13"
+                            android:layout_alignBottom="@id/qtxt_a13"
+                            android:text="@string/Q_a13" />
+
+                    </RelativeLayout>
+
+                    <RadioGroup
+                        android:id="@+id/a13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/a1301"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/a1302"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/no" />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 

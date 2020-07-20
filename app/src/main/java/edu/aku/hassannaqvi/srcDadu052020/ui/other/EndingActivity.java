@@ -2,12 +2,14 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.other;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.validatorcrawler.aliazaz.Validator;
+import com.validatorcrawler.aliazaz.Clear;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +18,7 @@ import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivityEndingBinding;
+import edu.aku.hassannaqvi.srcDadu052020.validator.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.SUB_INFO_END_FLAG;
 
@@ -32,6 +35,8 @@ public class EndingActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         bi.setCallback(this);
 
+        setupSkips();
+
         boolean check = getIntent().getBooleanExtra("complete", false);
         subInfoEndActivityFlag = getIntent().getBooleanExtra(SUB_INFO_END_FLAG, false);
 
@@ -39,21 +44,28 @@ public class EndingActivity extends AppCompatActivity {
             bi.istatusa.setEnabled(true);
             bi.istatusb.setEnabled(false);
             bi.istatusc.setEnabled(false);
-            bi.istatusd.setEnabled(false);
-            bi.istatuse.setEnabled(false);
-            bi.istatusf.setEnabled(false);
             bi.istatus96.setEnabled(false);
+            bi.istatus96x.setEnabled(false);
         } else {
             bi.istatusa.setEnabled(false);
             bi.istatusb.setEnabled(true);
             bi.istatusc.setEnabled(true);
-            bi.istatusd.setEnabled(true);
-            bi.istatuse.setEnabled(true);
-            bi.istatusf.setEnabled(true);
             bi.istatus96.setEnabled(true);
         }
+    }
 
-//
+    private void setupSkips() {
+        bi.istatus96.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (bi.istatus96.isChecked()) {
+                    bi.istatus96x.setVisibility(View.VISIBLE);
+                } else {
+                    Clear.clearAllFields(bi.istatus96x);
+                    bi.istatus96x.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     public void BtnEnd() {
@@ -73,9 +85,6 @@ public class EndingActivity extends AppCompatActivity {
         String statusValue = bi.istatusa.isChecked() ? "1"
                 : bi.istatusb.isChecked() ? "2"
                 : bi.istatusc.isChecked() ? "3"
-                : bi.istatusd.isChecked() ? "4"
-                : bi.istatuse.isChecked() ? "5"
-                : bi.istatusf.isChecked() ? "6"
                 : bi.istatus96.isChecked() ? "96"
                 : "0";
 
@@ -104,7 +113,8 @@ public class EndingActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.fldGrpEnd);
+        return ValidatorClass.EmptyCheckingContainer(this, bi.fldGrpEnd);
+        //return Validator.emptyCheckingContainer(this, bi.fldGrpEnd);
     }
 
 

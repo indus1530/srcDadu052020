@@ -260,15 +260,13 @@
 
                     </RelativeLayout>
 
-                    <com.edittextpicker.aliazaz.EditTextPicker
+                    <EditText
                         android:id="@+id/e"
                         style="@style/EditTextNum"
                         android:layout_width="match_parent"
                         android:hint="@string/e"
                         android:inputType="number"
                         android:maxLength="2"
-                        app:maxValue="16"
-                        app:minValue="0"
                         app:type="range" />
                 </LinearLayout>
 
@@ -436,8 +434,9 @@
                         android:inputType="number"
                         android:maxLength="2"
                         app:maxValue="42"
-                        app:minValue="0"
+                        app:minValue="2"
                         app:type="range" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

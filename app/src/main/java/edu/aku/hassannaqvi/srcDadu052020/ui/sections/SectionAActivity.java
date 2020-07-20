@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,18 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
-import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
@@ -37,6 +33,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
+import edu.aku.hassannaqvi.srcDadu052020.validator.validator.ValidatorClass;
 
 
 public class SectionAActivity extends AppCompatActivity {
@@ -50,9 +47,10 @@ public class SectionAActivity extends AppCompatActivity {
     public List<String> talukaCode, ucCode, villageCode, usersCode, teamLeadCode;
 
 
-    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
-    String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));
+    /*String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));*/
 
+    private String mLanguageCode = "sd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,31 +60,23 @@ public class SectionAActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
         bi.setCallback(this);
         db = MainApp.appInfo.getDbHelper();
-        //setupListeners();
 
-        bi.a5.setMinDate(date7Months);
+        bi.txtusername.setText(MainApp.userName);
+
+
+        bi.fldGrpCVa12.setVisibility(View.GONE);
+        Clear.clearAllFields(bi.fldGrpCVa12);
+
+        bi.fldGrpCVa13.setVisibility(View.GONE);
+        Clear.clearAllFields(bi.fldGrpCVa13);
+
+        setupListeners();
+
+        /*bi.a5.setMinDate(date7Months);
         bi.a5.setMaxDate(dateToday);
-        bi.a5.setDate(Calendar.getInstance());
+        bi.a5.setDate(Calendar.getInstance());*/
 
         populateSpinner(this);
-
-
-        MainApp.Lang_Choose = 2;
-
-        if (MainApp.Lang_Choose == 1) {
-            changeLanguage(Locale.getDefault().getLanguage());
-        } else {
-            changeLanguage("sd-rPK");
-        }
-
-    }
-
-    private void changeLanguage(String language) {
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
 
@@ -191,14 +181,109 @@ public class SectionAActivity extends AppCompatActivity {
         }
 
         // Creating adapter for spinner
-        ArrayAdapter<String> userAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
+        ArrayAdapter<String> userTeamLead = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, usersName);
 
         // Drop down layout style - list view with radio button
-        userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        userTeamLead.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
         // attaching data adapter to spinner
-        bi.a6.setAdapter(userAdapter);
+        bi.a7.setAdapter(userTeamLead);
+
+    }
+
+
+    public void populateSpinner_javed(final Context context) {
+        // Spinner Drop down elements
+        talukaName = new ArrayList<>();
+        talukaCode = new ArrayList<>();
+
+
+        talukaName.add("....");
+        talukaCode.add("....");
+
+        talukaName.add(1, "Johi");
+
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, talukaName);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        // attaching data adapter to spinner
+        bi.a1.setAdapter(dataAdapter);
+
+
+        bi.a1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //MainApp.talukaCode = talukaCode.get(position);
+
+                ucCode = new ArrayList<>();
+                ucName = new ArrayList<>();
+
+
+                ucCode.add("....");
+                ucName.add("....");
+
+                ucName.add(1, "Johi Town UC-1");
+                ucName.add(2, "Johi Town UC-2");
+
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, ucName);
+
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                bi.a2.setAdapter(dataAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        bi.a2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //MainApp.talukaCode = talukaCode.get(position);
+
+                villageCode = new ArrayList<>();
+                villageName = new ArrayList<>();
+
+
+                villageCode.add("....");
+                villageName.add("....");
+
+                villageName.add(1, "Ward No.01");
+                villageName.add(2, "Ward No.02");
+                villageName.add(3, "Ward No.03");
+                villageName.add(4, "Ward No.04");
+
+
+                ArrayAdapter<String> psuAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, villageName);
+
+                psuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                bi.a3.setAdapter(psuAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        // Spinner Drop down elements
+        usersName = new ArrayList<>();
+        usersCode = new ArrayList<>();
+
+        usersName.add("....");
+        usersCode.add("....");
+
+
+        usersName.add(1, "admin1");
 
 
         // Creating adapter for spinner
@@ -221,10 +306,23 @@ public class SectionAActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (bi.a1102.isChecked() == true) {
                     bi.fldGrpCVa12.setVisibility(View.VISIBLE);
-                    Clear.clearAllFields(bi.fldGrpCVa12, true);
+
                 } else {
                     bi.fldGrpCVa12.setVisibility(View.GONE);
-                    Clear.clearAllFields(bi.fldGrpCVa12, false);
+                    Clear.clearAllFields(bi.fldGrpCVa12);
+                }
+            }
+        });
+
+        bi.a1103.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (bi.a1103.isChecked() == true) {
+                    bi.fldGrpCVa13.setVisibility(View.VISIBLE);
+
+                } else {
+                    bi.fldGrpCVa13.setVisibility(View.GONE);
+                    Clear.clearAllFields(bi.fldGrpCVa13);
                 }
             }
         });
@@ -249,26 +347,35 @@ public class SectionAActivity extends AppCompatActivity {
         MainApp.fc = new FormsContract();
         MainApp.fc.set_UID(MainApp.fc.get_UID());
         MainApp.fc.setDeviceID(MainApp.appInfo.getDeviceID());
+        MainApp.fc.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
-        MainApp.fc.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
         MainApp.fc.setUser(MainApp.userName);
         MainApp.setGPS(this);
 
         JSONObject json = new JSONObject();
 
-        json.put("a1", talukaCode.get(bi.a1.getSelectedItemPosition()));
+//        json.put("a1", talukaCode.get(bi.a1.getSelectedItemPosition()));
+//        json.put("a2", ucCode.get(bi.a2.getSelectedItemPosition()));
+//        json.put("a3", villageCode.get(bi.a3.getSelectedItemPosition()));
 
-        json.put("a2", ucCode.get(bi.a2.getSelectedItemPosition()));
 
-        json.put("a3", villageCode.get(bi.a3.getSelectedItemPosition()));
+        json.put("a1", bi.a1.getSelectedItem());
+        json.put("a2", bi.a2.getSelectedItemPosition());
+        json.put("a3", bi.a3.getSelectedItemPosition());
+
 
         json.put("a4", bi.a4.getText().toString());
 
-        json.put("a5", bi.a5.getText().toString());
+        /*json.put("a5", bi.a5.getText().toString());
+        json.put("a51", bi.a51.getText().toString());
+        json.put("a52", bi.a52.getText().toString());*/
 
-        json.put("a6", usersCode.get(bi.a6.getSelectedItemPosition()));
+//        json.put("a6", usersCode.get(bi.a6.getSelectedItemPosition()));
+//        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
 
-        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
+
+        json.put("a7", bi.a7.getSelectedItemPosition());
 
         json.put("a8", bi.a8.getText().toString());
 
@@ -312,6 +419,10 @@ public class SectionAActivity extends AppCompatActivity {
 
         json.put("a1213", bi.a1213.isChecked() ? "13" : "-1");
 
+        json.put("a13", bi.a1301.isChecked() ? "1"
+                : bi.a1302.isChecked() ? "2"
+                : "-1");
+
         MainApp.fc.setsA(String.valueOf(json));
     }
 
@@ -325,7 +436,19 @@ public class SectionAActivity extends AppCompatActivity {
             }
         }
 
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+
+        if (bi.a9.getText().toString().equals("0") && bi.a10.getText().toString().equals("0")) {
+            Toast.makeText(this, "No of married participants and unmarried partcipants both cannot be zero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        /*if (Integer.valueOf(bi.a51.getText().toString()) > Integer.valueOf(bi.a52.getText().toString())) {
+            Toast.makeText(this, "Session starting time cannot be greater than session end time", Toast.LENGTH_SHORT).show();
+            return false;
+        }*/
+
+        return ValidatorClass.EmptyCheckingContainer(this, bi.GrpName);
     }
 
     public void BtnContinue() {

@@ -53,9 +53,6 @@
                     </RelativeLayout>
 
                     <!--Status-->
-                    <TextView
-                        style="@style/info"
-                        android:text="@string/istatush" />
 
                     <RadioGroup
                         android:id="@+id/istatus"
@@ -81,24 +78,6 @@
                             android:text="@string/istatusc" />
 
                         <RadioButton
-                            android:id="@+id/istatusd"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/istatusd" />
-
-                        <RadioButton
-                            android:id="@+id/istatuse"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/istatuse" />
-
-                        <RadioButton
-                            android:id="@+id/istatusf"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/istatusf" />
-
-                        <RadioButton
                             android:id="@+id/istatus96"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -109,9 +88,7 @@
                             android:id="@+id/istatus96x"
                             style="@style/EditTextAlpha"
                             android:hint="@string/specify"
-                            android:maxLength="40"
-                            android:text='@{istatus96.checked? istatus96x.getText().toString(): ""}'
-                            android:visibility='@{istatus96.checked? View.VISIBLE : View.GONE}' />
+                            android:maxLength="40" />
 
                     </RadioGroup>
 
