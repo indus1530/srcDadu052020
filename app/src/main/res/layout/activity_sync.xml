@@ -82,7 +82,10 @@
                     android:padding="16dp"
                     android:text="Upload Photos"
                     android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

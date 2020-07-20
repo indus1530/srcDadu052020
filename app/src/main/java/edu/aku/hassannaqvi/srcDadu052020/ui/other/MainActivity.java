@@ -51,7 +51,6 @@ import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sections.SectionAActivity;
-import edu.aku.hassannaqvi.srcDadu052020.ui.sections.SectionParticipantsSRC;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
 import edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable;
 
@@ -176,9 +175,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.formA:
                 oF = new Intent(this, SectionAActivity.class);
                 break;
-            case R.id.formB:
+            /*case R.id.formB:
                 oF = new Intent(this, SectionParticipantsSRC.class);
-                break;
+                break;*/
+
+
 /*            case R.id.formB:
                 oF = new Intent(this, SectionBActivity.class);
                 break;

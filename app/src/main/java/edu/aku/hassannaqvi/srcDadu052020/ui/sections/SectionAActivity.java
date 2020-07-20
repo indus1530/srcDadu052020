@@ -350,6 +350,14 @@ public class SectionAActivity extends AppCompatActivity {
         MainApp.fc.setAppversion(MainApp.appInfo.getAppVersion());
         MainApp.fc.setDevicetagID(MainApp.appInfo.getTagName());
         MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.fc.setTaluka(String.valueOf(bi.a1.getSelectedItemPosition()));
+        MainApp.fc.setUc(String.valueOf(bi.a2.getSelectedItemPosition()));
+        MainApp.fc.setVillage(String.valueOf(bi.a3.getSelectedItemPosition()));
+
+        MainApp.talukacode = String.valueOf(bi.a1.getSelectedItemPosition());
+        MainApp.uccode = String.valueOf(bi.a2.getSelectedItemPosition());
+        MainApp.villagecode = String.valueOf(bi.a3.getSelectedItemPosition());
+
         MainApp.fc.setUser(MainApp.userName);
         MainApp.setGPS(this);
 
@@ -360,9 +368,9 @@ public class SectionAActivity extends AppCompatActivity {
 //        json.put("a3", villageCode.get(bi.a3.getSelectedItemPosition()));
 
 
-        json.put("a1", bi.a1.getSelectedItem());
-        json.put("a2", bi.a2.getSelectedItemPosition());
-        json.put("a3", bi.a3.getSelectedItemPosition());
+        //json.put("a1", bi.a1.getSelectedItem());
+        //json.put("a2", bi.a2.getSelectedItemPosition());
+        //json.put("a3", bi.a3.getSelectedItemPosition());
 
 
         json.put("a4", bi.a4.getText().toString());

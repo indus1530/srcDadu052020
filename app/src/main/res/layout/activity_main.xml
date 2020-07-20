@@ -579,6 +579,7 @@
                     android:elevation="@dimen/cardview_default_elevation"
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick='openForm'
+                    android:visibility="gone"
                     app:cardCornerRadius="@dimen/cardview_default_radius">
 
                     <RelativeLayout
@@ -619,25 +620,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="openB"
-                            android:text="Open Section B (Mothers's Info)" />
+                            android:text="Open Section B (Mothers's Info)"
+                            android:visibility="gone" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="openC"
-                            android:text="Open Section C (Children's Info)" />
+                            android:text="Open Section C (Children's Info)"
+                            android:visibility="gone" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="openD"
-                            android:text="Open Section D (Deceased)" />
+                            android:text="Open Section D (Deceased)"
+                            android:visibility="gone" />
 
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="openE"
-                            android:text="Open Section D (Problems)" />
+                            android:text="Open Section D (Problems)"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 

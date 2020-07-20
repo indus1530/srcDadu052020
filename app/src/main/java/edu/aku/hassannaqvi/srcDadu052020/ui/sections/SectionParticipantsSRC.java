@@ -156,6 +156,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         pc.setDeviceId(MainApp.appInfo.getDeviceID());
         pc.setDevicetagID(MainApp.appInfo.getTagName());
         pc.setFormDate(MainApp.fc.getFormDate());
+        pc.setTaluka(MainApp.talukacode);
+        pc.setUc(MainApp.uccode);
+        pc.setVillage(MainApp.villagecode);
         pc.setUser(MainApp.userName);
         pc.setSno(String.valueOf(counter));
         MainApp.setGPS(this);
@@ -243,6 +246,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             if (counter > MainApp.No_participants) {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
+                bi.btnEnd.setVisibility(View.VISIBLE);
 
                 iscomplete = true;
 
@@ -273,6 +277,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 if (counter >= MainApp.No_participants) {
                     bi.btnContinue.setVisibility(View.GONE);
                     bi.btnAddMore.setVisibility(View.VISIBLE);
+                    bi.btnEnd.setVisibility(View.VISIBLE);
 
                     iscomplete = true;
 

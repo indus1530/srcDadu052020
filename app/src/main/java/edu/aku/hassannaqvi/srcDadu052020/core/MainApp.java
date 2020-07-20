@@ -86,6 +86,10 @@ public class MainApp extends Application {
     protected static LocationManager locationManager;
     public static int No_participants = 0;
 
+    public static String talukacode;
+    public static String uccode;
+    public static String villagecode;
+
     public static int Lang_Choose = 1;
 
     public static void setItemClick(OnItemClick itemClick) {

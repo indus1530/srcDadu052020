@@ -20,7 +20,10 @@ public class FormsContract extends LiveData<FormsContract> {
     private String _ID = "";
     private String _UID = "";
     private String formType = "";
-    private String formDate = ""; // Date
+    private String sysdate = ""; // Date
+    private String taluka = ""; // Date
+    private String uc = ""; // Date
+    private String village = ""; // Date
     private String user = ""; // Interviewer
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
@@ -37,7 +40,6 @@ public class FormsContract extends LiveData<FormsContract> {
     private String appversion = "";
     private String clusterCode = "";
     private String hhno = "";
-    private String sInfo = "";
     private String fStatus = "";
     private String fstatus88x = ""; // Interview Status
 
@@ -50,13 +52,15 @@ public class FormsContract extends LiveData<FormsContract> {
     public FormsContract() {
     }
 
-    public String getsInfo() {
-        return sInfo;
+
+    public String getTaluka() {
+        return taluka;
     }
 
-    public void setsInfo(String sInfo) {
-        this.sInfo = sInfo;
+    public void setTaluka(String taluka) {
+        this.taluka = taluka;
     }
+
 
     public String getfStatus() {
         return fStatus;
@@ -75,6 +79,22 @@ public class FormsContract extends LiveData<FormsContract> {
         this.sA = sA;
     }
 
+
+    public String getUc() {
+        return uc;
+    }
+
+    public void setUc(String uc) {
+        this.uc = uc;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
 
     public String getsE() {
         return sE;
@@ -127,7 +147,10 @@ public class FormsContract extends LiveData<FormsContract> {
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
-        this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
+        this.sysdate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
+        this.taluka = jsonObject.getString(FormsTable.COLUMN_TALUKA);
+        this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
+        this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
@@ -143,11 +166,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
-        this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
-        this.clusterCode = jsonObject.getString(FormsTable.COLUMN_CLUSTERCODE);
         this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
-        this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
-        this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
         this.fStatus = jsonObject.getString(FormsTable.COLUMN_FSTATUS);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
 
@@ -163,7 +182,10 @@ public class FormsContract extends LiveData<FormsContract> {
     public FormsContract Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
+        this.sysdate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
+        this.taluka = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_TALUKA));
+        this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC));
+        this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
@@ -177,10 +199,8 @@ public class FormsContract extends LiveData<FormsContract> {
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
-        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
-        this.clusterCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CLUSTERCODE));
+
         this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
-        this.sInfo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SINFO));
         this.fStatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
 
@@ -199,7 +219,10 @@ public class FormsContract extends LiveData<FormsContract> {
 
         json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
-        json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(FormsTable.COLUMN_FORMDATE, this.sysdate == null ? JSONObject.NULL : this.sysdate);
+        json.put(FormsTable.COLUMN_TALUKA, this.taluka == null ? JSONObject.NULL : this.taluka);
+        json.put(FormsTable.COLUMN_UC, this.uc == null ? JSONObject.NULL : this.uc);
+        json.put(FormsTable.COLUMN_VILLAGE, this.village == null ? JSONObject.NULL : this.village);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_FSTATUS, this.fStatus == null ? JSONObject.NULL : this.fStatus);
@@ -207,10 +230,6 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_FSTATUS88x, this.fstatus88x == null ? JSONObject.NULL : this.fstatus88x);
         json.put(FormsTable.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
-
-        if (!this.sInfo.equals("")) {
-            json.put(FormsTable.COLUMN_SINFO, new JSONObject(this.sInfo));
-        }
 
 
         if (!this.sA.equals("")) {
@@ -241,8 +260,6 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
-        json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
-        json.put(FormsTable.COLUMN_CLUSTERCODE, this.clusterCode == null ? JSONObject.NULL : this.clusterCode);
         json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
 
         return json;
@@ -277,11 +294,11 @@ public class FormsContract extends LiveData<FormsContract> {
     }
 
     public String getFormDate() {
-        return formDate;
+        return sysdate;
     }
 
     public void setFormDate(String formDate) {
-        this.formDate = formDate;
+        this.sysdate = formDate;
     }
 
     public String getUser() {
@@ -413,8 +430,10 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
-        public static final String COLUMN_FORMDATE = "formdate";
-        public static final String COLUMN_FORMTYPE = "formtype";
+        public static final String COLUMN_FORMDATE = "sysdate";
+        public static final String COLUMN_TALUKA = "taluka";
+        public static final String COLUMN_UC = "uc";
+        public static final String COLUMN_VILLAGE = "village";
         public static final String COLUMN_USER = "username";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS88x = "istatus88x";
@@ -431,9 +450,7 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_CLUSTERCODE = "cluster_code";
         public static final String COLUMN_HHNO = "hhno";
-        public static final String COLUMN_SINFO = "sInfo";
         public static final String COLUMN_SA = "sA";
         public static final String COLUMN_SE = "sE";
         public static final String COLUMN_SM = "sM";

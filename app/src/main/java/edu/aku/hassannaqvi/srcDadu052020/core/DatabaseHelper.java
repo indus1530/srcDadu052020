@@ -397,6 +397,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_PROJECT_NAME, fc.getProjectName());
         values.put(FormsTable.COLUMN_UID, fc.get_UID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
+        values.put(FormsTable.COLUMN_TALUKA, fc.getTaluka());
+        values.put(FormsTable.COLUMN_UC, fc.getUc());
+        values.put(FormsTable.COLUMN_VILLAGE, fc.getVillage());
         values.put(FormsTable.COLUMN_LUID, fc.getLuid());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -404,7 +407,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FSTATUS, fc.getfStatus());
         values.put(FormsTable.COLUMN_FSTATUS88x, fc.getFstatus88x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingdatetime());
-        values.put(FormsTable.COLUMN_SINFO, fc.getsInfo());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
         values.put(FormsTable.COLUMN_SE, fc.getsE());
         values.put(FormsTable.COLUMN_SM, fc.getsM());
@@ -417,9 +419,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
         values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(FormsTable.COLUMN_APPVERSION, fc.getAppversion());
-        values.put(FormsTable.COLUMN_CLUSTERCODE, fc.getClusterCode());
         values.put(FormsTable.COLUMN_HHNO, fc.getHhno());
-        values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -510,6 +510,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(SingleParticipant.COLUMN_UUID, partContract.get_UUID());
         values.put(SingleParticipant.COLUMN_DEVICEID, partContract.getDeviceId());
         values.put(SingleParticipant.COLUMN_FORMDATE, partContract.getFormDate());
+        values.put(SingleParticipant.COLUMN_TALUKA, partContract.getTaluka());
+        values.put(SingleParticipant.COLUMN_UC, partContract.getUc());
+        values.put(SingleParticipant.COLUMN_VILLAGE, partContract.getVillage());
+        values.put(SingleParticipant.COLUMN_SNO, partContract.getSno());
         values.put(SingleParticipant.COLUMN_UID, partContract.getUID());
         values.put(SingleParticipant.COLUMN_CSTATUS, partContract.getCstatus());
         values.put(SingleParticipant.COLUMN_CSTATUS88x, partContract.getCstatus88x());
@@ -520,15 +524,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.put(SingleParticipant.COLUMN_SA, partContract.getsA());
 
-        values.put(SingleParticipant.COLUMN_A, partContract.getA());
-        values.put(SingleParticipant.COLUMN_B, partContract.getB());
-        values.put(SingleParticipant.COLUMN_C, partContract.getC());
-        values.put(SingleParticipant.COLUMN_D, partContract.getD());
-        values.put(SingleParticipant.COLUMN_E, partContract.getE());
-        values.put(SingleParticipant.COLUMN_F, partContract.getF());
-        values.put(SingleParticipant.COLUMN_G, partContract.getG());
-        values.put(SingleParticipant.COLUMN_H, partContract.getH());
-        values.put(SingleParticipant.COLUMN_I, partContract.getI());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -610,7 +605,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_FSTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -619,9 +613,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
-                FormsTable.COLUMN_CLUSTERCODE,
                 FormsTable.COLUMN_HHNO,
-                FormsTable.COLUMN_FORMTYPE,
 
         };
         String whereClause = null;
@@ -666,6 +658,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SingleParticipant.COLUMN_UID,
                 SingleParticipant.COLUMN_UUID,
                 SingleParticipant.COLUMN_FORMDATE,
+                SingleParticipant.COLUMN_TALUKA,
+                SingleParticipant.COLUMN_UC,
+                SingleParticipant.COLUMN_SNO,
+                SingleParticipant.COLUMN_VILLAGE,
                 SingleParticipant.COLUMN_DEVICEID,
                 SingleParticipant.COLUMN_USER,
                 SingleParticipant.COLUMN_DEVICETAGID,
@@ -673,16 +669,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 SingleParticipant.COLUMN_SYNCED_DATE,
                 SingleParticipant.COLUMN_CSTATUS,
                 SingleParticipant.COLUMN_CSTATUS88x,
-                SingleParticipant.COLUMN_SA,
-                SingleParticipant.COLUMN_A,
-                SingleParticipant.COLUMN_B,
-                SingleParticipant.COLUMN_C,
-                SingleParticipant.COLUMN_D,
-                SingleParticipant.COLUMN_E,
-                SingleParticipant.COLUMN_F,
-                SingleParticipant.COLUMN_G,
-                SingleParticipant.COLUMN_H,
-                SingleParticipant.COLUMN_I
+                SingleParticipant.COLUMN_SA
         };
 
         String whereClause = SingleParticipant.COLUMN_SYNCED + " is null OR " + SingleParticipant.COLUMN_SYNCED + "=''";
@@ -782,6 +769,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable._ID,
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_TALUKA,
+                FormsTable.COLUMN_UC,
+                FormsTable.COLUMN_VILLAGE,
                 FormsTable.COLUMN_USER,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_ISTATUS88x,
@@ -789,7 +779,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FSTATUS88x,
                 FormsTable.COLUMN_LUID,
                 FormsTable.COLUMN_ENDINGDATETIME,
-                FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_SE,
                 FormsTable.COLUMN_SM,
@@ -802,9 +791,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
-                FormsTable.COLUMN_CLUSTERCODE,
-                FormsTable.COLUMN_HHNO,
-                FormsTable.COLUMN_FORMTYPE
+                FormsTable.COLUMN_HHNO
         };
 
 
@@ -1419,7 +1406,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FSTATUS88x,
                 FormsTable.COLUMN_LUID,
                 FormsTable.COLUMN_ENDINGDATETIME,
-                FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SE,
                 FormsTable.COLUMN_SM,
                 FormsTable.COLUMN_SN,
@@ -1431,13 +1417,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_APPVERSION,
-                FormsTable.COLUMN_CLUSTERCODE,
-                FormsTable.COLUMN_HHNO,
-                FormsTable.COLUMN_FORMTYPE
+                FormsTable.COLUMN_HHNO
         };
 
 //        String whereClause = "(" + FormsTable.COLUMN_ISTATUS + " is null OR " + FormsTable.COLUMN_ISTATUS + "='') AND " + FormsTable.COLUMN_CLUSTERCODE + "=? AND " + FormsTable.COLUMN_HHNO + "=?";
-        String whereClause = FormsTable.COLUMN_CLUSTERCODE + "=? AND " + FormsTable.COLUMN_HHNO + "=?";
+        String whereClause = FormsTable.COLUMN_HHNO + "=? AND " + FormsTable.COLUMN_HHNO + "=?";
         String[] whereArgs = {clusterCode, hhNo};
         String groupBy = null;
         String having = null;
