@@ -220,61 +220,61 @@ public class ParticipantContract {
 
     public ParticipantContract Sync(JSONObject jsonObject) throws JSONException {
 
-        this._ID = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_ID);
-        this.deviceId = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_DEVICEID);
-        this._UUID = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_UUID);
-        this.UID = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_UID);
-        this.formDate = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_FORMDATE);
-        this.user = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_USER);
-        this.devicetagID = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_DEVICETAGID);
-        this.synced = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SYNCED);
-        this.synced_date = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE);
-        this.cstatus = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_CSTATUS);
-        this.cstatus88x = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x);
+        this._ID = jsonObject.getString(SingleParticipant.COLUMN_ID);
+        this.deviceId = jsonObject.getString(SingleParticipant.COLUMN_DEVICEID);
+        this._UUID = jsonObject.getString(SingleParticipant.COLUMN_UUID);
+        this.UID = jsonObject.getString(SingleParticipant.COLUMN_UID);
+        this.formDate = jsonObject.getString(SingleParticipant.COLUMN_FORMDATE);
+        this.user = jsonObject.getString(SingleParticipant.COLUMN_USER);
+        this.devicetagID = jsonObject.getString(SingleParticipant.COLUMN_DEVICETAGID);
+        this.synced = jsonObject.getString(SingleParticipant.COLUMN_SYNCED);
+        this.synced_date = jsonObject.getString(SingleParticipant.COLUMN_SYNCED_DATE);
+        this.cstatus = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS);
+        this.cstatus88x = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS88x);
 
 
-        this.sA = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_SA);
+        this.sA = jsonObject.getString(SingleParticipant.COLUMN_SA);
 
 
-        this.a = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_A);
-        this.b = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_B);
-        this.c = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_C);
-        this.d = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_D);
-        this.e = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_E);
-        this.f = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_F);
-        this.g = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_G);
-        this.h = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_H);
-        this.i = jsonObject.getString(ParticipantContract.singleParticipant.COLUMN_I);
+        this.a = jsonObject.getString(SingleParticipant.COLUMN_A);
+        this.b = jsonObject.getString(SingleParticipant.COLUMN_B);
+        this.c = jsonObject.getString(SingleParticipant.COLUMN_C);
+        this.d = jsonObject.getString(SingleParticipant.COLUMN_D);
+        this.e = jsonObject.getString(SingleParticipant.COLUMN_E);
+        this.f = jsonObject.getString(SingleParticipant.COLUMN_F);
+        this.g = jsonObject.getString(SingleParticipant.COLUMN_G);
+        this.h = jsonObject.getString(SingleParticipant.COLUMN_H);
+        this.i = jsonObject.getString(SingleParticipant.COLUMN_I);
 
         return this;
     }
 
     public ParticipantContract HydrateParticipant(Cursor cursor) {
 
-        this._ID = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_ID));
-        this._UUID = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_UUID));
-        this.UID = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_UID));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_DEVICEID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_FORMDATE));
-        this.user = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_USER));
-        this.devicetagID = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_DEVICETAGID));
-        this.synced = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SYNCED));
-        this.synced_date = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE));
-        this.cstatus = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_CSTATUS));
-        this.cstatus88x = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x));
+        this._ID = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_ID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_UUID));
+        this.UID = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_UID));
+        this.deviceId = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_DEVICEID));
+        this.formDate = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_FORMDATE));
+        this.user = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_USER));
+        this.devicetagID = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_DEVICETAGID));
+        this.synced = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SYNCED));
+        this.synced_date = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SYNCED_DATE));
+        this.cstatus = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS));
+        this.cstatus88x = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS88x));
 
-        this.sA = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_SA));
+        this.sA = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SA));
 
 
-        this.a = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_A));
-        this.b = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_B));
-        this.c = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_C));
-        this.d = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_D));
-        this.e = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_E));
-        this.f = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_F));
-        this.g = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_G));
-        this.h = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_H));
-        this.i = cursor.getString(cursor.getColumnIndex(ParticipantContract.singleParticipant.COLUMN_I));
+        this.a = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_A));
+        this.b = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_B));
+        this.c = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_C));
+        this.d = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_D));
+        this.e = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_E));
+        this.f = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_F));
+        this.g = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_G));
+        this.h = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_H));
+        this.i = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_I));
 
         return this;
     }
@@ -284,34 +284,34 @@ public class ParticipantContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(ParticipantContract.singleParticipant.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
-        json.put(ParticipantContract.singleParticipant.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
-        json.put(ParticipantContract.singleParticipant.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
-        json.put(ParticipantContract.singleParticipant.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
-        json.put(ParticipantContract.singleParticipant.COLUMN_UID, this.UID == null ? JSONObject.NULL : this.UID);
-        json.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
-        json.put(ParticipantContract.singleParticipant.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(ParticipantContract.singleParticipant.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
-        json.put(ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
-        json.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
-        json.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
+        json.put(SingleParticipant.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(SingleParticipant.COLUMN_DEVICEID, this.deviceId == null ? JSONObject.NULL : this.deviceId);
+        json.put(SingleParticipant.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(SingleParticipant.COLUMN_UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
+        json.put(SingleParticipant.COLUMN_UID, this.UID == null ? JSONObject.NULL : this.UID);
+        json.put(SingleParticipant.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(SingleParticipant.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(SingleParticipant.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(SingleParticipant.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
+        json.put(SingleParticipant.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
+        json.put(SingleParticipant.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
 
-        json.put(ParticipantContract.singleParticipant.COLUMN_SA, this.sA == null ? JSONObject.NULL : this.sA);
-        json.put(ParticipantContract.singleParticipant.COLUMN_A, this.a == null ? JSONObject.NULL : this.a);
-        json.put(ParticipantContract.singleParticipant.COLUMN_B, this.b == null ? JSONObject.NULL : this.b);
-        json.put(ParticipantContract.singleParticipant.COLUMN_C, this.c == null ? JSONObject.NULL : this.c);
-        json.put(ParticipantContract.singleParticipant.COLUMN_D, this.d == null ? JSONObject.NULL : this.d);
-        json.put(ParticipantContract.singleParticipant.COLUMN_E, this.e == null ? JSONObject.NULL : this.e);
-        json.put(ParticipantContract.singleParticipant.COLUMN_F, this.f == null ? JSONObject.NULL : this.f);
-        json.put(ParticipantContract.singleParticipant.COLUMN_G, this.g == null ? JSONObject.NULL : this.g);
-        json.put(ParticipantContract.singleParticipant.COLUMN_H, this.h == null ? JSONObject.NULL : this.h);
-        json.put(ParticipantContract.singleParticipant.COLUMN_I, this.i == null ? JSONObject.NULL : this.i);
+        json.put(SingleParticipant.COLUMN_SA, this.sA == null ? JSONObject.NULL : this.sA);
+        json.put(SingleParticipant.COLUMN_A, this.a == null ? JSONObject.NULL : this.a);
+        json.put(SingleParticipant.COLUMN_B, this.b == null ? JSONObject.NULL : this.b);
+        json.put(SingleParticipant.COLUMN_C, this.c == null ? JSONObject.NULL : this.c);
+        json.put(SingleParticipant.COLUMN_D, this.d == null ? JSONObject.NULL : this.d);
+        json.put(SingleParticipant.COLUMN_E, this.e == null ? JSONObject.NULL : this.e);
+        json.put(SingleParticipant.COLUMN_F, this.f == null ? JSONObject.NULL : this.f);
+        json.put(SingleParticipant.COLUMN_G, this.g == null ? JSONObject.NULL : this.g);
+        json.put(SingleParticipant.COLUMN_H, this.h == null ? JSONObject.NULL : this.h);
+        json.put(SingleParticipant.COLUMN_I, this.i == null ? JSONObject.NULL : this.i);
 
         return json;
     }
 
 
-    public static abstract class singleParticipant implements BaseColumns {
+    public static abstract class SingleParticipant implements BaseColumns {
 
         public static final String TABLE_NAME = "participant";
 

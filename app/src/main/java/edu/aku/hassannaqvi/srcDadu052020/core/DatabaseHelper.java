@@ -26,7 +26,7 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.BLRandomContract.SingleRandom
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract.singleParticipant;
+import edu.aku.hassannaqvi.srcDadu052020.contracts.ParticipantContract.SingleParticipant;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.TalukasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UCsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.UsersContract;
@@ -507,33 +507,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
 
-        values.put(ParticipantContract.singleParticipant.COLUMN_UUID, partContract.get_UUID());
-        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICEID, partContract.getDeviceId());
-        values.put(ParticipantContract.singleParticipant.COLUMN_FORMDATE, partContract.getFormDate());
-        values.put(ParticipantContract.singleParticipant.COLUMN_UID, partContract.getUID());
-        values.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS, partContract.getCstatus());
-        values.put(ParticipantContract.singleParticipant.COLUMN_CSTATUS88x, partContract.getCstatus88x());
-        values.put(ParticipantContract.singleParticipant.COLUMN_DEVICETAGID, partContract.getDevicetagID());
-        values.put(ParticipantContract.singleParticipant.COLUMN_USER, partContract.getUser());
-        values.put(ParticipantContract.singleParticipant.COLUMN_SYNCED, partContract.getSynced());
-        values.put(ParticipantContract.singleParticipant.COLUMN_SYNCED_DATE, partContract.getSynced_date());
+        values.put(SingleParticipant.COLUMN_UUID, partContract.get_UUID());
+        values.put(SingleParticipant.COLUMN_DEVICEID, partContract.getDeviceId());
+        values.put(SingleParticipant.COLUMN_FORMDATE, partContract.getFormDate());
+        values.put(SingleParticipant.COLUMN_UID, partContract.getUID());
+        values.put(SingleParticipant.COLUMN_CSTATUS, partContract.getCstatus());
+        values.put(SingleParticipant.COLUMN_CSTATUS88x, partContract.getCstatus88x());
+        values.put(SingleParticipant.COLUMN_DEVICETAGID, partContract.getDevicetagID());
+        values.put(SingleParticipant.COLUMN_USER, partContract.getUser());
+        values.put(SingleParticipant.COLUMN_SYNCED, partContract.getSynced());
+        values.put(SingleParticipant.COLUMN_SYNCED_DATE, partContract.getSynced_date());
 
-        values.put(ParticipantContract.singleParticipant.COLUMN_SA, partContract.getsA());
+        values.put(SingleParticipant.COLUMN_SA, partContract.getsA());
 
-        values.put(ParticipantContract.singleParticipant.COLUMN_A, partContract.getA());
-        values.put(ParticipantContract.singleParticipant.COLUMN_B, partContract.getB());
-        values.put(ParticipantContract.singleParticipant.COLUMN_C, partContract.getC());
-        values.put(ParticipantContract.singleParticipant.COLUMN_D, partContract.getD());
-        values.put(ParticipantContract.singleParticipant.COLUMN_E, partContract.getE());
-        values.put(ParticipantContract.singleParticipant.COLUMN_F, partContract.getF());
-        values.put(ParticipantContract.singleParticipant.COLUMN_G, partContract.getG());
-        values.put(ParticipantContract.singleParticipant.COLUMN_H, partContract.getH());
-        values.put(ParticipantContract.singleParticipant.COLUMN_I, partContract.getI());
+        values.put(SingleParticipant.COLUMN_A, partContract.getA());
+        values.put(SingleParticipant.COLUMN_B, partContract.getB());
+        values.put(SingleParticipant.COLUMN_C, partContract.getC());
+        values.put(SingleParticipant.COLUMN_D, partContract.getD());
+        values.put(SingleParticipant.COLUMN_E, partContract.getE());
+        values.put(SingleParticipant.COLUMN_F, partContract.getF());
+        values.put(SingleParticipant.COLUMN_G, partContract.getG());
+        values.put(SingleParticipant.COLUMN_H, partContract.getH());
+        values.put(SingleParticipant.COLUMN_I, partContract.getI());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                ParticipantContract.singleParticipant.TABLE_NAME,
+                SingleParticipant.TABLE_NAME,
                 null,
                 values);
         return newRowId;
@@ -662,40 +662,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                singleParticipant.COLUMN_ID,
-                singleParticipant.COLUMN_UID,
-                singleParticipant.COLUMN_UUID,
-                singleParticipant.COLUMN_FORMDATE,
-                singleParticipant.COLUMN_DEVICEID,
-                singleParticipant.COLUMN_USER,
-                singleParticipant.COLUMN_DEVICETAGID,
-                singleParticipant.COLUMN_SYNCED,
-                singleParticipant.COLUMN_SYNCED_DATE,
-                singleParticipant.COLUMN_CSTATUS,
-                singleParticipant.COLUMN_CSTATUS88x,
-                singleParticipant.COLUMN_SA,
-                singleParticipant.COLUMN_A,
-                singleParticipant.COLUMN_B,
-                singleParticipant.COLUMN_C,
-                singleParticipant.COLUMN_D,
-                singleParticipant.COLUMN_E,
-                singleParticipant.COLUMN_F,
-                singleParticipant.COLUMN_G,
-                singleParticipant.COLUMN_H,
-                singleParticipant.COLUMN_I
+                SingleParticipant.COLUMN_ID,
+                SingleParticipant.COLUMN_UID,
+                SingleParticipant.COLUMN_UUID,
+                SingleParticipant.COLUMN_FORMDATE,
+                SingleParticipant.COLUMN_DEVICEID,
+                SingleParticipant.COLUMN_USER,
+                SingleParticipant.COLUMN_DEVICETAGID,
+                SingleParticipant.COLUMN_SYNCED,
+                SingleParticipant.COLUMN_SYNCED_DATE,
+                SingleParticipant.COLUMN_CSTATUS,
+                SingleParticipant.COLUMN_CSTATUS88x,
+                SingleParticipant.COLUMN_SA,
+                SingleParticipant.COLUMN_A,
+                SingleParticipant.COLUMN_B,
+                SingleParticipant.COLUMN_C,
+                SingleParticipant.COLUMN_D,
+                SingleParticipant.COLUMN_E,
+                SingleParticipant.COLUMN_F,
+                SingleParticipant.COLUMN_G,
+                SingleParticipant.COLUMN_H,
+                SingleParticipant.COLUMN_I
         };
 
-        String whereClause = singleParticipant.COLUMN_SYNCED + " is null";
+        String whereClause = SingleParticipant.COLUMN_SYNCED + " is null OR " + SingleParticipant.COLUMN_SYNCED + "=''";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
-        String orderBy = singleParticipant.COLUMN_ID + " ASC";
+        String orderBy = SingleParticipant.COLUMN_ID + " ASC";
 
         Collection<ParticipantContract> allFC = new ArrayList<>();
         try {
             c = db.query(
-                    singleParticipant.TABLE_NAME,  // The table to query
+                    SingleParticipant.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -1523,10 +1523,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = singleParticipant._ID + " =? ";
+        String selection = SingleParticipant._ID + " =? ";
         String[] selectionArgs = {String.valueOf(MainApp.pc.get_ID())};
 
-        return db.update(singleParticipant.TABLE_NAME,
+        return db.update(SingleParticipant.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -1619,22 +1619,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    /*public void updateSyncedFamilyMemForms(String id) {
+    public void updateSyncedParticipantForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(SingleMember.COLUMN_SYNCED, true);
-        values.put(SingleMember.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(SingleParticipant.COLUMN_SYNCED, true);
+        values.put(SingleParticipant.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = SingleMember._ID + " = ?";
+        String where = SingleParticipant._ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                SingleMember.TABLE_NAME,
+                SingleParticipant.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
-    }*/
+    }
 }

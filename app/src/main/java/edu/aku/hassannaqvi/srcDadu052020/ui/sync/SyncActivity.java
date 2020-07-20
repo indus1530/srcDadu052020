@@ -168,10 +168,10 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
             new SyncAllData(
                     this,
                     "Participant",
-                    "updateSyncedForms",
+                    "updateSyncedParticipantForms",
                     ParticipantContract.class,
-                    MainApp._HOST_URL + ParticipantContract.singleParticipant._URI,
-                    ParticipantContract.singleParticipant.TABLE_NAME,
+                    MainApp._HOST_URL + ParticipantContract.SingleParticipant._URI,
+                    ParticipantContract.SingleParticipant.TABLE_NAME,
                     db.getAllParticipants(), 1, uploadListAdapter, uploadlist
             ).execute();
 

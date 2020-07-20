@@ -141,7 +141,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (updcount > 0) {
             pc.setUID(MainApp.deviceId + pc.get_ID());
-            db.updatesParticipant(ParticipantContract.singleParticipant.COLUMN_UID, pc.getUID());
+            db.updatesParticipant(ParticipantContract.SingleParticipant.COLUMN_UID, pc.getUID());
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
