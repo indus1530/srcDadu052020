@@ -302,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         Collection<FormsContract> todaysForms = db.getTodayForms();
         Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
 
+
         rSumText += "TODAY'S RECORDS SUMMARY\r\n";
 
         rSumText += "=======================\r\n";
@@ -361,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
             rSumText += "\r\n";
             rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
             rSumText += "\r\n";
+
         } else {
             bi.adminsec.setVisibility(View.GONE);
             bi.databaseBtn.setVisibility(View.GONE);
