@@ -68,7 +68,7 @@
     <string name="newHHheadname"> نیا سربراہ کا نام </string>
     <string name="a101"> کلسٹر نمبر </string>
     <string name="a101a"> یہ معلومات ضلعی بنیاد پر بنائی گئی گاؤں کی فہرست پر مبنی ہوں گی۔ ہر انٹرویو کرنے والے کو جس علاقے کا وہ دورہ کرے گا کلسٹرز کی ایک فہرست دی جائے گی اور انٹرویو شروع کرنے سے پہلے اسی فہرست سے یہ معلومات درج کی جائیں گی۔ </string>
-    <string name="end_interview"> انٹرویو ختم کریں </string>
+    <string name="end_interview">اختتام</string>
     <string name="start_interview"> انٹرویو شروع کریں </string>
     <string name="nextSection"> اگلا سیکشن </string>
     <string name="nextPregnancy"> Next Pregnancy </string>
