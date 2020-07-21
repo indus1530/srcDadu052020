@@ -436,7 +436,7 @@ public class SectionAActivity extends AppCompatActivity {
 
     private boolean formValidation() {
 
-        if (!bi.a8.getText().toString().isEmpty() && !bi.a9.getText().toString().isEmpty()) {
+        if (!bi.a8.getText().toString().isEmpty() && !bi.a9.getText().toString().isEmpty() && !bi.a10.getText().toString().isEmpty()) {
 
             if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
                 Toast.makeText(this, "Total no of participants cannot be greater than sum of no of married and non married participants ", Toast.LENGTH_SHORT).show();
@@ -444,10 +444,11 @@ public class SectionAActivity extends AppCompatActivity {
             }
         }
 
-
-        if (bi.a9.getText().toString().equals("0") && bi.a10.getText().toString().equals("0")) {
-            Toast.makeText(this, "No of married participants and unmarried partcipants both cannot be zero", Toast.LENGTH_SHORT).show();
-            return false;
+        if (!bi.a9.getText().toString().isEmpty() && !bi.a10.getText().toString().isEmpty()) {
+            if (bi.a9.getText().toString().equals("0") && bi.a10.getText().toString().equals("0")) {
+                Toast.makeText(this, "No of married participants and unmarried partcipants both cannot be zero", Toast.LENGTH_SHORT).show();
+                return false;
+            }
         }
 
 
