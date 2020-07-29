@@ -35,7 +35,7 @@
     <string name="splashText2">"Empowerment and Care  Strategies  to Address Health and Survival"</string>
 
     <string name="sM">"Centre of Excellence Women &amp; Child Health"</string>
-    <string name="no">No</string>
+    <string name="no">نه</string>
     <string name="dkn"> معلوم نہیں </string>
     <string name="none"> کوئی نہیں </string>
     <string name="never"> کبھی نہیں </string>
@@ -87,7 +87,7 @@
     <string name="countAlertMsg"> یقینا! آپ جاری رکھنا چاہتے ہیں </string>
     <string name="splashText1">" Coverage Evaluation Survey, Pakistan, 2020 "</string>
     <string name="title_activity_family_members_list">" Family Members List "</string>
-    <string name="yes">Yes</string>
+    <string name="yes">ها</string>
 
     <string name="taheading"> SECTION A: حصو پهريون سماجي ڊيموگرافڪ معلومات </string>
     <string name="a1">تعلقي جو نالو</string>
