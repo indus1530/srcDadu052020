@@ -18,22 +18,17 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.ContactsContract;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -51,16 +46,8 @@ import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.validatorcrawler.aliazaz.Validator;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,15 +58,14 @@ import edu.aku.hassannaqvi.srcDadu052020.core.AppInfo;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
+import edu.aku.hassannaqvi.srcDadu052020.utils.AndroidUtilityKt;
+import edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt;
 
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_PHONE_STATE;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.TWO_MINUTES;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DB_NAME;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt.getPermissionsList;
 import static java.lang.Thread.sleep;
 
@@ -102,17 +88,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     AppCompatButton mEmailSignInButton;
     @BindView(R.id.syncData)
     Button syncData;
-    //@BindView(R.id.spinnerProvince)
-    //Spinner spinnerProvince;
     @BindView(R.id.spinners)
     LinearLayout spinners;
-    //@BindView(R.id.spinnerDistrict)
-    //Spinner spinnerDistrict;
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
-    String DirectoryName;
     DatabaseHelper db;
-    ArrayAdapter<String> provinceAdapter;
     private UserLoginTask mAuthTask = null;
 
     @Override
@@ -145,8 +123,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 .setContentText("\n\nPlease Sync Data before login...")
                 .singleShot(42)
                 .build();
-
-//        mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener((textView, id, keyEvent) -> {
             if (id == R.id.login || id == EditorInfo.IME_NULL) {
                 attemptLogin();
@@ -154,14 +130,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
             return false;
         });
-
         mEmailSignInButton.setOnClickListener(view -> attemptLogin());
-
         setListeners();
-
         db = new DatabaseHelper(this);
 //        DB backup
-        dbBackup();
+        UtilKt.dbBackup(this);
     }
 
     private void setListeners() {
@@ -217,73 +190,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         return true;
     }
 
-    public void dbBackup() {
-
-        sharedPref = getSharedPreferences("dss01", MODE_PRIVATE);
-        editor = sharedPref.edit();
-
-        if (sharedPref.getBoolean("flag", false)) {
-
-            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
-
-            if (!dt.equals(new SimpleDateFormat("dd-MM-yy").format(new Date()))) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
-                editor.apply();
-            }
-
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
-            boolean success = true;
-            if (!folder.exists()) {
-                success = folder.mkdirs();
-            }
-            if (success) {
-
-                DirectoryName = folder.getPath() + File.separator + sharedPref.getString("dt", "");
-                folder = new File(DirectoryName);
-                if (!folder.exists()) {
-                    success = folder.mkdirs();
-                }
-                if (success) {
-
-                    try {
-                        File dbFile = new File(this.getDatabasePath(DATABASE_NAME).getPath());
-                        FileInputStream fis = new FileInputStream(dbFile);
-                        String outFileName = DirectoryName + File.separator + DB_NAME;
-                        // Open the empty db as the output stream
-                        OutputStream output = new FileOutputStream(outFileName);
-
-                        // Transfer bytes from the inputfile to the outputfile
-                        byte[] buffer = new byte[1024];
-                        int length;
-                        while ((length = fis.read(buffer)) > 0) {
-                            output.write(buffer, 0, length);
-                        }
-                        // Close the streams
-                        output.flush();
-                        output.close();
-                        fis.close();
-                    } catch (IOException e) {
-                        Log.e("dbBackup:", Objects.requireNonNull(e.getMessage()));
-                    }
-
-                }
-
-            } else {
-                Toast.makeText(this, "Not create folder", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-    }
-
     @OnClick(R.id.syncData)
     void onSyncDataClick() {
-        //TODO implement
-
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
+        if (AndroidUtilityKt.isNetworkConnected(this)) {
             startActivity(new Intent(this, SyncActivity.class).putExtra(CONSTANTS.SYNC_LOGIN, true));
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -337,11 +246,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             mAuthTask = new UserLoginTask(this, email, password);
             mAuthTask.execute((Void) null);
         }
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() >= 12;
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
@@ -410,12 +314,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             mPasswordView.setTransformationMethod(null);
             mPasswordView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        populateSpinner(this);
     }
 
     public void loadIMEI() {
@@ -602,17 +500,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         return provider1.equals(provider2);
     }
 
-    public void populateSpinner(Context context) {
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -622,7 +509,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         }
     }
-
 
     private interface ProfileQuery {
         String[] PROJECTION = {

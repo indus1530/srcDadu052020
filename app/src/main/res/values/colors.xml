@@ -69,4 +69,7 @@
     <color name="refused">#33EC701C</color>
     <color name="dssIncorrect">#337f00ff</color>
 
+
+    <color name="white_overlay">#7fffffff</color>
+
 </resources>

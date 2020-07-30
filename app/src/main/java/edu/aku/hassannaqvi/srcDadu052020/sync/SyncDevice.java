@@ -82,7 +82,6 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
                 try {
-                    //jsonObject.addProperty("dist_id", MainApp.DIST_ID);
                     jsonObject.addProperty("imei", MainApp.IMEI);
                     jsonObject.addProperty("appversion", MainApp.appInfo.getAppVersion());
                     jsonObject.addProperty("appname", context.getString(R.string.app_name));
@@ -140,7 +139,6 @@ public class SyncDevice extends AsyncTask<Void, Integer, String> {
                             delegate.processFinish(true);
                         }
 
-                    } else if (jsonObject.getString("status").equals("0") && jsonObject.getString("error").equals("1")) {
                     } else {
                         sSyncedError.append("\nError:This device is not found on server.");
                     }

@@ -7,9 +7,9 @@
         android:title="Sync Data"
         app:showAsAction="collapseActionView" />
     <item
-        android:id="@+id/endInterview"
-        android:title="End Interview"
-        android:titleCondensed="Data will NOT be saved"
+        android:id="@+id/formsReportDate"
+        android:enabled="false"
+        android:title="Forms Report by Date"
+        android:titleCondensed="List of all forms by date"
         app:showAsAction="collapseActionView" />
-
 </menu>

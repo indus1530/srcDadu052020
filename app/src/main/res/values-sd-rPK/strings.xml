@@ -4,17 +4,23 @@
     <string name="app_name"> SRC Dadu 2020 </string>
 
     <!-- Strings related to login -->
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
     <string name="btnSync">Download Data</string>
     <string name="btnUpload">Upload Data</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+    <string name="check_pending_forms">CHECK PENDING FORMS</string>
+    <string name="open_new_form">OPEN NEW FORM</string>
+    <string name="records_summary">Records Summary</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="only_for_testing">ONLY FOR TESTING</string>
+    <string name="database">Database</string>
 
 
     <string name="taheading"> SECTION A: SOCIO - DEMOGRAPHIC INFORMATION </string>
@@ -36,7 +42,7 @@
 
     <string name="splashText">Supporting Women and Girls in Pakistan Scaling Up</string>
 
-    <string name="splashText2">"Empowerment and Care  Strategies  to Address Health and Survival"</string>
+    <string name="splashText2">Empowerment and Care Strategies to Address Health and Survival</string>
 
     <string name="sM">"Centre of Excellence Women &amp; Child Health"</string>
     <string name="no">نه</string>

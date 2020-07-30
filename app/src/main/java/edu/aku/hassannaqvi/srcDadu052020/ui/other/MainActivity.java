@@ -1,16 +1,9 @@
 package edu.aku.hassannaqvi.srcDadu052020.ui.other;
 
 import android.app.ActivityManager;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.DownloadManager;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -21,13 +14,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,15 +25,12 @@ import androidx.databinding.DataBindingUtil;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import edu.aku.hassannaqvi.srcDadu052020.R;
-import edu.aku.hassannaqvi.srcDadu052020.contracts.AreasContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.FormsContract;
 import edu.aku.hassannaqvi.srcDadu052020.contracts.VersionAppContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.AndroidDatabaseManager;
@@ -52,30 +39,28 @@ import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
+import edu.aku.hassannaqvi.srcDadu052020.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable;
+import edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt;
+import edu.aku.hassannaqvi.srcDadu052020.utils.WarningActivityInterface;
 
-public class MainActivity extends AppCompatActivity {
+import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.appInfo;
 
-    static File file;
+public class MainActivity extends AppCompatActivity implements WarningActivityInterface {
+
     private final String TAG = "MainActivity";
     ActivityMainBinding bi;
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    String dtToday1 = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
-    AlertDialog.Builder builder;
-    String m_Text = "";
-    ProgressDialog mProgressDialog;
-    ArrayList<String> lablesAreas;
-    Collection<AreasContract> AreasList;
-    Map<String, String> AreasMap;
+    static File file;
     SharedPreferences sharedPrefDownload;
     SharedPreferences.Editor editorDownload;
     DownloadManager downloadManager;
     String preVer = "", newVer = "";
-    VersionAppContract versionAppContract;
+    String sysdateToday = new SimpleDateFormat("dd-MM-yy").format(new Date());
     DatabaseHelper db;
     Long refID;
+    VersionAppContract versionApp;
+    private Boolean exit = false;
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -108,188 +93,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    private ProgressDialog pd;
-    private Boolean exit = false;
-    private String rSumText = "";
-
-    private void loadTagDialog() {
-        sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
-        editor = sharedPref.edit();
-        if (!sharedPref.contains("tagName") && sharedPref.getString("tagName", null) == null) {
-
-            builder = new AlertDialog.Builder(MainActivity.this);
-            ImageView img = new ImageView(getApplicationContext());
-            img.setImageResource(R.drawable.tagimg);
-            img.setPadding(0, 15, 0, 15);
-            builder.setCustomTitle(img);
-
-            final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            builder.setView(input);
-
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    if (!m_Text.equals("")) {
-                        editor.putString("tagName", m_Text);
-                        editor.apply();
-                        MainApp.appInfo.setTagName(m_Text);
-                        dialog.dismiss();
-                    }
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            builder.show();
-        }
-
-    }
-
-    void showDialog(String newVer, String preVer) {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        DialogFragment newFragment = MyDialogFragment.newInstance(newVer, preVer);
-        newFragment.show(ft, "dialog");
-
-    }
-
-
-    public void openForm(View v) {
-        OpenFormFunc(v.getId());
-    }
-
-    public void OpenFormFunc(int id) {
-        Intent oF = null;
-        switch (id) {
-            case R.id.formA:
-                oF = new Intent(this, SectionAActivity.class);
-                break;
-            /*case R.id.formB:
-                oF = new Intent(this, SectionParticipantsSRC.class);
-                break;*/
-
-
-/*            case R.id.formB:
-                oF = new Intent(this, SectionBActivity.class);
-                break;
-            case R.id.formC1:
-                oF = new Intent(this, SectionSS1Activity.class);
-                break;
-            case R.id.formC2:
-                oF = new Intent(this, SectionSS2Activity.class);
-                break;
-            case R.id.formCHA:
-                oF = new Intent(this, SectionCHAActivity.class);
-                break;
-            case R.id.formCHB:
-                oF = new Intent(this, SectionCHBActivity.class);
-                break;
-            case R.id.formCHC:
-                oF = new Intent(this, SectionCHCActivity.class);
-                break;
-            case R.id.formCHD:
-                oF = new Intent(this, SectionCHDActivity.class);
-                break;
-            case R.id.formCHE:
-                oF = new Intent(this, SectionCHEActivity.class);
-                break;*/
-        }
-        startActivity(oF);
-    }
-
-
-    public void openDB() {
-        Intent dbmanager = new Intent(getApplicationContext(), AndroidDatabaseManager.class);
-        startActivity(dbmanager);
-    }
-
-    public void syncServer() {
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            startActivity(new Intent(this, SyncActivity.class));
-        } else {
-            Toast.makeText(this, "No network connection available!", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    public void syncFamilyMembers() {
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-
-            // Sync Random
-            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = syncPref.edit();
-            editor.putString("LastDownSyncServer", dtToday);
-
-            editor.apply();
-        } else {
-            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (exit) {
-            finish(); // finish activity
-
-            startActivity(new Intent(this, LoginActivity.class));
-
-        } else {
-            Toast.makeText(this, "Press Back again to Exit.",
-                    Toast.LENGTH_SHORT).show();
-            exit = true;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    exit = false;
-                }
-            }, 3 * 1000);
-
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.onSync:
-                startActivity(new Intent(MainActivity.this, SyncActivity.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.item_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -297,93 +100,87 @@ public class MainActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         bi.setCallback(this);
 
-        db = new DatabaseHelper(this);
+        bi.txtinstalldate.setText(appInfo.getAppInfo());
+        Collection<FormsContract> todaysForms = appInfo.getDbHelper().getTodayForms(sysdateToday);
+        Collection<FormsContract> unsyncedForms = appInfo.getDbHelper().getUnsyncedForms();
 
-        Collection<FormsContract> todaysForms = db.getTodayForms();
-        Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
-
-
-        rSumText += "TODAY'S RECORDS SUMMARY\r\n";
-
-        rSumText += "=======================\r\n";
-        rSumText += "\r\n";
-        rSumText += "Total Forms Today" + "(" + dtToday1 + "): " + todaysForms.size() + "\r\n";
-        rSumText += "\r\n";
+        StringBuilder rSumText = new StringBuilder()
+                .append("TODAY'S RECORDS SUMMARY\r\n")
+                .append("=======================\r\n")
+                .append("\r\n")
+                .append("Total Forms Today" + "(").append(dtToday).append("): ").append(todaysForms.size()).append("\r\n");
+        String TAG = "MainActivity";
         if (todaysForms.size() > 0) {
-            rSumText += "\tFORMS' LIST: \r\n";
             String iStatus;
-            rSumText += "--------------------------------------------------\r\n";
-            rSumText += "[ DSS ID ] \t[Form Status] \t[Sync Status]\r\n";
-            rSumText += "--------------------------------------------------\r\n";
+            rSumText.append("---------------------------------------------------------\r\n")
+                    .append("[Cluster][HH-No][Form Status][Sync Status]\r\n")
+                    .append("---------------------------------------------------------\r\n");
 
-            for (FormsContract fc : todaysForms) {
-                if (fc.getIstatus() != null) {
-                    switch (fc.getIstatus()) {
-                        case "1":
-                            iStatus = "Complete";
-                            break;
-                        case "2":
-                            iStatus = "Incomplete";
-                            break;
-                        case "3":
-                            iStatus = "Refused";
-                            break;
-                        case "4":
-                            iStatus = "Refused";
-                            break;
-                        default:
-                            iStatus = "N/A";
-                    }
-                } else {
-                    iStatus = "N/A";
+            for (FormsContract form : todaysForms) {
+                Log.d(TAG, "onCreate: '" + form.getIstatus() + "'");
+                switch (form.getIstatus()) {
+                    case "1":
+                        iStatus = getString(R.string.istatusa);
+                        break;
+                    case "2":
+                        iStatus = getString(R.string.istatusb);
+                        break;
+                    case "3":
+                        iStatus = getString(R.string.istatusc);
+                        break;
+                    case "96":
+                        iStatus = getString(R.string.istatus96);
+                        break;
+                    default:
+                        iStatus = "\t\tN/A" + form.getIstatus();
                 }
 
-                rSumText += fc.getLuid();
-                rSumText += "\t\t\t\t\t";
-
-                rSumText += iStatus;
-                rSumText += "\t\t\t\t\t";
-
-                rSumText += (fc.getSynced() == null ? "Not Synced" : "Synced");
-                rSumText += "\r\n";
-                rSumText += "--------------------------------------------------\r\n";
+                rSumText
+                        .append(form.getClusterCode())
+                        .append(form.getHhno())
+                        .append("  \t\t")
+                        .append(iStatus)
+                        .append("\t\t\t\t")
+                        .append(form.getSynced() == null ? "Not Synced" : "Synced    ")
+                        .append("\r\n")
+                        .append("---------------------------------------------------------\r\n");
             }
         }
+        SharedPreferences syncPref = getSharedPreferences("src", Context.MODE_PRIVATE);
+        rSumText.append("\r\nDEVICE INFORMATION\r\n")
+                .append("  ========================================================\r\n")
+                .append("\t|| Unsynced Forms: \t\t\t\t").append(String.format("%02d", unsyncedForms.size()))
+                .append("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t||\r\n")
+                .append("\t|| Last Data Download: \t\t").append(syncPref.getString("LastDataDownload", "Never Downloaded   "))
+                .append("\t\t\t\t\t\t||\r\n")
+                .append("\t|| Last Data Upload: \t\t\t").append(syncPref.getString("LastDataUpload", "Never Uploaded     "))
+                .append("\t\t\t\t\t\t||\r\n")
+                .append("\t|| Last Photo Upload: \t\t").append(syncPref.getString("LastPhotoUpload", "Never Uploaded     "))
+                .append("\t\t\t\t\t\t||\r\n")
+                .append("\t========================================================\r\n");
+        bi.recordSummary.setText(rSumText);
 
-
+        Log.d(TAG, "onCreate: " + rSumText);
         if (MainApp.admin) {
-            bi.adminsec.setVisibility(View.VISIBLE);
             bi.databaseBtn.setVisibility(View.VISIBLE);
-            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
-            rSumText += "\r\n";
-            rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
-            rSumText += "\r\n";
-            rSumText += "\r\n";
-            rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
-            rSumText += "\r\n";
-
         } else {
-            bi.adminsec.setVisibility(View.GONE);
             bi.databaseBtn.setVisibility(View.GONE);
         }
-        Log.d(TAG, "onCreate: " + rSumText);
-        bi.recordSummary.setText(rSumText);
 
         // Auto download app
         sharedPrefDownload = getSharedPreferences("appDownload", MODE_PRIVATE);
         editorDownload = sharedPrefDownload.edit();
-        versionAppContract = db.getVersionApp();
-        if (versionAppContract.getVersioncode() != null) {
+        versionApp = appInfo.getDbHelper().getVersionApp();
+        if (versionApp.getVersioncode() != null) {
 
-            preVer = MainApp.appInfo.getVersionName() + "." + MainApp.appInfo.getVersionCode();
-            newVer = versionAppContract.getVersionname() + "." + versionAppContract.getVersioncode();
+            preVer = appInfo.getVersionName() + "." + appInfo.getVersionCode();
+            newVer = versionApp.getVersionname() + "." + versionApp.getVersioncode();
 
-            if (MainApp.appInfo.getVersionCode() < Integer.parseInt(versionAppContract.getVersioncode())) {
+            if (appInfo.getVersionCode() < Integer.parseInt(versionApp.getVersioncode())) {
                 bi.lblAppVersion.setVisibility(View.VISIBLE);
 
                 String fileName = CreateTable.DATABASE_NAME.replace(".db", "-New-Apps");
-                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionAppContract.getPathname());
+                file = new File(Environment.getExternalStorageDirectory() + File.separator + fileName, versionApp.getPathname());
 
                 if (file.exists()) {
                     bi.lblAppVersion.setText(new StringBuilder(R.string.app_name + " New Version ").append(newVer).append("  Downloaded"));
@@ -393,9 +190,9 @@ public class MainActivity extends AppCompatActivity {
                     if (networkInfo != null && networkInfo.isConnected()) {
                         bi.lblAppVersion.setText(new StringBuilder(R.string.app_name + " App New Version ").append(newVer).append("  Downloading.."));
                         downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionAppContract.getPathname());
+                        Uri uri = Uri.parse(MainApp._UPDATE_URL + versionApp.getPathname());
                         DownloadManager.Request request = new DownloadManager.Request(uri);
-                        request.setDestinationInExternalPublicDir(fileName, versionAppContract.getPathname())
+                        request.setDestinationInExternalPublicDir(fileName, versionApp.getPathname())
                                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                                 .setTitle("Downloading " + R.string.app_name + " App new App ver." + newVer);
                         refID = downloadManager.enqueue(request);
@@ -417,55 +214,99 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(broadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
 //        Testing visibility
-        if (Integer.parseInt(MainApp.appInfo.getVersionName().split("\\.")[0]) > 0) {
+        if (Integer.parseInt(appInfo.getVersionName().split("\\.")[0]) > 0) {
             bi.testing.setVisibility(View.GONE);
         } else {
             bi.testing.setVisibility(View.VISIBLE);
         }
 
-        //loadTagDialog();
-
     }
 
-    public void gotoC1(View view) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.onSync:
+                intent = new Intent(MainActivity.this, SyncActivity.class);
+                break;
+            case R.id.formsReportDate:
+//                intent = new Intent(MainActivity.this, FormsReportDate.class);
+                break;
+        }
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
     }
 
-    public static class MyDialogFragment extends DialogFragment {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.item_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-        String newVer, preVer;
+    @Override
+    public void callWarningActivity() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
-        static MyDialogFragment newInstance(String newVer, String preVer) {
-            MyDialogFragment f = new MyDialogFragment();
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+            startActivity(new Intent(this, LoginActivity.class));
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
 
-            Bundle args = new Bundle();
-            args.putString("newVer", newVer);
-            args.putString("preVer", preVer);
-            f.setArguments(args);
-
-            return f;
         }
+    }
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            newVer = getArguments().getString("newVer");
-            preVer = getArguments().getString("preVer");
+    private void showDialog(String newVer, String preVer) {
+        UtilKt.openWarningActivity(
+                this,
+                getString(R.string.app_name) + " APP is available!",
+                getString(R.string.app_name) + " App Ver." + newVer + " is now available. Your are currently using older Ver." + preVer + ".\nInstall new version to use this app.",
+                "Install",
+                "Cancel"
+        );
+    }
 
-            return new AlertDialog.Builder(getActivity())
-                    .setIcon(R.drawable.exclamation)
-                    .setTitle(R.string.app_name + " APP is available!")
-                    .setCancelable(false)
-                    .setMessage(R.string.app_name + " App " + newVer + " is now available. Your are currently using older version " + preVer + ".\nInstall new version to use this app.")
-                    .setPositiveButton("INSTALL!!",
-                            (dialog, whichButton) -> {
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-                            }
-                    )
-                    .create();
+    public void openSpecificActivity(View v) {
+        Intent oF = null;
+        switch (v.getId()) {
+            case R.id.formA:
+                oF = new Intent(this, SectionAActivity.class);
+                break;
+            case R.id.databaseBtn:
+                oF = new Intent(this, AndroidDatabaseManager.class);
+                break;
+            case R.id.uploadData:
+                if (!AndroidUtilityKt.isNetworkConnected(this)) {
+                    Toast.makeText(this, "No network connection available!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                oF = new Intent(this, SyncActivity.class);
+                break;
         }
+        startActivity(oF);
+    }
 
+    public void toggleSummary(View view) {
+
+        if (bi.recordSummary.getVisibility() == View.VISIBLE) {
+            bi.recordSummary.setVisibility(View.GONE);
+        } else {
+            bi.recordSummary.setVisibility(View.VISIBLE);
+        }
     }
 
 }

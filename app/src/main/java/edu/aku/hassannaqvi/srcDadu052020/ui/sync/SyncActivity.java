@@ -2,8 +2,6 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sync;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,10 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,15 +37,13 @@ import edu.aku.hassannaqvi.srcDadu052020.otherClasses.SyncModel;
 import edu.aku.hassannaqvi.srcDadu052020.sync.SyncAllData;
 import edu.aku.hassannaqvi.srcDadu052020.sync.SyncAllPhotos;
 import edu.aku.hassannaqvi.srcDadu052020.sync.SyncDevice;
+import edu.aku.hassannaqvi.srcDadu052020.utils.AndroidUtilityKt;
+import edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt;
 
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DB_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
 
 public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDevicInterface {
     SharedPreferences.Editor editor;
-    SharedPreferences sharedPref;
-    String DirectoryName;
     DatabaseHelper db;
     SyncListAdapter syncListAdapter;
     UploadListAdapter uploadListAdapter;
@@ -76,8 +68,8 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.noDataItem.setVisibility(View.VISIBLE);
         listActivityCreated = true;
         uploadlistActivityCreated = true;
-        db = new DatabaseHelper(this);
-        dbBackup();
+        db = MainApp.appInfo.getDbHelper();
+        UtilKt.dbBackup(this);
 
         sync_flag = getIntent().getBooleanExtra(CONSTANTS.SYNC_LOGIN, false);
 
@@ -88,12 +80,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     }
 
     public void onSyncDataClick() {
-
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
+        if (AndroidUtilityKt.isNetworkConnected(this)) {
             if (sync_flag) new SyncData(SyncActivity.this, MainApp.DIST_ID).execute(true);
             else new SyncDevice(SyncActivity.this, true).execute();
         } else {
@@ -130,15 +117,8 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
     }
 
     public void syncServer() {
-//        if(true) return;
 
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-
-            DatabaseHelper db = new DatabaseHelper(this);
+        if (AndroidUtilityKt.isNetworkConnected(this)) {
 
             new SyncDevice(this, false).execute();
 //  *******************************************************Forms*********************************
@@ -175,170 +155,14 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     db.getAllParticipants(), 1, uploadListAdapter, uploadlist
             ).execute();
 
-            /*if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "Child",
-                    "updateSyncedChildForms",
-                    ChildContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    ChildContract.SingleChild.TABLE_NAME,
-                    db.getUnsyncedChildForms(), 1, uploadListAdapter, uploadlist
-            ).execute();*/
-/*
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "KISH MWRA",
-                    "updateSyncedKishMWRAForms",
-                    MWRAContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    KishMWRAContract.SingleKishMWRA.TABLE_NAME,
-                    db.getUnsyncedKishMWRA(), 2, uploadListAdapter, uploadlist
-            ).execute();
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "Pregnant MWRA",
-                    "updateSyncedPregMWRAForms",
-                    MWRA_PREContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    MWRA_PREContract.SingleMWRAPRE.TABLE_NAME,
-                    db.getUnsyncedPregMWRA(), 3, uploadListAdapter, uploadlist
-            ).execute();
-
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "Mortality",
-                    "updateSyncedMortalityForms",
-                    MortalityContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    MortalityContract.SingleMortality.TABLE_NAME,
-                    db.getUnsyncedMortality(), 4, uploadListAdapter, uploadlist
-            ).execute();
-
-
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "Family Members",
-                    "updateSyncedFamilyMemForms",
-                    MWRA_PREContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    FamilyMembersContract.SingleMember.TABLE_NAME,
-                    db.getAllFamilyMembersForms(), 5, uploadListAdapter, uploadlist
-            ).execute();
-
-            if (uploadlistActivityCreated) {
-                uploadmodel = new SyncModel();
-                uploadmodel.setstatusID(0);
-                uploadlist.add(uploadmodel);
-            }
-            new SyncAllData(
-                    this,
-                    "MWRA",
-                    "updateSyncedMWRAForms",
-                    MWRA_PREContract.class,
-                    MainApp._HOST_URL + MainApp._SERVER_URL,
-                    MWRAContract.MWRATable.TABLE_NAME,
-                    db.getUnsyncedMWRA(), 6, uploadListAdapter, uploadlist
-            ).execute();*/
-
-
             bi.noDataItem.setVisibility(View.GONE);
-
             uploadlistActivityCreated = false;
-
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
-
             editor.putString("LastUpSyncServer", dtToday);
-
             editor.apply();
-
         } else {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-
-    public void dbBackup() {
-
-        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
-        editor = sharedPref.edit();
-
-        if (sharedPref.getBoolean("flag", false)) {
-
-            String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
-
-            if (!dt.equals(new SimpleDateFormat("dd-MM-yy").format(new Date()))) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
-                editor.apply();
-            }
-
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
-            boolean success = true;
-            if (!folder.exists()) {
-                success = folder.mkdirs();
-            }
-            if (success) {
-                DirectoryName = folder.getPath() + File.separator + sharedPref.getString("dt", "");
-                folder = new File(DirectoryName);
-                if (!folder.exists()) {
-                    success = folder.mkdirs();
-                }
-                if (success) {
-
-                    try {
-                        File dbFile = new File(this.getDatabasePath(DATABASE_NAME).getPath());
-                        FileInputStream fis = new FileInputStream(dbFile);
-
-                        String outFileName = DirectoryName + File.separator + DB_NAME;
-
-                        // Open the empty db as the output stream
-                        OutputStream output = new FileOutputStream(outFileName);
-
-                        // Transfer bytes from the inputfile to the outputfile
-                        byte[] buffer = new byte[1024];
-                        int length;
-                        while ((length = fis.read(buffer)) > 0) {
-                            output.write(buffer, 0, length);
-                        }
-                        // Close the streams
-                        output.flush();
-                        output.close();
-                        fis.close();
-                    } catch (IOException e) {
-                        Log.e("dbBackup:", e.getMessage());
-                    }
-
-                }
-
-            } else {
-                Toast.makeText(this, "Not create folder", Toast.LENGTH_SHORT).show();
-            }
         }
 
     }
@@ -465,11 +289,9 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         @Override
         protected void onPostExecute(String s) {
             new Handler().postDelayed(() -> {
-
                 editor.putBoolean("flag", true);
                 editor.commit();
-
-                dbBackup();
+                UtilKt.dbBackup(mContext);
 
             }, 1200);
         }

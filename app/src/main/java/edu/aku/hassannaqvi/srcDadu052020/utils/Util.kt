@@ -6,15 +6,21 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import edu.aku.hassannaqvi.srcDadu052020.R
+import edu.aku.hassannaqvi.srcDadu052020.databinding.CustomDialogBinding
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ItemDialogBinding
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity
+import java.io.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 private fun checkPermission(context: Context): IntArray {
@@ -115,6 +121,83 @@ fun contextEndActivity(activity: Activity, defaultFlag: Boolean = true) {
     dialog.findViewById<View>(R.id.btnNo).setOnClickListener { dialog.dismiss() }
 }
 
+
+@JvmOverloads
+fun openWarningActivity(activity: Activity, title: String, message: String, btnYesTxt: String = "YES", btnNoTxt: String = "NO") {
+    val dialog = Dialog(activity)
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+    val bi: CustomDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(activity), R.layout.custom_dialog, null, false)
+    dialog.setContentView(bi.root)
+    bi.alertTitle.text = title
+    bi.alertTitle.setTextColor(ContextCompat.getColor(activity, R.color.green))
+    bi.content.text = message
+    bi.btnOk.text = btnYesTxt
+    bi.btnOk.setBackgroundColor(ContextCompat.getColor(activity, R.color.green))
+    bi.btnNo.text = btnNoTxt
+    bi.btnNo.setBackgroundColor(ContextCompat.getColor(activity, R.color.gray))
+    dialog.setCancelable(false)
+    val params = WindowManager.LayoutParams()
+    params.copyFrom(dialog.window!!.attributes)
+    params.width = WindowManager.LayoutParams.WRAP_CONTENT
+    params.height = WindowManager.LayoutParams.WRAP_CONTENT
+    dialog.window!!.attributes = params
+    dialog.show()
+    bi.btnOk.setOnClickListener {
+        val warningActivity = activity as WarningActivityInterface
+        warningActivity.callWarningActivity()
+    }
+    bi.btnNo.setOnClickListener {
+        dialog.dismiss()
+    }
+}
+
+fun dbBackup(context: Context) {
+    val sharedPref = context.getSharedPreferences("_db_backup_", Context.MODE_PRIVATE)
+    val editor = sharedPref.edit()
+    if (sharedPref.getBoolean("flag", false)) {
+        val toadayDt = SimpleDateFormat("dd-MM-yy").format(Date())
+        val dt: String = sharedPref.getString("dt", toadayDt)
+                ?: ""
+        if (dt != toadayDt) {
+            editor.putString("dt", toadayDt)
+            editor.apply()
+        }
+        var folder = File(Environment.getExternalStorageState().toString() + File.separator + CreateTable.PROJECT_NAME)
+        var success = true
+        if (!folder.exists()) {
+            success = folder.mkdirs()
+        }
+        if (success) {
+            val directoryName = folder.path + File.separator + sharedPref.getString("dt", "")
+            folder = File(directoryName)
+            if (!folder.exists()) {
+                success = folder.mkdirs()
+            }
+            if (success) {
+                try {
+                    val dbFile = File(context.getDatabasePath(CreateTable.DATABASE_NAME).path)
+                    val fis = FileInputStream(dbFile)
+                    val outFileName: String = directoryName + File.separator + CreateTable.DB_NAME
+                    // Open the empty db as the output stream
+                    val output: OutputStream = FileOutputStream(outFileName)
+                    // Transfer bytes from the inputfile to the outputfile
+                    val buffer = ByteArray(1024)
+                    var length: Int
+                    while (fis.read(buffer).also { length = it } > 0)
+                        output.write(buffer, 0, length)
+                    // Close the streams
+                    output.flush()
+                    output.close()
+                    fis.close()
+                } catch (e: IOException) {
+                    Log.e("dbBackup:", e.message ?: "")
+                }
+            }
+        } else
+            Toast.makeText(context, "Not create folder", Toast.LENGTH_SHORT).show()
+    }
+}
+
 fun getMemberIcon(gender: Int, age: String): Int {
     val memAge = age.toInt()
     return if (memAge == -1) R.drawable.boy else if (memAge > 10) if (gender == 1) R.drawable.ctr_male else R.drawable.ctr_female else if (gender == 1) R.drawable.ctr_childboy else R.drawable.ctr_childgirl
@@ -127,3 +210,8 @@ fun getMemberIcon(gender: Int): Int {
 interface EndSectionActivity {
     fun endSecActivity(flag: Boolean)
 }
+
+interface WarningActivityInterface {
+    fun callWarningActivity()
+}
+

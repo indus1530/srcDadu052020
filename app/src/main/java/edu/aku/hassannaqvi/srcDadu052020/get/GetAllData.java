@@ -156,8 +156,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
             switch (syncClass) {
                 case "User":
 
-                case "VersionApp":
-
                 case "Talukas":
 
                 case "UCS":
@@ -185,12 +183,6 @@ public class GetAllData extends AsyncTask<String, String, String> {
                     wr.close();
 
                     break;
-
-                // Starts the query
-
-                // Starts the query
-
-                // Starts the query
 
             }
 
@@ -235,7 +227,7 @@ public class GetAllData extends AsyncTask<String, String, String> {
                             position = 0;
                             break;
                         case "VersionApp":
-                            db.syncVersionApp(jsonArray);
+                            insertCount = db.syncVersionApp(new JSONObject(result));
                             position = 1;
                             break;
                         case "Talukas":
