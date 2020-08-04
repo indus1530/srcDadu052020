@@ -412,10 +412,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FSTATUS88x, fc.getFstatus88x());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingdatetime());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
-        values.put(FormsTable.COLUMN_SE, fc.getsE());
-        values.put(FormsTable.COLUMN_SM, fc.getsM());
-        values.put(FormsTable.COLUMN_SN, fc.getsN());
-        values.put(FormsTable.COLUMN_SO, fc.getsO());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
         values.put(FormsTable.COLUMN_GPSDATE, fc.getGpsDT());
@@ -783,10 +779,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_LUID,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_SA,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SM,
-                FormsTable.COLUMN_SN,
-                FormsTable.COLUMN_SO,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
@@ -1349,10 +1341,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FSTATUS88x,
                 FormsTable.COLUMN_LUID,
                 FormsTable.COLUMN_ENDINGDATETIME,
-                FormsTable.COLUMN_SE,
-                FormsTable.COLUMN_SM,
-                FormsTable.COLUMN_SN,
-                FormsTable.COLUMN_SO,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSDATE,
