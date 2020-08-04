@@ -44,6 +44,7 @@ import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.PROJECT_NAME;
 
 public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDevicInterface {
     SharedPreferences.Editor editor;
+    SharedPreferences sharedPref;
     DatabaseHelper db;
     SyncListAdapter syncListAdapter;
     UploadListAdapter uploadListAdapter;
@@ -68,6 +69,8 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         bi.noDataItem.setVisibility(View.VISIBLE);
         listActivityCreated = true;
         uploadlistActivityCreated = true;
+        sharedPref = getSharedPreferences("src", MODE_PRIVATE);
+        editor = sharedPref.edit();
         db = MainApp.appInfo.getDbHelper();
         UtilKt.dbBackup(this);
 
