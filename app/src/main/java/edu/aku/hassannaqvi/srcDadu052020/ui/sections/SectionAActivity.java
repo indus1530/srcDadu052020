@@ -118,7 +118,9 @@ public class SectionAActivity extends AppCompatActivity {
                 ucCode.add("....");
                 ucName.add("....");
 
-                Collection<UCsContract> pc = db.getUCs(talukaCode.get(position));
+                //Collection<UCsContract> pc = db.getUCs(talukaCode.get(position));
+
+                Collection<UCsContract> pc = db.getUCs();
                 for (UCsContract p : pc) {
                     ucCode.add(p.getUccode());
                     ucName.add(p.getUcs());

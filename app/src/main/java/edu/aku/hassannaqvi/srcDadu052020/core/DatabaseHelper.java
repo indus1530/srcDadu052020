@@ -1182,7 +1182,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //Get All UCs
-    public List<UCsContract> getUCs(String talukaCode) {
+    public List<UCsContract> getUCs() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1193,8 +1193,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 UCsContract.singleUCs.COLUMN_UCS
         };
 
-        String whereClause = UCsContract.singleUCs.COLUMN_TALUKA_CODE + " =?";
-        String[] whereArgs = {talukaCode};
+        //String whereClause = UCsContract.singleUCs.COLUMN_TALUKA_CODE + " =?";
+        //String[] whereArgs = {};
+
+        String whereClause = null;
+        String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
