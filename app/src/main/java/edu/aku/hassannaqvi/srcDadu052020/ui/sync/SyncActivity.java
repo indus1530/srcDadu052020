@@ -247,6 +247,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     list.add(model);
                 }
                 new GetAllData(mContext, "User", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
 //              Getting App Version
                 if (listActivityCreated) {
@@ -255,6 +256,7 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
                     list.add(model);
                 }
                 new GetAllData(mContext, "VersionApp", syncListAdapter, list).execute();
+                bi.noItem.setVisibility(View.GONE);
 
 //              Getting Talukas
                 if (listActivityCreated) {
@@ -292,8 +294,6 @@ public class SyncActivity extends AppCompatActivity implements SyncDevice.SyncDe
         @Override
         protected void onPostExecute(String s) {
             new Handler().postDelayed(() -> {
-                SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = syncPref.edit();
                 editor.putBoolean("flag", true);
                 editor.commit();
                 UtilKt.dbBackup(mContext);
