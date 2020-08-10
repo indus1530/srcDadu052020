@@ -215,7 +215,7 @@
 
                     <EditText
                         android:id="@+id/a4"
-                        style="@style/EditTextAlpha"
+                        style="@style/EditTextAddress"
                         android:hint="@string/a4" />
 
                 </LinearLayout>

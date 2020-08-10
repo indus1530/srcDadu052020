@@ -178,7 +178,7 @@ public class SectionAActivity extends AppCompatActivity {
         Collection<UsersContract> dc_users = db.getUsers();
         Log.d(TAG, "onCreate: " + dc_users.size());
         for (UsersContract d : dc_users) {
-            usersName.add(d.getUserName());
+            usersName.add(d.getFullName());
             usersCode.add(String.valueOf(d.getUserID()));
         }
 
@@ -402,6 +402,8 @@ public class SectionAActivity extends AppCompatActivity {
         json.put("a1103", bi.a1103.isChecked() ? "3" : "-1");
 
         json.put("a1104", bi.a1104.isChecked() ? "4" : "-1");
+
+        json.put("a1105", bi.a1105.isChecked() ? "5" : "-1");
 
         json.put("a1201", bi.a1201.isChecked() ? "1" : "-1");
 

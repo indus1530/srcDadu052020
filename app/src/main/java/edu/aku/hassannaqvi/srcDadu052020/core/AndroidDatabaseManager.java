@@ -212,13 +212,13 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
                     tvmessage.setBackgroundColor(Color.parseColor("#2ecc71"));
                     if (c4 != null) {
-                        tvmessage.setText("Queru Executed successfully.Number of rows returned :" + c4.getCount());
+                        tvmessage.setText("Query Executed successfully.Number of rows returned :" + c4.getCount());
                         if (c4.getCount() > 0) {
                             indexInfo.maincursor = c4;
                             refreshTable(1);
                         }
                     } else {
-                        tvmessage.setText("Queru Executed successfully");
+                        tvmessage.setText("Query Executed successfully");
                         refreshTable(1);
                     }
 
@@ -658,7 +658,8 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                         //if the cursor returned from the database is empty we show that table is empty
                         help.setVisibility(View.GONE);
                         tableLayout.removeAllViews();
-                        getcolumnnames();
+
+
                         TableRow tableheader2 = new TableRow(getApplicationContext());
                         tableheader2.setBackgroundColor(Color.BLACK);
                         tableheader2.setPadding(0, 2, 0, 2);
@@ -668,6 +669,7 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
                         cell.setLayoutParams(tableRowParams);
                         final TextView tableheadercolums = new TextView(getApplicationContext());
 
+
                         tableheadercolums.setPadding(0, 0, 4, 3);
                         tableheadercolums.setText("   Table   Is   Empty   ");
                         tableheadercolums.setTextSize(30);
@@ -675,7 +677,6 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
 
                         cell.addView(tableheadercolums);
                         tableheader2.addView(cell);
-
 
                         tableLayout.addView(tableheader2);
 
@@ -691,22 +692,22 @@ public class AndroidDatabaseManager extends Activity implements OnItemClickListe
     }
 
     //get columnnames of the empty tables and save them in a array list
-    public void getcolumnnames() {
+    public ArrayList<String> getcolumnnames() {
+        ArrayList<String> emptytablecolumnnames = null;
         ArrayList<Cursor> alc3 = dbm.getData("PRAGMA table_info(" + indexInfo.table_name + ")");
         Cursor c5 = alc3.get(0);
         indexInfo.isEmpty = true;
         if (c5 != null) {
             indexInfo.isEmpty = true;
 
-            ArrayList<String> emptytablecolumnnames = new ArrayList<String>();
+            emptytablecolumnnames = new ArrayList<String>();
             c5.moveToFirst();
             do {
                 emptytablecolumnnames.add(c5.getString(1));
             } while (c5.moveToNext());
             indexInfo.emptytablecolumnnames = emptytablecolumnnames;
         }
-
-
+        return emptytablecolumnnames;
     }
 
     //displays alert dialog from which use can update or delete a row

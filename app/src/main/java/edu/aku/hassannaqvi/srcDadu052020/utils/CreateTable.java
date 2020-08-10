@@ -69,7 +69,8 @@ public final class CreateTable {
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.singleUser.TABLE_NAME + "("
             + UsersContract.singleUser._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersContract.singleUser.ROW_USERNAME + " TEXT,"
-            + UsersContract.singleUser.ROW_PASSWORD + " TEXT"
+            + UsersContract.singleUser.ROW_PASSWORD + " TEXT,"
+            + UsersContract.singleUser.ROW_FULLNAME + " TEXT"
             + " );";
 
 
@@ -83,8 +84,7 @@ public final class CreateTable {
     public static final String SQL_CREATE_UCS = "CREATE TABLE " + UCsContract.singleUCs.TABLE_NAME + "("
             + UCsContract.singleUCs._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UCsContract.singleUCs.COLUMN_UCCODE + " INTEGER,"
-            + UCsContract.singleUCs.COLUMN_UCS + " TEXT,"
-            + UCsContract.singleUCs.COLUMN_TALUKA_CODE + " TEXT"
+            + UCsContract.singleUCs.COLUMN_UCS + " TEXT"
             + " );";
 
 

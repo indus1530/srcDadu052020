@@ -36,7 +36,6 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract.SingleVillag
 
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_BL_RANDOM;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_PARTICIPANT_TABLE;
 import static edu.aku.hassannaqvi.srcDadu052020.utils.CreateTable.SQL_CREATE_TALUKA;
@@ -83,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_PARTICIPANT_TABLE);
         //db.execSQL(SQL_CREATE_PSU_TABLE);
-        db.execSQL(SQL_CREATE_BL_RANDOM);
+        //db.execSQL(SQL_CREATE_BL_RANDOM);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         //db.execSQL(SQL_CREATE_FAMILY_MEMBERS);
         //db.execSQL(SQL_CREATE_CHILD_TABLE);
@@ -188,7 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             values.put(UCsContract.singleUCs.COLUMN_UCCODE, Vc.getUccode());
             values.put(UCsContract.singleUCs.COLUMN_UCS, Vc.getUcs());
-            values.put(UCsContract.singleUCs.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
+            //values.put(UCsContract.singleUCs.COLUMN_TALUKA_CODE, Vc.getTaluka_code());
 
             //db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
             long rowID = db.insert(UCsContract.singleUCs.TABLE_NAME, null, values);
@@ -363,6 +362,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(UsersContract.singleUser.ROW_USERNAME, user.getUserName());
                 values.put(UsersContract.singleUser.ROW_PASSWORD, user.getPassword());
+                values.put(UsersContract.singleUser.ROW_FULLNAME, user.getFullName());
 //                values.put(singleUser.REGION_DSS, user.getREGION_DSS());
                 long rowID = db.insert(UsersContract.singleUser.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
@@ -1104,7 +1104,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 UsersContract.singleUser._ID,
                 UsersContract.singleUser.ROW_USERNAME,
-                UsersContract.singleUser.ROW_PASSWORD
+                UsersContract.singleUser.ROW_PASSWORD,
+                UsersContract.singleUser.ROW_FULLNAME
         };
 
         String whereClause = null;
@@ -1188,7 +1189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 UCsContract.singleUCs._ID,
-                UCsContract.singleUCs.COLUMN_TALUKA_CODE,
+                //UCsContract.singleUCs.COLUMN_TALUKA_CODE,
                 UCsContract.singleUCs.COLUMN_UCCODE,
                 UCsContract.singleUCs.COLUMN_UCS
         };

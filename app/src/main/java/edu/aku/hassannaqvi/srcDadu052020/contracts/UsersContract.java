@@ -16,15 +16,17 @@ public class UsersContract {
     Long _ID;
     String ROW_USERNAME;
     String ROW_PASSWORD;
+    String ROW_FULLNAME;
 //    String REGION_DSS;
 
     public UsersContract() {
         // Default Constructor
     }
 
-    public UsersContract(String username, String password) {
+    public UsersContract(String username, String password, String fullname) {
         this.ROW_PASSWORD = password;
         this.ROW_USERNAME = username;
+        this.ROW_FULLNAME = fullname;
     }
 
     public Long getUserID() {
@@ -51,7 +53,16 @@ public class UsersContract {
         this.ROW_PASSWORD = password;
     }
 
-/*    public String getREGION_DSS() {
+    public String getFullName() {
+        return this.ROW_FULLNAME;
+    }
+
+    public void setFullName(String ROW_FULLNAME) {
+        this.ROW_FULLNAME = this.ROW_FULLNAME;
+    }
+
+
+    /*    public String getREGION_DSS() {
         return REGION_DSS;
     }
 
@@ -62,6 +73,7 @@ public class UsersContract {
     public UsersContract Sync(JSONObject jsonObject) throws JSONException {
         this.ROW_USERNAME = jsonObject.getString(singleUser.ROW_USERNAME);
         this.ROW_PASSWORD = jsonObject.getString(singleUser.ROW_PASSWORD);
+        this.ROW_FULLNAME = jsonObject.getString(singleUser.ROW_FULLNAME);
 //        this.REGION_DSS = jsonObject.getString(singleUser.REGION_DSS);
         return this;
 
@@ -71,6 +83,7 @@ public class UsersContract {
         this._ID = cursor.getLong(cursor.getColumnIndex(singleUser._ID));
         this.ROW_USERNAME = cursor.getString(cursor.getColumnIndex(singleUser.ROW_USERNAME));
         this.ROW_PASSWORD = cursor.getString(cursor.getColumnIndex(singleUser.ROW_PASSWORD));
+        this.ROW_FULLNAME = cursor.getString(cursor.getColumnIndex(singleUser.ROW_FULLNAME));
 //        this.REGION_DSS = cursor.getString(cursor.getColumnIndex(singleUser.REGION_DSS));
         return this;
 
@@ -83,6 +96,7 @@ public class UsersContract {
         json.put(singleUser._ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(singleUser.ROW_USERNAME, this.ROW_USERNAME == null ? JSONObject.NULL : this.ROW_USERNAME);
         json.put(singleUser.ROW_PASSWORD, this.ROW_PASSWORD == null ? JSONObject.NULL : this.ROW_PASSWORD);
+        json.put(singleUser.ROW_FULLNAME, this.ROW_FULLNAME == null ? JSONObject.NULL : this.ROW_FULLNAME);
 //        json.put(singleUser.REGION_DSS, this.REGION_DSS == null ? JSONObject.NULL : this.REGION_DSS);
         return json;
     }
@@ -93,6 +107,7 @@ public class UsersContract {
         public static final String _ID = "id";
         public static final String ROW_USERNAME = "username";
         public static final String ROW_PASSWORD = "password";
+        public static final String ROW_FULLNAME = "fullname";
 //        public static final String REGION_DSS = "region";
 
         public static final String _URI = "users.php";
