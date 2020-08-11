@@ -27,7 +27,7 @@ public class FormsContract extends LiveData<FormsContract> {
     private String user = ""; // Interviewer
     private String istatus = ""; // Interview Status
     private String istatus88x = ""; // Interview Status
-    private String luid = "";
+    //private String luid = "";
     private String endingdatetime = "";
     private String gpsLat = "";
     private String gpsLng = "";
@@ -39,7 +39,7 @@ public class FormsContract extends LiveData<FormsContract> {
     private String synced_date = "";
     private String appversion = "";
     private String clusterCode = "";
-    private String hhno = "";
+    //private String hhno = "";
     private String fStatus = "";
     private String fstatus88x = ""; // Interview Status
 
@@ -120,7 +120,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
         this.fstatus88x = jsonObject.getString(FormsTable.COLUMN_FSTATUS88x);
-        this.luid = jsonObject.getString(FormsTable.COLUMN_LUID);
+        //this.luid = jsonObject.getString(FormsTable.COLUMN_LUID);
         this.endingdatetime = jsonObject.getString(FormsTable.COLUMN_ENDINGDATETIME);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -131,7 +131,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
-        this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
+        //this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
         this.fStatus = jsonObject.getString(FormsTable.COLUMN_FSTATUS);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
 
@@ -150,7 +150,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
         this.fstatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS88x));
-        this.luid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LUID));
+        //this.luid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LUID));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -160,7 +160,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
 
-        this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
+        //this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
         this.fStatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
 
@@ -183,7 +183,7 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_FSTATUS, this.fStatus == null ? JSONObject.NULL : this.fStatus);
         json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         json.put(FormsTable.COLUMN_FSTATUS88x, this.fstatus88x == null ? JSONObject.NULL : this.fstatus88x);
-        json.put(FormsTable.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
+        //json.put(FormsTable.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
 
 
@@ -199,7 +199,7 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
-        json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
+        //json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
 
         return json;
     }
@@ -264,13 +264,13 @@ public class FormsContract extends LiveData<FormsContract> {
         this.istatus88x = istatus88x;
     }
 
-    public String getLuid() {
+    /*public String getLuid() {
         return luid;
-    }
+    }*/
 
-    public void setLuid(String Study_Id) {
+    /*public void setLuid(String Study_Id) {
         this.luid = Study_Id;
-    }
+    }*/
 
 
     public String getEndingdatetime() {
@@ -354,13 +354,13 @@ public class FormsContract extends LiveData<FormsContract> {
         this.clusterCode = clusterCode;
     }
 
-    public String getHhno() {
+    /*public String getHhno() {
         return hhno;
     }
 
     public void setHhno(String hhno) {
         this.hhno = hhno;
-    }
+    }*/
 
     public static abstract class FormsTable implements BaseColumns {
 
@@ -378,7 +378,7 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_ISTATUS88x = "istatus88x";
         public static final String COLUMN_FSTATUS = "fStatus";
         public static final String COLUMN_FSTATUS88x = "fstatus88x";
-        public static final String COLUMN_LUID = "_luid";
+        //public static final String COLUMN_LUID = "_luid";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
@@ -389,7 +389,7 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_HHNO = "hhno";
+        //public static final String COLUMN_HHNO = "hhno";
         public static final String COLUMN_SA = "sA";
 
         public static String _URL = "sync.php";

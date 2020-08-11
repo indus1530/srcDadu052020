@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
 
                 rSumText
                         .append(form.getClusterCode())
-                        .append(form.getHhno())
+                        //.append(form.getHhno())
                         .append("  \t\t")
                         .append(iStatus)
                         .append("\t\t\t\t")

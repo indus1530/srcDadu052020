@@ -61,7 +61,15 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (bi.c1.isChecked()) {
+                if (bi.f1.isChecked() && bi.c2.isChecked()) {
+
+                    Clear.clearAllFields(bi.fldGrpCVg);
+                    Clear.clearAllFields(bi.fldGrpCVh);
+
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
+
+                } else if (bi.c1.isChecked()) {
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
 
@@ -73,14 +81,15 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
                     bi.f5.setChecked(false);
                     bi.f5.setEnabled(false);
+
                 } else {
                     bi.fldGrpCVg.setVisibility(View.VISIBLE);
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
 
-                    bi.i12.setChecked(true);
+                    //bi.i12.setChecked(true);
                     bi.i12.setEnabled(true);
 
-                    bi.f5.setChecked(true);
+                    //bi.f5.setChecked(true);
                     bi.f5.setEnabled(true);
                 }
             }
@@ -110,8 +119,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
-                    bi.i12.setChecked(false);
-                    bi.i12.setEnabled(false);
+                    //bi.i12.setChecked(false);
+                    //bi.i12.setEnabled(false);
 
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
@@ -215,6 +224,14 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     }
 
     private boolean formValidation() {
+
+        if (!bi.d.getText().toString().equals("")) {
+            if (bi.d.getText().toString().length() < 11) {
+                Toast.makeText(this, "Contact number must be 11 digits ", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
 
         if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
             if (!bi.e.getText().toString().equals("97")) {
