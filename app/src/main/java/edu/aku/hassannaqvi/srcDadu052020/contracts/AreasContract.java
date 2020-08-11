@@ -18,6 +18,7 @@ public class AreasContract {
         // Default Constructor
     }
 
+
     public AreasContract Sync(JSONObject jsonObject) throws JSONException {
         this.areacode = jsonObject.getString(singleAreas.COLUMN_AREACODE);
         this.area = jsonObject.getString(singleAreas.COLUMN_AREA);
