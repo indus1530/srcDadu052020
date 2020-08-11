@@ -88,20 +88,15 @@ public class EndingActivity extends AppCompatActivity {
                 : bi.istatus96.isChecked() ? "96"
                 : "0";
 
-        if (subInfoEndActivityFlag) {
-            MainApp.fc.setIstatus(statusValue);
-            MainApp.fc.setIstatus88x(bi.istatus96x.getText().toString());
-        } else {
-            MainApp.fc.setEndingdatetime(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
-            MainApp.fc.setfStatus(statusValue);
-            MainApp.fc.setFstatus88x(bi.istatus96x.getText().toString());
-        }
+        MainApp.fc.setEndingdatetime(new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime()));
+        MainApp.fc.setfStatus(statusValue);
+        MainApp.fc.setFstatus88x(bi.istatus96x.getText().toString());
     }
 
     public boolean UpdateDB() {
 
         DatabaseHelper db = MainApp.appInfo.getDbHelper();
-        int updcount = db.updateEnding(subInfoEndActivityFlag);
+        int updcount = db.updateEnding();
         if (updcount == 1) {
             return true;
         } else {

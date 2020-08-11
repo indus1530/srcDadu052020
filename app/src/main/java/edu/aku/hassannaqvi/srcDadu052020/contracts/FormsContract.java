@@ -25,8 +25,8 @@ public class FormsContract extends LiveData<FormsContract> {
     private String uc = ""; // Date
     private String village = ""; // Date
     private String user = ""; // Interviewer
-    private String istatus = ""; // Interview Status
-    private String istatus88x = ""; // Interview Status
+    //private String istatus = ""; // Interview Status
+    //private String istatus88x = ""; // Interview Status
     //private String luid = "";
     private String endingdatetime = "";
     private String gpsLat = "";
@@ -117,8 +117,8 @@ public class FormsContract extends LiveData<FormsContract> {
         this.uc = jsonObject.getString(FormsTable.COLUMN_UC);
         this.village = jsonObject.getString(FormsTable.COLUMN_VILLAGE);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
-        this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
+        //this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
+        //this.istatus88x = jsonObject.getString(FormsTable.COLUMN_ISTATUS88x);
         this.fstatus88x = jsonObject.getString(FormsTable.COLUMN_FSTATUS88x);
         //this.luid = jsonObject.getString(FormsTable.COLUMN_LUID);
         this.endingdatetime = jsonObject.getString(FormsTable.COLUMN_ENDINGDATETIME);
@@ -147,8 +147,8 @@ public class FormsContract extends LiveData<FormsContract> {
         this.uc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UC));
         this.village = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGE));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
-        this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
+        //this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
+        //this.istatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS88x));
         this.fstatus88x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS88x));
         //this.luid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LUID));
         this.endingdatetime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
@@ -179,9 +179,9 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_UC, this.uc == null ? JSONObject.NULL : this.uc);
         json.put(FormsTable.COLUMN_VILLAGE, this.village == null ? JSONObject.NULL : this.village);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
-        json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        //json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_FSTATUS, this.fStatus == null ? JSONObject.NULL : this.fStatus);
-        json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
+        //json.put(FormsTable.COLUMN_ISTATUS88x, this.istatus88x == null ? JSONObject.NULL : this.istatus88x);
         json.put(FormsTable.COLUMN_FSTATUS88x, this.fstatus88x == null ? JSONObject.NULL : this.fstatus88x);
         //json.put(FormsTable.COLUMN_LUID, this.luid == null ? JSONObject.NULL : this.luid);
         json.put(FormsTable.COLUMN_ENDINGDATETIME, this.endingdatetime == null ? JSONObject.NULL : this.endingdatetime);
@@ -248,7 +248,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.user = user;
     }
 
-    public String getIstatus() {
+    /*public String getIstatus() {
         return istatus;
     }
 
@@ -262,7 +262,7 @@ public class FormsContract extends LiveData<FormsContract> {
 
     public void setIstatus88x(String istatus88x) {
         this.istatus88x = istatus88x;
-    }
+    }*/
 
     /*public String getLuid() {
         return luid;
@@ -374,8 +374,8 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_UC = "uc";
         public static final String COLUMN_VILLAGE = "village";
         public static final String COLUMN_USER = "username";
-        public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_ISTATUS88x = "istatus88x";
+        //public static final String COLUMN_ISTATUS = "istatus";
+        //public static final String COLUMN_ISTATUS88x = "istatus88x";
         public static final String COLUMN_FSTATUS = "fStatus";
         public static final String COLUMN_FSTATUS88x = "fstatus88x";
         //public static final String COLUMN_LUID = "_luid";

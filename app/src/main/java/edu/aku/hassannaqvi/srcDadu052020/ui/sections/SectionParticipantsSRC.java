@@ -233,14 +233,14 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         }
 
 
-        if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
+        /*if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
             if (!bi.e.getText().toString().equals("97")) {
                 if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
                     Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
-        }
+        }*/
 
         if (!bi.e.getText().toString().equals("")) {
             if (!bi.e.getText().toString().equals("97")) {

@@ -117,8 +117,8 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                     .append("---------------------------------------------------------\r\n");
 
             for (FormsContract form : todaysForms) {
-                Log.d(TAG, "onCreate: '" + form.getIstatus() + "'");
-                switch (form.getIstatus()) {
+                Log.d(TAG, "onCreate: '" + form.getfStatus() + "'");
+                switch (form.getfStatus()) {
                     case "1":
                         iStatus = getString(R.string.istatusa);
                         break;
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements WarningActivityIn
                         iStatus = getString(R.string.istatus96);
                         break;
                     default:
-                        iStatus = "\t\tN/A" + form.getIstatus();
+                        iStatus = "\t\tN/A" + form.getfStatus();
                 }
 
                 rSumText

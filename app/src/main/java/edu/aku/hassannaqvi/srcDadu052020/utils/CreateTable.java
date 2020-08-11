@@ -37,8 +37,6 @@ public final class CreateTable {
             + FormsContract.FormsTable.COLUMN_FSTATUS + " TEXT,"
             + FormsContract.FormsTable.COLUMN_FSTATUS88x + " TEXT,"
             + FormsContract.FormsTable.COLUMN_ENDINGDATETIME + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_ISTATUS + " TEXT,"
-            + FormsContract.FormsTable.COLUMN_ISTATUS88x + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
@@ -58,10 +56,10 @@ public final class CreateTable {
             + ParticipantContract.SingleParticipant.COLUMN_SNO + " TEXT,"
             + ParticipantContract.SingleParticipant.COLUMN_SA + " TEXT,"
             + ParticipantContract.SingleParticipant.COLUMN_SYNCED + " TEXT,"
-            + ParticipantContract.SingleParticipant.COLUMN_SYNCED_DATE + " TEXT,"
+            + ParticipantContract.SingleParticipant.COLUMN_SYNCED_DATE + " TEXT );";
 
-            + ParticipantContract.SingleParticipant.COLUMN_CSTATUS + " TEXT,"
-            + ParticipantContract.SingleParticipant.COLUMN_CSTATUS88x + " TEXT );";
+    //+ ParticipantContract.SingleParticipant.COLUMN_CSTATUS + " TEXT,"
+    //+ ParticipantContract.SingleParticipant.COLUMN_CSTATUS88x + " TEXT );";
 
 
     public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.singleUser.TABLE_NAME + "("

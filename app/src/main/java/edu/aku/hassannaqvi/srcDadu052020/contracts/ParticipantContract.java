@@ -22,8 +22,8 @@ public class ParticipantContract {
     private String devicetagID = "";
     private String synced = "";
     private String synced_date = "";
-    private String cstatus;
-    private String cstatus88x;
+    //private String cstatus;
+    //private String cstatus88x;
 
     private String sA = "";
     private String sno;
@@ -138,7 +138,7 @@ public class ParticipantContract {
         this.synced_date = synced_date;
     }
 
-    public String getCstatus() {
+    /*public String getCstatus() {
         return cstatus;
     }
 
@@ -152,7 +152,7 @@ public class ParticipantContract {
 
     public void setCstatus88x(String cstatus88x) {
         this.cstatus88x = cstatus88x;
-    }
+    }*/
 
     public String getSno() {
         return sno;
@@ -178,8 +178,8 @@ public class ParticipantContract {
         this.devicetagID = jsonObject.getString(SingleParticipant.COLUMN_DEVICETAGID);
         this.synced = jsonObject.getString(SingleParticipant.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(SingleParticipant.COLUMN_SYNCED_DATE);
-        this.cstatus = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS);
-        this.cstatus88x = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS88x);
+        //this.cstatus = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS);
+        //this.cstatus88x = jsonObject.getString(SingleParticipant.COLUMN_CSTATUS88x);
 
         this.sA = jsonObject.getString(SingleParticipant.COLUMN_SA);
 
@@ -201,8 +201,8 @@ public class ParticipantContract {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_DEVICETAGID));
         this.synced = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SYNCED));
         this.synced_date = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SYNCED_DATE));
-        this.cstatus = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS));
-        this.cstatus88x = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS88x));
+        //this.cstatus = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS));
+        //this.cstatus88x = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_CSTATUS88x));
 
         this.sA = cursor.getString(cursor.getColumnIndex(SingleParticipant.COLUMN_SA));
 
@@ -227,8 +227,8 @@ public class ParticipantContract {
         json.put(SingleParticipant.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(SingleParticipant.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(SingleParticipant.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
-        json.put(SingleParticipant.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
-        json.put(SingleParticipant.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
+        //json.put(SingleParticipant.COLUMN_CSTATUS, this.cstatus == null ? JSONObject.NULL : this.cstatus);
+        //json.put(SingleParticipant.COLUMN_CSTATUS88x, this.cstatus88x == null ? JSONObject.NULL : this.cstatus88x);
 
 
         if (!this.sA.equals("")) {
@@ -256,8 +256,8 @@ public class ParticipantContract {
         public static final String COLUMN_DEVICETAGID = "tagid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
-        public static final String COLUMN_CSTATUS = "cstatus";
-        public static final String COLUMN_CSTATUS88x = "cstatus88x";
+        //public static final String COLUMN_CSTATUS = "cstatus";
+        //public static final String COLUMN_CSTATUS88x = "cstatus88x";
 
         public static final String COLUMN_SA = "sa";
 
