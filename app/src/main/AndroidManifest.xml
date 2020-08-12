@@ -33,8 +33,6 @@
             android:name=".ui.sections.SectionAActivity"
             android:label="@string/taheading"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".ui.other.SplashscreenActivity"
             android:screenOrientation="portrait"
@@ -49,12 +47,9 @@
             android:name=".ui.other.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
-
         <activity
             android:name=".ui.other.EndingActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.other.MainActivity"
             android:screenOrientation="portrait"

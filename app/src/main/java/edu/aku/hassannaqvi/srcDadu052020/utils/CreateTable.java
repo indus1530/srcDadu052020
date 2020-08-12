@@ -34,6 +34,7 @@ public final class CreateTable {
             + FormsContract.FormsTable.COLUMN_FORMDATE + " TEXT,"
             + FormsContract.FormsTable.COLUMN_APPVERSION + " TEXT,"
             + FormsContract.FormsTable.COLUMN_SA + " TEXT,"
+            + FormsContract.FormsTable.COLUMN_HHNO + " TEXT,"
             + FormsContract.FormsTable.COLUMN_FSTATUS + " TEXT,"
             + FormsContract.FormsTable.COLUMN_FSTATUS88x + " TEXT,"
             + FormsContract.FormsTable.COLUMN_ENDINGDATETIME + " TEXT,"

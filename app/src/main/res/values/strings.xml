@@ -21,6 +21,7 @@
     <string name="main_menu">Main Menu</string>
     <string name="only_for_testing">ONLY FOR TESTING</string>
     <string name="database">Database</string>
+    <string name="search">Search</string>
 
     <string name="tdheading"> SECTION D: HOUSEHOLD MEMBER’S INFORMATION </string>
     <string name="teheading"> SECTION E: REPRODUCTIVE HEALTH (Complete this table for all married women aged 15 &#8211; 49 years in the household) </string>

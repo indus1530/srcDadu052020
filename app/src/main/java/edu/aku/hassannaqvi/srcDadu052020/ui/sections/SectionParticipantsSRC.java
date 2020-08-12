@@ -66,6 +66,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
+                    bi.i12.setEnabled(true);
+                    bi.f5.setEnabled(true);
+
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
 
@@ -98,12 +101,16 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         bi.f.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
                 if (bi.c1.isChecked()) {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
                     bi.i12.setChecked(false);
                     bi.i12.setEnabled(false);
+
+                    bi.f5.setChecked(false);
+                    bi.f5.setEnabled(false);
 
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
@@ -112,6 +119,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                         bi.f4.isChecked() && bi.c2.isChecked() ||
                         bi.f5.isChecked() && bi.c2.isChecked()) {
 
+                    bi.i12.setEnabled(true);
+                    bi.f5.setEnabled(true);
+
                     bi.fldGrpCVg.setVisibility(View.VISIBLE);
                     bi.fldGrpCVh.setVisibility(View.VISIBLE);
 
@@ -119,8 +129,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
-                    //bi.i12.setChecked(false);
-                    //bi.i12.setEnabled(false);
+                    bi.f5.setEnabled(true);
+                    bi.f5.setEnabled(true);
 
                     bi.fldGrpCVg.setVisibility(View.GONE);
                     bi.fldGrpCVh.setVisibility(View.GONE);
@@ -244,9 +254,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (!bi.e.getText().toString().equals("")) {
             if (!bi.e.getText().toString().equals("97")) {
-                if (Integer.valueOf(bi.e.getText().toString()) >= 0 || Integer.valueOf(bi.e.getText().toString()) <= 16) {
-
-                } else {
+                if (Integer.valueOf(bi.e.getText().toString()) < 0 || Integer.valueOf(bi.e.getText().toString()) > 16) {
                     Toast.makeText(this, "Education must be between 0 - 16 or 97", Toast.LENGTH_SHORT).show();
                     return false;
                 }
