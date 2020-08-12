@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
+import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +22,6 @@ import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionParticipantsSRCBinding;
 import edu.aku.hassannaqvi.srcDadu052020.ui.other.EndingActivity;
-import edu.aku.hassannaqvi.srcDadu052020.validator.validator.ValidatorClass;
 
 import static edu.aku.hassannaqvi.srcDadu052020.core.MainApp.pc;
 
@@ -254,14 +254,14 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         if (!bi.e.getText().toString().equals("")) {
             if (!bi.e.getText().toString().equals("97")) {
-                if (Integer.valueOf(bi.e.getText().toString()) < 0 || Integer.valueOf(bi.e.getText().toString()) > 16) {
+                if (Integer.parseInt(bi.e.getText().toString()) < 0 || Integer.parseInt(bi.e.getText().toString()) > 16) {
                     Toast.makeText(this, "Education must be between 0 - 16 or 97", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
         }
 
-        return ValidatorClass.EmptyCheckingContainer(this, bi.GrpName);
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
 
@@ -356,7 +356,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             counter_addmore++;
             bi.sno.setText("Participants # - " + counter_addmore + " of " + counter + "(" + MainApp.No_participants + ")");
 
-            bi.a.setText("");
+            /*bi.a.setText("");
             bi.b.setText("");
             bi.c.clearCheck();
             bi.d.setText("");
@@ -364,10 +364,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             bi.f.clearCheck();
             bi.g.clearCheck();
             bi.h.setText("");
-            bi.i.clearCheck();
-
+            bi.i.clearCheck();*/
+            Clear.clearAllFields(bi.GrpName);
             bi.a.requestFocus();
-
         }
 
     }

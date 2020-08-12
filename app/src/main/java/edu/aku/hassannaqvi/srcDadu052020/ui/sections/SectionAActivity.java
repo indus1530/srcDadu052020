@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Clear;
+import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,13 +34,11 @@ import edu.aku.hassannaqvi.srcDadu052020.contracts.VillagesContract;
 import edu.aku.hassannaqvi.srcDadu052020.core.DatabaseHelper;
 import edu.aku.hassannaqvi.srcDadu052020.core.MainApp;
 import edu.aku.hassannaqvi.srcDadu052020.databinding.ActivitySectionABinding;
-import edu.aku.hassannaqvi.srcDadu052020.validator.validator.ValidatorClass;
 
 
 public class SectionAActivity extends AppCompatActivity {
 
     private static final String TAG = "";
-    public static FormsContract fc;
     ActivitySectionABinding bi;
     private DatabaseHelper db;
 
@@ -389,7 +388,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         json.put("a8", bi.a8.getText().toString());
 
-        MainApp.No_participants = Integer.valueOf(bi.a8.getText().toString());
+        MainApp.No_participants = Integer.parseInt(bi.a8.getText().toString());
 
         json.put("a9", bi.a9.getText().toString());
 
@@ -442,7 +441,7 @@ public class SectionAActivity extends AppCompatActivity {
 
         if (!bi.a8.getText().toString().isEmpty() && !bi.a9.getText().toString().isEmpty() && !bi.a10.getText().toString().isEmpty()) {
 
-            if (Integer.valueOf(bi.a8.getText().toString()) != (Integer.valueOf(bi.a9.getText().toString()) + Integer.valueOf(bi.a10.getText().toString()))) {
+            if (Integer.parseInt(bi.a8.getText().toString()) != (Integer.parseInt(bi.a9.getText().toString()) + Integer.parseInt(bi.a10.getText().toString()))) {
                 Toast.makeText(this, "Total no of participants cannot be greater than sum of no of married and non married participants ", Toast.LENGTH_SHORT).show();
                 return false;
             }
@@ -461,7 +460,7 @@ public class SectionAActivity extends AppCompatActivity {
             return false;
         }*/
 
-        return ValidatorClass.EmptyCheckingContainer(this, bi.GrpName);
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
     public void BtnContinue() {
