@@ -218,7 +218,7 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/d"
                         style="@style/EditTextNum"
                         android:layout_width="match_parent"
@@ -339,6 +339,7 @@
                             android:id="@+id/f5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:tag="f5"
                             android:text="@string/f5" />
                     </RadioGroup>
 
@@ -550,6 +551,7 @@
                             android:id="@+id/i12"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:tag="i12"
                             android:text="@string/i12" />
 
                         <RadioButton

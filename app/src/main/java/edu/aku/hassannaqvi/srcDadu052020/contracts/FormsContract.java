@@ -39,7 +39,7 @@ public class FormsContract extends LiveData<FormsContract> {
     private String synced_date = "";
     private String appversion = "";
     private String clusterCode = "";
-    private String hhno = "";
+    //private String hhno = "";
     private String fStatus = "";
     private String fstatus88x = ""; // Interview Status
 
@@ -131,7 +131,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
         this.appversion = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
-        this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
+        //this.hhno = jsonObject.getString(FormsTable.COLUMN_HHNO);
         this.fStatus = jsonObject.getString(FormsTable.COLUMN_FSTATUS);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
 
@@ -160,7 +160,7 @@ public class FormsContract extends LiveData<FormsContract> {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.appversion = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
 
-        this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
+        //this.hhno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HHNO));
         this.fStatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FSTATUS));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
 
@@ -199,7 +199,7 @@ public class FormsContract extends LiveData<FormsContract> {
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FormsTable.COLUMN_APPVERSION, this.appversion == null ? JSONObject.NULL : this.appversion);
-        json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
+        //json.put(FormsTable.COLUMN_HHNO, this.hhno == null ? JSONObject.NULL : this.hhno);
 
         return json;
     }
@@ -354,13 +354,13 @@ public class FormsContract extends LiveData<FormsContract> {
         this.clusterCode = clusterCode;
     }
 
-    public String getHhno() {
+    /*public String getHhno() {
         return hhno;
     }
 
     public void setHhno(String hhno) {
         this.hhno = hhno;
-    }
+    }*/
 
     public static abstract class FormsTable implements BaseColumns {
 
@@ -389,7 +389,7 @@ public class FormsContract extends LiveData<FormsContract> {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_APPVERSION = "appversion";
-        public static final String COLUMN_HHNO = "hhno";
+        //public static final String COLUMN_HHNO = "hhno";
         public static final String COLUMN_SA = "sA";
 
         public static String _URL = "sync.php";
