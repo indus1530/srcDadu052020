@@ -3,8 +3,6 @@ package edu.aku.hassannaqvi.srcDadu052020.ui.sections;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,43 +56,40 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
     private void setupListeners() {
 
-        bi.c1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (bi.f1.isChecked() && bi.c2.isChecked()) {
+/*        bi.c1.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (bi.f1.isChecked() && bi.c2.isChecked()) {
 
-                    Clear.clearAllFields(bi.fldGrpCVg);
-                    Clear.clearAllFields(bi.fldGrpCVh);
+                Clear.clearAllFields(bi.fldGrpCVg);
+                Clear.clearAllFields(bi.fldGrpCVh);
 
-                    bi.i12.setEnabled(true);
-                    bi.f5.setEnabled(true);
+                bi.i12.setEnabled(true);
+                bi.f5.setEnabled(true);
 
-                    bi.fldGrpCVg.setVisibility(View.GONE);
-                    bi.fldGrpCVh.setVisibility(View.GONE);
+                bi.fldGrpCVg.setVisibility(View.GONE);
+                bi.fldGrpCVh.setVisibility(View.GONE);
 
-                } else if (bi.c1.isChecked()) {
-                    bi.fldGrpCVg.setVisibility(View.GONE);
-                    bi.fldGrpCVh.setVisibility(View.GONE);
+            } else if (bi.c1.isChecked()) {
+                bi.fldGrpCVg.setVisibility(View.GONE);
+                bi.fldGrpCVh.setVisibility(View.GONE);
 
-                    Clear.clearAllFields(bi.fldGrpCVg);
-                    Clear.clearAllFields(bi.fldGrpCVh);
+                Clear.clearAllFields(bi.fldGrpCVg);
+                Clear.clearAllFields(bi.fldGrpCVh);
 
-                    bi.i12.setChecked(false);
-                    bi.i12.setEnabled(false);
+                bi.i12.setChecked(false);
+                bi.i12.setEnabled(false);
 
-                    bi.f5.setChecked(false);
-                    bi.f5.setEnabled(false);
+                bi.f5.setChecked(false);
+                bi.f5.setEnabled(false);
 
-                } else {
-                    bi.fldGrpCVg.setVisibility(View.VISIBLE);
-                    bi.fldGrpCVh.setVisibility(View.VISIBLE);
+            } else {
+                bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                bi.fldGrpCVh.setVisibility(View.VISIBLE);
 
-                    //bi.i12.setChecked(true);
-                    bi.i12.setEnabled(true);
+                //bi.i12.setChecked(true);
+                bi.i12.setEnabled(true);
 
-                    //bi.f5.setChecked(true);
-                    bi.f5.setEnabled(true);
-                }
+                //bi.f5.setChecked(true);
+                bi.f5.setEnabled(true);
             }
         });
 
@@ -103,17 +98,17 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
                 if (bi.c1.isChecked()) {
-                    Clear.clearAllFields(bi.fldGrpCVg);
-                    Clear.clearAllFields(bi.fldGrpCVh);
+                    bi.g.clearCheck();
+                    bi.fldGrpCVg.setVisibility(View.GONE);
+                    bi.h.setText(null);
+                    bi.fldGrpCVh.setVisibility(View.GONE);
 
-                    bi.i12.setChecked(false);
+                    bi.i.clearCheck();
                     bi.i12.setEnabled(false);
 
-                    bi.f5.setChecked(false);
+                    bi.f.clearCheck();
                     bi.f5.setEnabled(false);
 
-                    bi.fldGrpCVg.setVisibility(View.GONE);
-                    bi.fldGrpCVh.setVisibility(View.GONE);
                 } else if (bi.f2.isChecked() && bi.c2.isChecked() ||
                         bi.f3.isChecked() && bi.c2.isChecked() ||
                         bi.f4.isChecked() && bi.c2.isChecked() ||
@@ -129,7 +124,6 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Clear.clearAllFields(bi.fldGrpCVg);
                     Clear.clearAllFields(bi.fldGrpCVh);
 
-                    bi.f5.setEnabled(true);
                     bi.f5.setEnabled(true);
 
                     bi.fldGrpCVg.setVisibility(View.GONE);
@@ -148,7 +142,39 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Clear.clearAllFields(bi.fldGrpCVh);
                 }
             }
+        });*/
+
+        bi.c.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i == bi.c1.getId()) {
+                bi.f.clearCheck();
+                bi.f5.setEnabled(false);
+                bi.fldGrpCVg.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVg);
+                bi.fldGrpCVh.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVh);
+                bi.i.clearCheck();
+                bi.i12.setEnabled(false);
+            } else {
+                bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                bi.fldGrpCVh.setVisibility(View.VISIBLE);
+                bi.f5.setEnabled(true);
+                bi.i12.setEnabled(true);
+            }
+
         });
+
+        bi.f.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i != bi.f1.getId() && bi.c2.isChecked()) {
+                bi.fldGrpCVg.setVisibility(View.VISIBLE);
+                bi.fldGrpCVh.setVisibility(View.VISIBLE);
+            } else {
+                bi.fldGrpCVg.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVg);
+                bi.fldGrpCVh.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVh);
+            }
+        });
+
 
     }
 
@@ -234,36 +260,8 @@ public class SectionParticipantsSRC extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-
-        if (!bi.d.getText().toString().equals("")) {
-            if (bi.d.getText().toString().length() < 11) {
-                Toast.makeText(this, "Contact number must be 11 digits ", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        }
-
-
-        /*if (!bi.e.getText().toString().equals("") && !bi.b.getText().toString().equals("")) {
-            if (!bi.e.getText().toString().equals("97")) {
-                if (Integer.valueOf(bi.e.getText().toString()) >= Integer.valueOf(bi.b.getText().toString())) {
-                    Toast.makeText(this, "Education cannot be greater or cannot be equal to age", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            }
-        }*/
-
-        if (!bi.e.getText().toString().equals("")) {
-            if (!bi.e.getText().toString().equals("97")) {
-                if (Integer.parseInt(bi.e.getText().toString()) < 0 || Integer.parseInt(bi.e.getText().toString()) > 16) {
-                    Toast.makeText(this, "Education must be between 0 - 16 or 97", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-            }
-        }
-
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
-
 
     public void BtnContinue() {
         if (formValidation()) {
@@ -272,17 +270,12 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                 bi.btnContinue.setVisibility(View.GONE);
                 bi.btnAddMore.setVisibility(View.VISIBLE);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-
                 iscomplete = true;
-
                 if (MainApp.No_participants == 0) {
                     bi.sno.setText("Participants # - 1 of " + counter);
                 } else {
                     bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
                 }
-
-                //Log.d(TAG, "BtnContinue: Mainapp - " + MainApp.No_participants + " counter - " + counter);
-
             } else {
 
                 try {
@@ -298,14 +291,11 @@ public class SectionParticipantsSRC extends AppCompatActivity {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
                 }
 
-
                 if (counter >= MainApp.No_participants) {
                     bi.btnContinue.setVisibility(View.GONE);
                     bi.btnAddMore.setVisibility(View.VISIBLE);
                     bi.btnEnd.setVisibility(View.VISIBLE);
-
                     iscomplete = true;
-
                     bi.sno.setText("Participants # - " + MainApp.No_participants + " of " + counter);
                 }
 

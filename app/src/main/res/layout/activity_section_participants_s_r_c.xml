@@ -222,9 +222,10 @@
                         android:id="@+id/d"
                         style="@style/EditTextNum"
                         android:layout_width="match_parent"
-                        android:hint="@string/d"
+                        android:hint="###########"
                         android:inputType="number"
-                        android:maxLength="11" />
+                        android:maxLength="11"
+                        app:pattern="[0-9]{11}" />
 
                 </LinearLayout>
 
@@ -260,13 +261,16 @@
 
                     </RelativeLayout>
 
-                    <EditText
+                    <com.edittextpicker.aliazaz.EditTextPicker
                         android:id="@+id/e"
                         style="@style/EditTextNum"
                         android:layout_width="match_parent"
                         android:hint="@string/e"
                         android:inputType="number"
                         android:maxLength="2"
+                        app:defaultValue="97"
+                        app:maxValue="16"
+                        app:minValue="0"
                         app:type="range" />
                 </LinearLayout>
 
@@ -398,8 +402,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVh"
                 style="@style/cardView"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:visibility="@{g1.checked ? View.VISIBLE : View.GONE}">
 
                 <LinearLayout style="@style/vlinearlayout">
 
@@ -433,6 +436,7 @@
                         android:hint="@string/h"
                         android:inputType="number"
                         android:maxLength="2"
+                        android:text='@{g1.checked ? h.getText().toString() : ""}'
                         app:maxValue="42"
                         app:minValue="2"
                         app:type="range" />
@@ -585,13 +589,6 @@
                 style="@style/vlinearlayout"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp">
-
-                <!--<Button
-                    android:id="@+id/btn_End"
-                    style="@style/buttons_bottom"
-                    android:background="@color/red"
-                    android:onClick="@{() -> callback.BtnEnd()}"
-                    android:text="Cancel" /> !-->
 
                 <Button
                     android:id="@+id/btnContinue"
