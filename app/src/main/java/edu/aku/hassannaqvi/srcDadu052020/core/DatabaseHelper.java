@@ -1136,7 +1136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String groupBy = null;
         String having = null;
 
-        String orderBy = UsersContract.singleUser._ID + " ASC";
+        String orderBy = UsersContract.singleUser.ROW_FULLNAME + " ASC";
         List<UsersContract> allEB = new ArrayList<>();
         try {
             c = db.query(
