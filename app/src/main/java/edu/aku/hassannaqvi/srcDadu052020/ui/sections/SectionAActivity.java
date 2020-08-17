@@ -43,7 +43,7 @@ public class SectionAActivity extends AppCompatActivity {
     private DatabaseHelper db;
 
     public List<String> talukaName, ucName, villageName, usersName, teamLeadName;
-    public List<String> talukaCode, ucCode, villageCode, usersCode, teamLeadCode;
+    public List<String> talukaCode, ucCode, villageCode, usersCode, usersID, teamLeadCode;
 
 
     /*String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
@@ -169,15 +169,18 @@ public class SectionAActivity extends AppCompatActivity {
 
         // Spinner Drop down elements
         usersName = new ArrayList<>();
+        usersID = new ArrayList<>();
         usersCode = new ArrayList<>();
 
         usersName.add("....");
+        usersID.add("....");
         usersCode.add("....");
 
         Collection<UsersContract> dc_users = db.getUsers();
         Log.d(TAG, "onCreate: " + dc_users.size());
         for (UsersContract d : dc_users) {
             usersName.add(d.getFullName());
+            usersID.add(d.getUserName());
             usersCode.add(String.valueOf(d.getUserID()));
         }
 
@@ -384,7 +387,7 @@ public class SectionAActivity extends AppCompatActivity {
 //        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
 
 
-        json.put("a7", usersCode.get(bi.a7.getSelectedItemPosition()));
+        json.put("a7", usersID.get(bi.a7.getSelectedItemPosition()));
 
         json.put("a8", bi.a8.getText().toString());
 

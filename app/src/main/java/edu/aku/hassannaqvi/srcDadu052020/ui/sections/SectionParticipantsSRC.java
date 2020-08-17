@@ -165,6 +165,7 @@ public class SectionParticipantsSRC extends AppCompatActivity {
 
         bi.f.setOnCheckedChangeListener((radioGroup, i) -> {
             if (i != bi.f1.getId() && bi.c2.isChecked()) {
+                Clear.clearAllFields(bi.fldGrpCVg);
                 bi.fldGrpCVg.setVisibility(View.VISIBLE);
                 bi.fldGrpCVh.setVisibility(View.VISIBLE);
             } else {
@@ -175,6 +176,15 @@ public class SectionParticipantsSRC extends AppCompatActivity {
             }
         });
 
+
+        bi.g.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i != bi.f1.getId() && bi.g1.isChecked()) {
+                bi.fldGrpCVh.setVisibility(View.VISIBLE);
+            } else {
+                bi.fldGrpCVh.setVisibility(View.GONE);
+                Clear.clearAllFields(bi.fldGrpCVh);
+            }
+        });
 
     }
 
