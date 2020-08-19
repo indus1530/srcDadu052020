@@ -42,7 +42,7 @@ public class MainApp extends Application {
     public static final String _SERVER_URL = "sync.php";
     public static final String _PHOTO_UPLOAD_URL = MainApp._IP + "/srcDadu2020/api/uploads.php";
 
-    public static final String _UPDATE_URL = MainApp._IP + "/srcDadu2020/app/";
+    public static final String _UPDATE_URL = MainApp._IP + "/srcDadu2020/app/session";
     public static final Integer MONTHS_LIMIT = 11;
     public static final Integer DAYS_LIMIT = 29;
 
