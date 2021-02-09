@@ -49,7 +49,7 @@ public class SectionAActivity extends AppCompatActivity {
     /*String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     String date7Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_7MONTHS) + MainApp.MILLISECONDS_IN_DAY));*/
 
-    private String mLanguageCode = "sd";
+    private final String mLanguageCode = "sd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -363,7 +363,9 @@ public class SectionAActivity extends AppCompatActivity {
         MainApp.villagecode = villageCode.get(bi.a3.getSelectedItemPosition());
 
         MainApp.fc.setUser(MainApp.userName);
-        MainApp.setGPS(this);
+
+        //HassanBhai@Requested
+        //MainApp.setGPS(this);
 
         JSONObject json = new JSONObject();
 
