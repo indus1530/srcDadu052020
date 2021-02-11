@@ -61,8 +61,6 @@ import edu.aku.hassannaqvi.srcDadu052020.ui.sync.SyncActivity;
 import edu.aku.hassannaqvi.srcDadu052020.utils.AndroidUtilityKt;
 import edu.aku.hassannaqvi.srcDadu052020.utils.UtilKt;
 
-import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_DISTANCE_CHANGE_FOR_UPDATES;
-import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MINIMUM_TIME_BETWEEN_UPDATES;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.MY_PERMISSIONS_REQUEST_READ_PHONE_STATE;
 import static edu.aku.hassannaqvi.srcDadu052020.CONSTANTS.TWO_MINUTES;
@@ -375,12 +373,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     doPermissionGrantedStuffs();
                     //loadIMEI();
                 }
-            } else if (permissions[i].equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            } /*else if (permissions[i].equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
 
                 }
-            } else if (permissions[i].equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            } *//*else if (permissions[i].equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -402,7 +400,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                     );
                 }
-            } else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            }*/ else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
 
                 }

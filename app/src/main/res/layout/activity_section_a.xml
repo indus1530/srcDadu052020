@@ -18,7 +18,8 @@
             android:id="@+id/GrpName"
             style="@style/vlinearlayout">
 
-            <!-- a1  Input-Numeric   -->
+
+            <!-- Title TextView   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpUser"
                 style="@style/cardView">
@@ -32,15 +33,19 @@
                         android:layout_toEndOf="@id/GrpName" />
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
 
-            <!-- a1  Input-Numeric   -->
+            <!-- A1 Spinner   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa1"
                 style="@style/cardView">
 
-                <LinearLayout style="@style/hlinearlayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -49,42 +54,31 @@
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/q_a1"
                             style="@style/quesNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a1"
-                            android:layout_alignBottom="@id/qtxt_a1"
+                            android:layout_height="match_parent"
                             android:text="@string/Q_a1" />
 
-                        <Spinner
-                            android:id="@+id/a1"
-                            style="@style/spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/a1" />
 
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <Spinner
+                        android:id="@+id/a1"
+                        style="@style/spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_a1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/a1" />
-
-                    </RelativeLayout>
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- a2  Input-Numeric   -->
+
+            <!-- A2 Spinner   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa2"
                 style="@style/cardView">
@@ -98,43 +92,31 @@
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/q_a2"
                             style="@style/quesNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a2"
-                            android:layout_alignBottom="@id/qtxt_a2"
+                            android:layout_height="match_parent"
                             android:text="@string/Q_a2" />
 
-                        <Spinner
-                            android:id="@+id/a2"
-                            style="@style/spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/a2" />
 
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <Spinner
+                        android:id="@+id/a2"
+                        style="@style/spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_a2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/a2" />
-
-                    </RelativeLayout>
-
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- a3  Input-Numeric   -->
+
+            <!-- A3 Spinner   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa3"
                 style="@style/cardView">
@@ -148,70 +130,58 @@
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/q_a3"
                             style="@style/quesNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a3"
-                            android:layout_alignBottom="@id/qtxt_a3"
+                            android:layout_height="match_parent"
                             android:text="@string/Q_a3" />
 
-                        <Spinner
-                            android:id="@+id/a3"
-                            style="@style/spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/a3" />
 
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <Spinner
+                        android:id="@+id/a3"
+                        style="@style/spinner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bottom">
-
-                        <TextView
-                            android:id="@+id/qtxt_a3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/a3" />
-
-                    </RelativeLayout>
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <!-- a4  Input   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa4"
                 style="@style/cardView">
 
-                <LinearLayout style="@style/vlinearlayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/qtxt_a4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_a4"
-                            android:text="@string/a4" />
-
-                        <TextView
-                            android:id="@+id/q_a4"
                             style="@style/quesNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a4"
-                            android:layout_alignBottom="@id/qtxt_a4"
+                            android:layout_height="match_parent"
                             android:text="@string/Q_a4" />
 
-                    </RelativeLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/a4" />
+
+                    </LinearLayout>
 
                     <EditText
                         android:id="@+id/a4"
@@ -222,56 +192,44 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- a7  Input   -->
+
+            <!-- a7 Spinner   -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/fldGrpCVa7"
                 style="@style/cardView">
 
-                <LinearLayout style="@style/vlinearlayout">
+                <LinearLayout style="@style/hlinearlayout">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/bottom">
 
                         <TextView
-                            android:id="@+id/qtxt_a7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/q_a7"
-                            android:text="@string/a7" />
-
-                        <TextView
-                            android:id="@+id/q_a7"
                             style="@style/quesNum"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@id/qtxt_a7"
-                            android:layout_alignBottom="@id/qtxt_a7"
+                            android:layout_height="match_parent"
                             android:text="@string/Q_a7" />
 
-                    </RelativeLayout>
-
-                    <!--<EditText
-                        android:id="@+id/a7"
-                        style="@style/EditTextAlpha"
-                        android:hint="@string/a7" />!-->
-
-                    <LinearLayout style="@style/hlinearlayout">
-
-                        <Spinner
-                            android:id="@+id/a7"
-                            style="@style/spinner"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/a7" />
 
                     </LinearLayout>
 
+                    <Spinner
+                        android:id="@+id/a7"
+                        style="@style/spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
 
             <!-- a8  Input-Numeric   -->
             <androidx.cardview.widget.CardView

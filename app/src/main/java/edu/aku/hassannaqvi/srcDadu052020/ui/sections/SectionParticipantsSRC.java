@@ -216,7 +216,9 @@ public class SectionParticipantsSRC extends AppCompatActivity {
         pc.setVillage(MainApp.villagecode);
         pc.setUser(MainApp.userName);
         pc.setSno(String.valueOf(counter));
-        MainApp.setGPS(this);
+
+        //HassanBhai@Requested
+        //MainApp.setGPS(this);
 
 
         JSONObject json = new JSONObject();
